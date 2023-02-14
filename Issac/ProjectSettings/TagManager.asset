@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - wall
+  - door
   layers:
   - Default
   - TransparentFX
@@ -55,4 +57,7 @@ TagManager:
     locked: 0
   - name: PlayerHead
     uniqueID: 881418289
+    locked: 0
+  - name: Ui
+    uniqueID: 4005568109
     locked: 0

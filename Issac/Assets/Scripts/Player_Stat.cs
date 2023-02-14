@@ -6,6 +6,7 @@ public class Player_Stat : MonoBehaviour
 {
     private int id;
     private string name;
+    private float maxHp;
     private float normalHeart;
     private float soulHeart;
     private float str;
@@ -15,7 +16,12 @@ public class Player_Stat : MonoBehaviour
     private float luck;
     private float range;
     private bool die;
+    public List<int> item = new List<int>();
 
+
+    public float MaxHp{
+        get; set;
+    }
     public int ID
     {
         get; set;
