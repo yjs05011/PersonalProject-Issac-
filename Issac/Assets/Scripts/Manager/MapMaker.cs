@@ -25,6 +25,7 @@ public class MapMaker : MonoBehaviour
     Stack<int> SpecialRoom;
     int bestWaySort;
     int bestWaynumber;
+    bool FindMapCheck;
 
 
     public static MapMaker instance = null;
@@ -85,7 +86,18 @@ public class MapMaker : MonoBehaviour
         }
         for (int i = 0; i < 4; i++)
         {
-            BFS(MapY / 2, MapX / 2, EndRoomY[i], EndRoomX[i]);
+            FindMap(MapY / 2, MapX / 2, out FindMapCheck);
+            if (FindMapCheck)
+            {
+                FindMapCheck = false;
+
+            }
+            else
+            {
+                BFS(MapY / 2, MapX / 2, EndRoomY[i], EndRoomX[i]);
+
+            }
+
         }
         for (int i = 0; i < 3; i++)
         {
@@ -134,6 +146,8 @@ public class MapMaker : MonoBehaviour
                     }
                 }
                 break;
+
+            case 3:
                 for (int i = 0; i < 4; i++)
                 {
                     if (i == 3)
@@ -144,7 +158,6 @@ public class MapMaker : MonoBehaviour
                         Map[EndRoomY[i], EndRoomX[i]] = SpecialRoom.Pop();
                     }
                 }
-            case 3:
                 break;
         }
 
@@ -333,6 +346,51 @@ public class MapMaker : MonoBehaviour
                 PrevConut = PrevNode.PrevConut + 1;
             }
         }
+
+
+    }
+    // 중복루트 생성 방지 함수
+    void FindMap(int x, int y, out bool check)
+    {
+        int startX = x;
+        int startY = y;
+        check = false;
+        if ((x - 1 > 0 || x + 1 < MapX) && ((y - 1 > 0 || y + 1 < MapY)))
+        {
+            for (int i = x - 1; i < x + 2; i++)
+            {
+                for (int j = y - 1; j < y + 2; j++)
+                {
+                    if (i == startX && j == startY)
+                    {
+
+                    }
+                    else
+                    {
+                        if (Map[j, i] == 4)
+                        {
+                            x = i;
+                            y = j;
+                            FindMap(x, y, out check);
+                        }
+                        else if (Map[j, i] != 0)
+                        {
+
+                            check = true;
+                            break;
+
+                        }
+                        else
+                        {
+                            check = false;
+                            break;
+                        }
+                    }
+
+                }
+            }
+        }
+
 
 
     }
