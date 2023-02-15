@@ -5,17 +5,19 @@ using UnityEngine;
 public class DoorContorller : MonoBehaviour
 {
 
-    
+
     private SpriteRenderer[] Doors;
+    public int monsterNumber;
+    public BoxCollider2D[] DoorExit;
 
     // Start is called before the first frame update
     void Start()
     {
         Doors = new SpriteRenderer[4];
-        Doors[0]= transform.GetChild(0).GetComponent<SpriteRenderer>(); 
-        Doors[1]= transform.GetChild(1).GetComponent<SpriteRenderer>(); 
-        Doors[2]= transform.GetChild(2).GetComponent<SpriteRenderer>(); 
-        Doors[3]= transform.GetChild(3).GetComponent<SpriteRenderer>(); 
+        Doors[0] = transform.GetChild(0).GetComponent<SpriteRenderer>();
+        Doors[1] = transform.GetChild(1).GetComponent<SpriteRenderer>();
+        Doors[2] = transform.GetChild(2).GetComponent<SpriteRenderer>();
+        Doors[3] = transform.GetChild(3).GetComponent<SpriteRenderer>();
         DoorChk();
 
 
@@ -24,13 +26,19 @@ public class DoorContorller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-      /*  if(GameManager.Instance.ClearChk){
-            
-        }*/
+        GameManager.instance.monsterClearChk = false;
+        if (monsterNumber == 0)
+        {
+            GameManager.instance.monsterClearChk = true;
+            OpenDoor();
+        }
+        /*  if(GameManager.Instance.ClearChk){
+
+          }*/
     }
     void DoorChk()
     {
-        if (false)
+        if (true)
         {
 
         }
@@ -46,11 +54,18 @@ public class DoorContorller : MonoBehaviour
 
     void OpenDoor()
     {
-        for (int i = 0; i < Doors.Length; i++)
+        if (GameManager.instance.monsterClearChk)
         {
-            Doors[i].transform.GetChild(0).gameObject.SetActive(true);
-            Doors[i].transform.GetChild(1).gameObject.SetActive(false);
-            Doors[i].transform.GetChild(2).gameObject.SetActive(false);
+
+            for (int i = 0; i < Doors.Length; i++)
+            {
+                Doors[i].transform.GetChild(0).gameObject.SetActive(true);
+                Doors[i].transform.GetChild(1).gameObject.SetActive(false);
+                Doors[i].transform.GetChild(2).gameObject.SetActive(false);
+                DoorExit[i].isTrigger = true;
+            }
         }
     }
+
+
 }

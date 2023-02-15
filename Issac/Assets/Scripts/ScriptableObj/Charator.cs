@@ -19,5 +19,5 @@ public class Charator : ScriptableObject {
     public float range;
     public bool die;
 
-    public List<int> item;
+    public Stack<int> item;
 }

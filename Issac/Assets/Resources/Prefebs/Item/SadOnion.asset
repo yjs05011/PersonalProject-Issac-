@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SadOnion
   m_EditorClassIdentifier: 
   id: 1
-  name: SadOnion
+  name: Sad Onion
   maxHp: 0
   normalHeart: 0
   soulHeart: 0
@@ -23,4 +23,3 @@ MonoBehaviour:
   speed: 0
   luck: 0
   range: 0
-  die: 0

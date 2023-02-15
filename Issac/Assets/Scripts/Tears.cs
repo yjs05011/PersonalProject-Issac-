@@ -4,52 +4,94 @@ using UnityEngine;
 
 public class Tears : MonoBehaviour
 {
-    private BoxCollider2D tearHitBox;
-    private RectTransform tearSize;
-    private Rigidbody2D tearRigid;
+    public BoxCollider2D tearHitBox;
+    public RectTransform tearSize;
+    public RectTransform tearImgSize;
+    public Rigidbody2D tearRigid;
+    public Rigidbody2D tearImgRigid;
+    public Vector2 TearsstartPos;
+    public Vector2 ShadowstartPos;
 
-    private Player_Stat player_Stat;
-    private Player_Active player_Active;
-    private Rigidbody2D playerRigid;
-    private RectTransform playerRect;
-    private Vector2 startPosition;
+    public Player_Stat player_Stat;
+    public Player_Active player_Active;
+    public Rigidbody2D playerRigid;
+    public RectTransform playerRect;
+    public Vector2 startPosition;
     public float range = 0;
 
-    
+
+    public void OnEnable()
+    {
+        tearImgRigid = transform.GetChild(0).gameObject.GetRigid();
+        tearImgSize = transform.GetChild(0).gameObject.GetRect();
+
+        tearHitBox = gameObject.GetBoxCollider();
+        tearSize = gameObject.GetRect();
+        tearRigid = gameObject.GetRigid();
+
+        TearsstartPos = tearImgRigid.position;
+        ShadowstartPos = tearSize.position;
+
+
+        Debug.Log($"3번 플로우 눈물이 발사된다. : {tearSize.rotation.eulerAngles}");
+
+    }
     // Start is called before the first frame update
     void Start()
     {
-        tearHitBox = gameObject.GetBoxCollider();
-        tearSize =  gameObject.GetRect();
-        tearRigid = gameObject.GetRigid();
+
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        tearRigid.velocity = transform.up*10f;
-        if(range<Vector2.Distance(startPosition,tearSize.anchoredPosition)){
-            gameObject.SetActive(false);
-            Pooling.instance.playerTears.Push(gameObject);
+
+
+        if (Vector2.Distance(TearsstartPos, tearSize.position) > GameManager.instance.player_Stat.Range / 2)
+        {
+            tearImgRigid.velocity = new Vector2(tearImgRigid.velocity.x, tearImgRigid.velocity.y - 0.1f);
+            if (tearSize.position.y > tearImgSize.position.y || Vector2.Distance(TearsstartPos, tearSize.position) > (GameManager.instance.player_Stat.Range + 1) / 2)
+            {
+                gameObject.SetActive(false);
+                gameObject.transform.position = ShadowstartPos;
+                tearImgSize.position = TearsstartPos;
+                Pooling.instance.playerTears.Push(gameObject);
+            }
+
+        }
+        else
+        {
+            tearRigid.velocity = transform.up * 6f;
+            tearImgRigid.velocity = transform.up * 6f;
+            tearImgRigid.velocity = new Vector2(tearImgRigid.velocity.x, tearImgRigid.velocity.y - 0.2f);
         }
 
+
+
     }
-    
-    private void OnTriggerEnter2D(Collider2D other) {
-        if (other.transform.tag ==  "Player"){
-            player_Stat = other.gameObject.GetComponent<Player_Stat>();
+
+    public void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.transform.tag == "Player")
+        {
             player_Active = other.gameObject.GetComponent<Player_Active>();
             playerRigid = other.gameObject.GetRigid();
-            
+
             playerRect = other.gameObject.GetComponent<RectTransform>();
             tearSize.transform.rotation = player_Active.playerHead.rotation;
             startPosition = playerRect.transform.position;
 
         }
-        if(other.transform.tag=="wall" || other.transform.tag=="door"){
+        if (other.transform.tag == "wall" || other.transform.tag == "door")
+        {
+            gameObject.transform.position = ShadowstartPos;
+            tearImgSize.position = TearsstartPos;
             gameObject.SetActive(false);
+
             Pooling.instance.playerTears.Push(gameObject);
         }
     }
-    
+
+
 }

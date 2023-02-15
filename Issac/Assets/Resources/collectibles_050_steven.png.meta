@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 85509b37f12fa5d4d9ba27636607ddd9
+guid: 3e3f93bb098d39e4dace360ef072e506
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -129,13 +129,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Stone 1_0
+      name: collectibles_050_steven_0
       rect:
         serializedVersion: 2
-        x: 103
-        y: 79
-        width: 37
-        height: 27
+        x: 6
+        y: 6
+        width: 20
+        height: 20
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -143,8 +143,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0fc37aed1a0a032468c883bde2faa1f3
-      internalID: 165447217
+      spriteID: d33019e6d33841740b5c8ea40e54002e
+      internalID: 477959028
       vertices: []
       indices: 
       edges: []
@@ -152,7 +152,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 36100d9130737644fb6c65e1d7e93144
+    spriteID: faa335a7f47ea0643bb7a3a350579587
     internalID: 0
     vertices: []
     indices: 
@@ -160,7 +160,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Stone 1_0: 165447217
+      collectibles_050_steven_0: 477959028
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

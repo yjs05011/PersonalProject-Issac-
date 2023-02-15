@@ -391,6 +391,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player_Stat: {fileID: 1878645571}
+  totalItem: 
   player:
   - {fileID: 11400000, guid: b59b6b50d92555344bd361bef41f6273, type: 2}
   - {fileID: 11400000, guid: 63735e7eefdc46a4aa9abb3b8b46a601, type: 2}
@@ -406,4 +407,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f0a73ca0690a684ab5a99d88b2d8bc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: 

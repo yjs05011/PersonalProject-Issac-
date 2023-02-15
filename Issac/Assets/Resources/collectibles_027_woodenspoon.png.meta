@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 3cf3a3b431ce18a4284783b897e7184b
+guid: 7a67ff3987f4c3c459da390531416a81
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -129,13 +129,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Tears_0
+      name: collectibles_027_woodenspoon_0
       rect:
         serializedVersion: 2
-        x: 294
-        y: 437
-        width: 28
-        height: 23
+        x: 10
+        y: 6
+        width: 12
+        height: 21
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -143,8 +143,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 420783a72ecce45428876604cb712a06
-      internalID: 2130942128
+      spriteID: 102e27eb148a0ce4bb9ac514a956d2b5
+      internalID: -570286687
       vertices: []
       indices: 
       edges: []
@@ -152,15 +152,15 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
-    internalID: 1537655665
+    spriteID: 9f43420d3346de444b1a8ac617c3e7e8
+    internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Tears_0: 2130942128
+      collectibles_027_woodenspoon_0: -570286687
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

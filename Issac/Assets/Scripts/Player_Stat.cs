@@ -16,7 +16,7 @@ public class Player_Stat : MonoBehaviour
     private float luck;
     private float range;
     private bool die;
-    public List<int> item = new List<int>();
+    public Stack<int> item = new Stack<int>();
 
 
     public float MaxHp{

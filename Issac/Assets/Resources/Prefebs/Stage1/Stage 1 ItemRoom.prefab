@@ -1107,12 +1107,12 @@ SpriteRenderer:
   m_SortingLayerID: -509583815
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 165447217, guid: 85509b37f12fa5d4d9ba27636607ddd9, type: 3}
+  m_Sprite: {fileID: -878006397, guid: b1ab6c70e57355c46b2df0aec330f00b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.37, y: 0.27}
+  m_Size: {x: 0.28, y: 0.23}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -1135,8 +1135,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.37, y: 0.27}
-    newSize: {x: 0.37, y: 0.27}
+    oldSize: {x: 0.28, y: 0.23}
+    newSize: {x: 0.28, y: 0.23}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -1310,7 +1310,7 @@ GameObject:
   - component: {fileID: 2576057805884051742}
   - component: {fileID: 2576057805884051737}
   m_Layer: 0
-  m_Name: Door
+  m_Name: UpDoor
   m_TagString: door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1426,7 +1426,7 @@ GameObject:
   - component: {fileID: 2576057806126712476}
   - component: {fileID: 2576057806126712479}
   m_Layer: 0
-  m_Name: Door
+  m_Name: Left Door
   m_TagString: door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1679,7 +1679,7 @@ SpriteRenderer:
   m_SortingLayerID: -509583815
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: -616297748, guid: 0e749a25bbf9b2e40b01e9fd69941b01, type: 3}
+  m_Sprite: {fileID: 1894060888, guid: 0e749a25bbf9b2e40b01e9fd69941b01, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1916,7 +1916,7 @@ SpriteRenderer:
   m_SortingLayerID: -509583815
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: -616297748, guid: 0e749a25bbf9b2e40b01e9fd69941b01, type: 3}
+  m_Sprite: {fileID: 1894060888, guid: 0e749a25bbf9b2e40b01e9fd69941b01, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2040,6 +2040,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c514372dc3efef5489f6c6c84324f722, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  monsterNumber: 0
+  DoorExit:
+  - {fileID: 2576057806126712479}
+  - {fileID: 2576057805884051737}
+  - {fileID: 2576057807457771363}
+  - {fileID: 2576057807577315288}
 --- !u!1 &2576057807320988610
 GameObject:
   m_ObjectHideFlags: 0
@@ -2130,7 +2136,7 @@ SpriteRenderer:
   m_SortingLayerID: -509583815
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: -616297748, guid: 0e749a25bbf9b2e40b01e9fd69941b01, type: 3}
+  m_Sprite: {fileID: 1894060888, guid: 0e749a25bbf9b2e40b01e9fd69941b01, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2191,7 +2197,7 @@ GameObject:
   - component: {fileID: 2576057807457771360}
   - component: {fileID: 2576057807457771363}
   m_Layer: 0
-  m_Name: door
+  m_Name: Right Door
   m_TagString: door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6333,7 +6339,7 @@ SpriteRenderer:
   m_SortingLayerID: -509583815
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: -616297748, guid: 0e749a25bbf9b2e40b01e9fd69941b01, type: 3}
+  m_Sprite: {fileID: 1894060888, guid: 0e749a25bbf9b2e40b01e9fd69941b01, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -6355,7 +6361,7 @@ GameObject:
   - component: {fileID: 2576057807577315291}
   - component: {fileID: 2576057807577315288}
   m_Layer: 0
-  m_Name: door
+  m_Name: Bottom Door
   m_TagString: door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6537,6 +6543,7 @@ GameObject:
   - component: {fileID: 9130904739111661851}
   - component: {fileID: 4996880862860661343}
   - component: {fileID: 1476812791835070440}
+  - component: {fileID: 5480673647474595099}
   m_Layer: 0
   m_Name: ItemStatu
   m_TagString: Untagged
@@ -6605,12 +6612,109 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemImg:
-  - {fileID: 786581080, guid: aa4667f2ff59daf4b9e072ac943d0a91, type: 3}
-  - {fileID: -2080712837, guid: aa4667f2ff59daf4b9e072ac943d0a91, type: 3}
-  - {fileID: -304462844, guid: aa4667f2ff59daf4b9e072ac943d0a91, type: 3}
-  - {fileID: 608115627, guid: aa4667f2ff59daf4b9e072ac943d0a91, type: 3}
+  - {fileID: -1763573869, guid: e491b0e5310a4a6418dcabb1170f3de1, type: 3}
+  - {fileID: 1402439268, guid: 4805539fd109bee478e0863209f3ffdc, type: 3}
+  - {fileID: -570286687, guid: 7a67ff3987f4c3c459da390531416a81, type: 3}
+  - {fileID: 477959028, guid: 3e3f93bb098d39e4dace360ef072e506, type: 3}
   Items:
   - {fileID: 11400000, guid: e88bf5f93d0ee7b4b8dc42fbf598bfc6, type: 2}
   - {fileID: 11400000, guid: 7132326318b8213478188e890b7e65fa, type: 2}
   - {fileID: 11400000, guid: 1012daafa960eb04b938362fb847d453, type: 2}
   - {fileID: 11400000, guid: b6a13daf3a22f2a49962c7d25a6ab8c3, type: 2}
+  PickItem: {fileID: 0}
+--- !u!82 &5480673647474595099
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8527391265128615341}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: a08630f27facf284e84c3f353bab5cdc, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
