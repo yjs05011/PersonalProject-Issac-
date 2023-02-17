@@ -1194,8 +1194,8 @@ GameObject:
   - component: {fileID: 2576057805884051742}
   - component: {fileID: 2576057805884051737}
   m_Layer: 0
-  m_Name: Door
-  m_TagString: Untagged
+  m_Name: RightDoor
+  m_TagString: RightDoor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1208,7 +1208,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2576057805884051743}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 11.8, y: 0, z: 2.3043084}
+  m_LocalPosition: {x: 8, y: 0, z: 2.3043084}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1239,7 +1239,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 8, y: 2.25}
+  m_Size: {x: 0.5, y: 2.25}
   m_EdgeRadius: 0
 --- !u!1 &2576057805979271457
 GameObject:
@@ -1311,7 +1311,7 @@ GameObject:
   - component: {fileID: 2576057806126712479}
   m_Layer: 0
   m_Name: LeftDoor
-  m_TagString: Untagged
+  m_TagString: LeftDoor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1324,12 +1324,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2576057806126712477}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -11.8, y: 0, z: 2.3043084}
+  m_LocalPosition: {x: -8, y: 0, z: 2.3043084}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2576057806797602264}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &2576057806126712479
 BoxCollider2D:
@@ -1355,7 +1355,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 8, y: 2.25}
+  m_Size: {x: 0.5, y: 2.25}
   m_EdgeRadius: 0
 --- !u!1 &2576057806164168970
 GameObject:
@@ -1603,8 +1603,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2576057806164168965}
-  - {fileID: 2576057807064801686}
   - {fileID: 2576057807457771360}
+  - {fileID: 2576057807064801686}
   m_Father: {fileID: 2576057807480657187}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1643,7 +1643,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2576057806797602264}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &2576057806768024739
 BoxCollider2D:
@@ -1700,8 +1700,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2576057805979271456}
-  - {fileID: 2576057806768024736}
   - {fileID: 2576057806126712476}
+  - {fileID: 2576057806768024736}
   m_Father: {fileID: 2576057807480657187}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1841,7 +1841,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2576057806649572821}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &2576057807064801681
 BoxCollider2D:
@@ -1879,6 +1879,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2576057807123032721}
   - component: {fileID: 1509692482}
+  - component: {fileID: 5096075758404468439}
   m_Layer: 0
   m_Name: Stage 1 default
   m_TagString: Untagged
@@ -1923,8 +1924,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c514372dc3efef5489f6c6c84324f722, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  roomType: 0
+  roomNum: 0
+  roomRect: {fileID: 0}
+  roomRigi: {fileID: 0}
   monsterNumber: 0
-  DoorExit: []
+  DoorExit:
+  - {fileID: 2576057806126712479}
+  - {fileID: 2576057807457771363}
+  - {fileID: 2576057805884051737}
+  - {fileID: 2576057807577315288}
+  LeftDoorX: 0
+  RightDoorX: 0
+  UpDoorX: 0
+  DownDoorX: 0
+  LeftDoorY: 0
+  RightDoorY: 0
+  UpDoorY: 0
+  DownDoorY: 0
+--- !u!50 &5096075758404468439
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2576057807123032726}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 7
 --- !u!1 &2576057807320988610
 GameObject:
   m_ObjectHideFlags: 0
@@ -2076,8 +2114,8 @@ GameObject:
   - component: {fileID: 2576057807457771360}
   - component: {fileID: 2576057807457771363}
   m_Layer: 0
-  m_Name: door
-  m_TagString: Untagged
+  m_Name: TopDoor
+  m_TagString: UpDoor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2090,12 +2128,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2576057807457771361}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 9.5, z: 2.3043084}
+  m_LocalPosition: {x: 0, y: 4.2, z: 2.3043084}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2576057806649572821}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &2576057807457771363
 BoxCollider2D:
@@ -2121,7 +2159,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.5, y: 11}
+  m_Size: {x: 2.5, y: 0.5}
   m_EdgeRadius: 0
 --- !u!1 &2576057807480657191
 GameObject:
@@ -6241,7 +6279,7 @@ GameObject:
   - component: {fileID: 2576057807577315288}
   m_Layer: 0
   m_Name: BottomDoor
-  m_TagString: Untagged
+  m_TagString: DownDoor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6254,7 +6292,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2576057807577315289}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -10, z: 2.3043084}
+  m_LocalPosition: {x: 0, y: -4.8, z: 2.3043084}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6285,5 +6323,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.5, y: 11}
+  m_Size: {x: 2.5, y: 0.5}
   m_EdgeRadius: 0

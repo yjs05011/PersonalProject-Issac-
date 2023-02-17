@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
     public List<Charator> player = new List<Charator>();
     public bool monsterClearChk = false;
     public int stageNum = 1;
+    public int[,] map;
+    public GameObject[,] nowMapStat;
 
     void Awake()
     {

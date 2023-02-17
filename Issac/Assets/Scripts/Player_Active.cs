@@ -7,6 +7,7 @@ public class Player_Active : MonoBehaviour
 
     // Start is called before the first frame update
     public Rigidbody2D playerRigid;
+    private BoxCollider2D playerBox;
     public float maxVelocityX = 5;
     public float maxVelocityY = 5;
     private Tears tears;
@@ -17,8 +18,11 @@ public class Player_Active : MonoBehaviour
     private bool[] isAttackKey;
     private Animator aniHead;
     private Animator aniBody;
+    public int[,] miniMap = new int[7, 7];
+    private bool roomChangeChk;
     public void Awake()
     {
+        playerBox = gameObject.GetBoxCollider();
         isAttackKey = new bool[4];
         playerRigid = gameObject.GetComponent<Rigidbody2D>();
         playerHead = transform.GetChild(2).GetComponent<RectTransform>();
@@ -270,4 +274,64 @@ public class Player_Active : MonoBehaviour
         isAttack = false;
 
     }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        DoorController inspector = other.transform.parent.parent.parent.gameObject.GetComponent<DoorController>();
+        switch (other.tag)
+        {
+
+            case "LeftDoor":
+                if (!roomChangeChk)
+                {
+                    roomChangeChk = true;
+                    StartCoroutine(RoomChange(other, new Vector2(-220, -100), new Vector2(0, 0), inspector.LeftDoorX, inspector.LeftDoorY));
+                }
+
+                break;
+            case "RightDoor":
+                if (!roomChangeChk)
+                {
+                    roomChangeChk = true;
+                    StartCoroutine(RoomChange(other, new Vector2(-180, -100), new Vector2(0, 0), inspector.RightDoorX, inspector.RightDoorY));
+                }
+                break;
+            case "UpDoor":
+                if (!roomChangeChk)
+                {
+                    roomChangeChk = true;
+                    StartCoroutine(RoomChange(other, new Vector2(-200, -90), new Vector2(0, 0), inspector.UpDoorX, inspector.UpDoorY));
+                }
+                break;
+            case "DownDoor":
+                if (!roomChangeChk)
+                {
+                    roomChangeChk = true;
+                    StartCoroutine(RoomChange(other, new Vector2(-200, -110), new Vector2(0, 0), inspector.DownDoorX, inspector.DownDoorY));
+                }
+                break;
+
+        }
+    }
+    IEnumerator RoomChange(Collider2D other, Vector2 RoomPosition, Vector2 playerPosition, int DoorX, int DoorY)
+    {
+        playerBox.isTrigger = false;
+        Rigidbody2D nowRoom = other.transform.parent.parent.parent.gameObject.GetComponent<Rigidbody2D>();
+        GameObject NextRoom = GameManager.instance.nowMapStat[DoorX,
+        DoorY];
+        NextRoom.SetActive(true);
+        NextRoom.transform.localPosition = RoomPosition;
+        NextRoom.GetRigid().velocity = new Vector2(-30, 0);
+        nowRoom.velocity = new Vector2(-30, 0);
+        if (NextRoom.transform.localPosition.x < -100)
+        {
+            NextRoom.GetRigid().velocity = new Vector2(0, 0);
+            nowRoom.velocity = new Vector2(0, 0);
+            NextRoom.transform.localPosition = new Vector2(-200, -100);
+            nowRoom.gameObject.SetActive(false);
+        }
+        yield return new WaitForSeconds(0.4f);
+        roomChangeChk = false;
+        playerBox.isTrigger = false;
+    }
+
 }
