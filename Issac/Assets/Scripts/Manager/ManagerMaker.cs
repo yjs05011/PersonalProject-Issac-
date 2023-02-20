@@ -16,10 +16,11 @@ public class ManagerMaker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-    void PlayerStatReset(int Id){
+    void PlayerStatReset(int Id)
+    {
 
         GameManager.instance.player_Stat.ID = GameManager.instance.player[Id].id;
         GameManager.instance.player_Stat.Name = GameManager.instance.player[Id].name;
@@ -33,9 +34,13 @@ public class ManagerMaker : MonoBehaviour
         GameManager.instance.player_Stat.Luck = GameManager.instance.player[Id].luck;
         GameManager.instance.player_Stat.Range = GameManager.instance.player[Id].range;
         GameManager.instance.player_Stat.Die = GameManager.instance.player[Id].die;
+        GameManager.instance.player_Stat.KeyCount = GameManager.instance.player[Id].keyCount;
+        GameManager.instance.player_Stat.BoomCount = GameManager.instance.player[Id].boomCount;
+        GameManager.instance.player_Stat.CoinCount = GameManager.instance.player[Id].coinCount;
     }
-    void ItemDuplication(int totalItem){
-        for(int i = 0 ; i <totalItem; i++)
-        GameManager.instance.totalItem.Add(i);
+    void ItemDuplication(int totalItem)
+    {
+        for (int i = 0; i < totalItem; i++)
+            GameManager.instance.totalItem.Add(i);
     }
 }

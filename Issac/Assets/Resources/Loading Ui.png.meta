@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 0
@@ -70,7 +70,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -2572,15 +2572,15 @@ TextureImporter:
       Loading Ui_28: 1148275509
       Loading Ui_221: 975605232
       Loading Ui_207: 19721470
+      Loading Ui_164: 2050602001
       Loading Ui_59: -1356712177
-      Loading Ui_31: 1257578193
       Loading Ui_44: -38142391
       Loading Ui_1: 976336337
-      Loading Ui_203: 810786706
-      Loading Ui_7: 1072539134
-      Loading Ui_164: 2050602001
       Loading Ui_205: -963765565
       Loading Ui_214: 1967233222
+      Loading Ui_7: 1072539134
+      Loading Ui_31: 1257578193
+      Loading Ui_203: 810786706
       Loading Ui_136: 265794095
       Loading Ui_172: -43838162
       Loading Ui_162: -127217682
@@ -2625,13 +2625,13 @@ TextureImporter:
       Loading Ui_104: 1632809104
       Loading Ui_14: 823972234
       Loading Ui_62: 2073595770
+      Loading Ui_134: 968801574
       Loading Ui_26: 497682584
       Loading Ui_34: -422056478
-      Loading Ui_134: 968801574
       Loading Ui_111: 934043245
-      Loading Ui_103: 714147451
       Loading Ui_186: -557612568
       Loading Ui_23: -329705276
+      Loading Ui_103: 714147451
       Loading Ui_148: 1335696997
       Loading Ui_184: 739445028
       Loading Ui_56: -2104648036
@@ -2672,8 +2672,8 @@ TextureImporter:
       Loading Ui_50: 987526919
       Loading Ui_175: -718314944
       Loading Ui_202: 1462961295
-      Loading Ui_146: 1166710541
       Loading Ui_179: 263911749
+      Loading Ui_146: 1166710541
       Loading Ui_80: 459169280
       Loading Ui_166: -91982918
       Loading Ui_32: -2072039011
@@ -2712,10 +2712,10 @@ TextureImporter:
       Loading Ui_12: -2020839188
       Loading Ui_209: 1910495528
       Loading Ui_155: 513392908
-      Loading Ui_2: -1675441655
-      Loading Ui_37: 357813911
       Loading Ui_159: -1185541541
+      Loading Ui_2: -1675441655
       Loading Ui_225: 309807399
+      Loading Ui_37: 357813911
       Loading Ui_98: -1848961354
       Loading Ui_45: 1097508284
       Loading Ui_3: 415895286

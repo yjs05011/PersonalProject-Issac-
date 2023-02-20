@@ -46,6 +46,14 @@ public static partial class GFunc
         nowRect.rotation = Quaternion.Euler(new Vector3(X, Y, Z));
 
     }
+    public static void Direction(RectTransform Player, float x, float y)
+    {
+        Vector2 direction = new Vector2(Player.position.x - x, Player.position.y - y);
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        Quaternion angleAxis = Quaternion.AngleAxis(angle - 270f, Vector3.forward);
+        Quaternion rotation = Quaternion.Slerp(Player.rotation, angleAxis, 1);
+        Player.rotation = rotation;
+    }
     // public static Component otherGetCommponent<T>(this GameObject other)
     // {
     //     return (other.gameObject.GetComponent<T>() as Component);

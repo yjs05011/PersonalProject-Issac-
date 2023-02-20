@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 0
@@ -70,7 +70,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -8214,6 +8214,7 @@ TextureImporter:
       door_71: -85091393
       door_103: -1968243637
       door_312: 324676829
+      door_355: -734622427
       door_129: 70668369
       door_44: 1232015034
       door_145: 2715972
@@ -8223,7 +8224,6 @@ TextureImporter:
       door_232: 1264066920
       door_28: 2090996666
       door_319: -1845598943
-      door_355: -734622427
       door_213: -1570732357
       door_99: -1249603764
       door_169: -660579089
@@ -8303,21 +8303,21 @@ TextureImporter:
       door_257: 1640018418
       door_311: -1184012086
       door_34: 1928097936
-      door_76: 502774531
       door_234: 509025611
-      door_92: 1139710269
       door_237: -930802157
-      door_96: -1135263932
+      door_76: 502774531
       door_345: -1428143856
       door_227: -1494145056
       door_13: -1437908199
       door_266: 594926676
+      door_92: 1139710269
       door_82: 635419664
       door_39: -632307350
       door_56: 1827920782
       door_203: -961064127
-      door_326: -824960863
+      door_96: -1135263932
       door_344: 1769843376
+      door_326: -824960863
       door_329: 826124857
       door_49: 1003109045
       door_1: 510617129
@@ -8345,8 +8345,8 @@ TextureImporter:
       door_229: 1866877248
       door_10: -1397863570
       door_168: -458034689
-      door_20: 466461419
       door_287: 1650525645
+      door_20: 466461419
       door_5: -1774058288
       door_193: 939935549
       door_226: -1500921667
@@ -8365,9 +8365,9 @@ TextureImporter:
       door_74: 269849113
       door_152: 801431773
       door_165: -415731216
-      door_278: -2048529910
       door_283: 14385835
       door_371: 759587274
+      door_278: -2048529910
       door_57: 2117023926
       door_358: 1159480495
       door_375: -556553685

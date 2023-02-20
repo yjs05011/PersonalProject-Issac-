@@ -16,10 +16,14 @@ public class Player_Stat : MonoBehaviour
     private float luck;
     private float range;
     private bool die;
+    private int keyCount;
+    private int boomCount;
+    private int coinCount;
     public Stack<int> item = new Stack<int>();
 
 
-    public float MaxHp{
+    public float MaxHp
+    {
         get; set;
     }
     public int ID
@@ -77,12 +81,28 @@ public class Player_Stat : MonoBehaviour
     {
         get; set;
     }
+    public int KeyCount
+    {
+        get; set;
+    }
+    public int BoomCount
+    {
+        get; set;
 
-    public Player_Stat(){
+    }
+    public int CoinCount
+    {
+        get; set;
+    }
+
+
+    public Player_Stat()
+    {
 
     }
     public Player_Stat(int id, string name, float normalHeart, float soulHeart, float str,
-                    float shotSpeed, float rateSpeed, float speed, float luck, float range, bool die){
+                    float shotSpeed, float rateSpeed, float speed, float luck, float range, bool die)
+    {
         this.id = id;
         this.name = name;
         this.normalHeart = normalHeart;

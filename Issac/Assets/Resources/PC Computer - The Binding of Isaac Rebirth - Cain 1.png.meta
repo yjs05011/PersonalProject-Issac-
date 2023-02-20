@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 0
@@ -70,7 +70,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -11382,7 +11382,6 @@ TextureImporter:
       PC Computer - The Binding of Isaac Rebirth - Cain 1_184: -1173498544
       PC Computer - The Binding of Isaac Rebirth - Cain 1_432: -1229902252
       PC Computer - The Binding of Isaac Rebirth - Cain 1_496: 192821420
-      PC Computer - The Binding of Isaac Rebirth - Cain 1_461: 25489306
       PC Computer - The Binding of Isaac Rebirth - Cain 1_452: -569248611
       PC Computer - The Binding of Isaac Rebirth - Cain 1_241: -1786260239
       PC Computer - The Binding of Isaac Rebirth - Cain 1_305: 2032779782
@@ -11407,10 +11406,10 @@ TextureImporter:
       PC Computer - The Binding of Isaac Rebirth - Cain 1_345: 2027413122
       PC Computer - The Binding of Isaac Rebirth - Cain 1_423: 1240606288
       PC Computer - The Binding of Isaac Rebirth - Cain 1_65: -234491454
-      PC Computer - The Binding of Isaac Rebirth - Cain 1_228: -481184767
       PC Computer - The Binding of Isaac Rebirth - Cain 1_402: 1236787691
-      PC Computer - The Binding of Isaac Rebirth - Cain 1_282: 720750182
       PC Computer - The Binding of Isaac Rebirth - Cain 1_427: -914611667
+      PC Computer - The Binding of Isaac Rebirth - Cain 1_282: 720750182
+      PC Computer - The Binding of Isaac Rebirth - Cain 1_228: -481184767
       PC Computer - The Binding of Isaac Rebirth - Cain 1_275: 1999417216
       PC Computer - The Binding of Isaac Rebirth - Cain 1_98: 1665173500
       PC Computer - The Binding of Isaac Rebirth - Cain 1_121: -544736512
@@ -11527,8 +11526,8 @@ TextureImporter:
       PC Computer - The Binding of Isaac Rebirth - Cain 1_103: -231685626
       PC Computer - The Binding of Isaac Rebirth - Cain 1_150: -3980515
       PC Computer - The Binding of Isaac Rebirth - Cain 1_30: -1788205446
-      PC Computer - The Binding of Isaac Rebirth - Cain 1_80: 591842146
       PC Computer - The Binding of Isaac Rebirth - Cain 1_285: -371126480
+      PC Computer - The Binding of Isaac Rebirth - Cain 1_80: 591842146
       PC Computer - The Binding of Isaac Rebirth - Cain 1_215: -509808214
       PC Computer - The Binding of Isaac Rebirth - Cain 1_520: 2101853995
       PC Computer - The Binding of Isaac Rebirth - Cain 1_274: 323914141
@@ -11540,12 +11539,12 @@ TextureImporter:
       PC Computer - The Binding of Isaac Rebirth - Cain 1_109: -2132625159
       PC Computer - The Binding of Isaac Rebirth - Cain 1_517: -1026816858
       PC Computer - The Binding of Isaac Rebirth - Cain 1_37: 1402481129
-      PC Computer - The Binding of Isaac Rebirth - Cain 1_165: -1203929998
-      PC Computer - The Binding of Isaac Rebirth - Cain 1_100: -488518045
-      PC Computer - The Binding of Isaac Rebirth - Cain 1_224: -256394706
       PC Computer - The Binding of Isaac Rebirth - Cain 1_247: 506610886
-      PC Computer - The Binding of Isaac Rebirth - Cain 1_64: -1733448269
+      PC Computer - The Binding of Isaac Rebirth - Cain 1_100: -488518045
       PC Computer - The Binding of Isaac Rebirth - Cain 1_250: -841440435
+      PC Computer - The Binding of Isaac Rebirth - Cain 1_224: -256394706
+      PC Computer - The Binding of Isaac Rebirth - Cain 1_165: -1203929998
+      PC Computer - The Binding of Isaac Rebirth - Cain 1_64: -1733448269
       PC Computer - The Binding of Isaac Rebirth - Cain 1_382: 19933412
       PC Computer - The Binding of Isaac Rebirth - Cain 1_435: 242596608
       PC Computer - The Binding of Isaac Rebirth - Cain 1_222: -934548946
@@ -11634,18 +11633,18 @@ TextureImporter:
       PC Computer - The Binding of Isaac Rebirth - Cain 1_451: 1078522038
       PC Computer - The Binding of Isaac Rebirth - Cain 1_204: -633243058
       PC Computer - The Binding of Isaac Rebirth - Cain 1_460: -1961158788
-      PC Computer - The Binding of Isaac Rebirth - Cain 1_347: -1510878630
+      PC Computer - The Binding of Isaac Rebirth - Cain 1_532: 592429957
+      PC Computer - The Binding of Isaac Rebirth - Cain 1_419: 579225912
       PC Computer - The Binding of Isaac Rebirth - Cain 1_54: -1280428272
+      PC Computer - The Binding of Isaac Rebirth - Cain 1_347: -1510878630
       PC Computer - The Binding of Isaac Rebirth - Cain 1_112: -605382318
       PC Computer - The Binding of Isaac Rebirth - Cain 1_236: 1674064260
-      PC Computer - The Binding of Isaac Rebirth - Cain 1_374: -2112035003
       PC Computer - The Binding of Isaac Rebirth - Cain 1_501: -115242476
-      PC Computer - The Binding of Isaac Rebirth - Cain 1_419: 579225912
+      PC Computer - The Binding of Isaac Rebirth - Cain 1_374: -2112035003
       PC Computer - The Binding of Isaac Rebirth - Cain 1_354: -863330025
       PC Computer - The Binding of Isaac Rebirth - Cain 1_129: 911544760
       PC Computer - The Binding of Isaac Rebirth - Cain 1_254: 318557569
       PC Computer - The Binding of Isaac Rebirth - Cain 1_67: -255659865
-      PC Computer - The Binding of Isaac Rebirth - Cain 1_532: 592429957
       PC Computer - The Binding of Isaac Rebirth - Cain 1_268: 1933461188
       PC Computer - The Binding of Isaac Rebirth - Cain 1_327: 363169945
       PC Computer - The Binding of Isaac Rebirth - Cain 1_503: -1009031082
@@ -11663,8 +11662,8 @@ TextureImporter:
       PC Computer - The Binding of Isaac Rebirth - Cain 1_475: -1793213514
       PC Computer - The Binding of Isaac Rebirth - Cain 1_119: -2061488326
       PC Computer - The Binding of Isaac Rebirth - Cain 1_35: 955304748
-      PC Computer - The Binding of Isaac Rebirth - Cain 1_198: 987502507
       PC Computer - The Binding of Isaac Rebirth - Cain 1_342: -86629707
+      PC Computer - The Binding of Isaac Rebirth - Cain 1_198: 987502507
       PC Computer - The Binding of Isaac Rebirth - Cain 1_168: -862134761
       PC Computer - The Binding of Isaac Rebirth - Cain 1_31: 1376196707
       PC Computer - The Binding of Isaac Rebirth - Cain 1_159: 945660152
@@ -11673,14 +11672,14 @@ TextureImporter:
       PC Computer - The Binding of Isaac Rebirth - Cain 1_298: 2000447628
       PC Computer - The Binding of Isaac Rebirth - Cain 1_5: -1713519796
       PC Computer - The Binding of Isaac Rebirth - Cain 1_239: 1172456911
-      PC Computer - The Binding of Isaac Rebirth - Cain 1_476: -221778464
       PC Computer - The Binding of Isaac Rebirth - Cain 1_529: -1068664657
-      PC Computer - The Binding of Isaac Rebirth - Cain 1_484: 1867199925
+      PC Computer - The Binding of Isaac Rebirth - Cain 1_476: -221778464
       PC Computer - The Binding of Isaac Rebirth - Cain 1_207: 188201133
       PC Computer - The Binding of Isaac Rebirth - Cain 1_66: -1349798952
       PC Computer - The Binding of Isaac Rebirth - Cain 1_219: 1847449612
-      PC Computer - The Binding of Isaac Rebirth - Cain 1_177: 698287719
       PC Computer - The Binding of Isaac Rebirth - Cain 1_490: -103125939
+      PC Computer - The Binding of Isaac Rebirth - Cain 1_177: 698287719
+      PC Computer - The Binding of Isaac Rebirth - Cain 1_484: 1867199925
       PC Computer - The Binding of Isaac Rebirth - Cain 1_509: -512578273
       PC Computer - The Binding of Isaac Rebirth - Cain 1_11: 1345573229
       PC Computer - The Binding of Isaac Rebirth - Cain 1_436: -1601785752
@@ -11898,6 +11897,7 @@ TextureImporter:
       PC Computer - The Binding of Isaac Rebirth - Cain 1_421: 259635612
       PC Computer - The Binding of Isaac Rebirth - Cain 1_270: 899309750
       PC Computer - The Binding of Isaac Rebirth - Cain 1_117: 1444683094
+      PC Computer - The Binding of Isaac Rebirth - Cain 1_461: 25489306
       PC Computer - The Binding of Isaac Rebirth - Cain 1_90: 1224931734
       PC Computer - The Binding of Isaac Rebirth - Cain 1_453: 928724688
       PC Computer - The Binding of Isaac Rebirth - Cain 1_455: 1927392260

@@ -5,6 +5,7 @@ using UnityEngine;
 public class Player_Active : MonoBehaviour
 {
 
+    public Charator[] stat;
     // Start is called before the first frame update
     public Rigidbody2D playerRigid;
     private BoxCollider2D playerBox;
@@ -20,6 +21,7 @@ public class Player_Active : MonoBehaviour
     private Animator aniBody;
     public int[,] miniMap = new int[7, 7];
     private bool roomChangeChk;
+    private bool isBoom;
     public void Awake()
     {
         playerBox = gameObject.GetBoxCollider();
@@ -31,7 +33,18 @@ public class Player_Active : MonoBehaviour
     }
     public void Start()
     {
-
+        GameManager.instance.player_Stat.ID = stat[0].id;
+        GameManager.instance.player_Stat.Name = stat[0].name;
+        GameManager.instance.player_Stat.MaxHp = stat[0].maxHp;
+        GameManager.instance.player_Stat.NormalHeart = stat[0].normalHeart;
+        GameManager.instance.player_Stat.SoulHeart = stat[0].soulHeart;
+        GameManager.instance.player_Stat.Str = stat[0].str;
+        GameManager.instance.player_Stat.ShotSpeed = stat[0].shotSpeed;
+        GameManager.instance.player_Stat.RateSpeed = stat[0].rateSpeed;
+        GameManager.instance.player_Stat.Speed = stat[0].speed;
+        GameManager.instance.player_Stat.Luck = stat[0].luck;
+        GameManager.instance.player_Stat.Range = stat[0].range;
+        GameManager.instance.player_Stat.Die = stat[0].die;
     }
 
     void Update()
@@ -45,7 +58,23 @@ public class Player_Active : MonoBehaviour
         {
             Shooting();
         }
+        DropBoom();
 
+    }
+
+    public void DropBoom()
+    {
+        if (Input.GetKey(KeyCode.E))
+        {
+            if (!isBoom)
+            {
+                isBoom = true;
+                Debug.Log("isBoom");
+                StartCoroutine(DropBoomDelay());
+
+            }
+
+        }
     }
 
     public void move()
@@ -80,7 +109,10 @@ public class Player_Active : MonoBehaviour
         }
         if (Input.GetKeyUp(KeyCode.S))
         {
-
+            if (keyDown)
+            {
+                StartCoroutine(Moving(new Vector2(0, -0.05f)));
+            }
             keyDown = false;
             aniBody.SetBool("FrontMove", false);
 
@@ -129,19 +161,19 @@ public class Player_Active : MonoBehaviour
     {
         if (playerRigid.velocity.x > maxVelocityX)
         {
-            playerRigid.velocity = new Vector2(maxVelocityX, playerRigid.velocity.y);
+            playerRigid.velocity = new Vector2(maxVelocityX + GameManager.instance.player_Stat.Speed, playerRigid.velocity.y);
         }
         if (playerRigid.velocity.x < (maxVelocityX * -1))
         {
-            playerRigid.velocity = new Vector2(maxVelocityX * -1, playerRigid.velocity.y);
+            playerRigid.velocity = new Vector2(maxVelocityX * -1 - GameManager.instance.player_Stat.Speed, playerRigid.velocity.y);
         }
         if (playerRigid.velocity.y > maxVelocityY)
         {
-            playerRigid.velocity = new Vector2(playerRigid.velocity.x, maxVelocityY);
+            playerRigid.velocity = new Vector2(playerRigid.velocity.x, maxVelocityY + GameManager.instance.player_Stat.Speed);
         }
         if (playerRigid.velocity.y < (maxVelocityY * -1))
         {
-            playerRigid.velocity = new Vector2(playerRigid.velocity.x, (maxVelocityY * -1));
+            playerRigid.velocity = new Vector2(playerRigid.velocity.x, (maxVelocityY * -1) - GameManager.instance.player_Stat.Speed);
         }
     }
 
@@ -149,18 +181,18 @@ public class Player_Active : MonoBehaviour
     {
         tears = Pooling.instance.playerTears.Pop().GetComponent<Tears>();
         tears.tearSize.rotation = playerHead.rotation;
-        Debug.Log($"2번 플로우 눈물이 팝된다.{tears.tearSize.rotation.eulerAngles},  {playerHead.rotation.eulerAngles}");
+        // Debug.Log($"2번 플로우 눈물이 팝된다.{tears.tearSize.rotation.eulerAngles},  {playerHead.rotation.eulerAngles}");
         if (isAttackKey[0])
         {
 
             tears.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y - 0.3f, gameObject.transform.position.z);
             tears.tearImgSize.position =
             new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 0.2f, gameObject.transform.position.z);
-            Debug.Log($"Right :{tears.transform.GetChild(0).gameObject.transform.position}");
-            Debug.Log($"shadow :{tears.transform.position.y}");
-            Debug.Log($"Tears : {tears.transform.position.y}");
-            Debug.Log($"shadow rotation :{tears.tearSize.rotation.eulerAngles}");
-            Debug.Log($"Tears rotation : {tears.tearImgSize.rotation.eulerAngles}");
+            // Debug.Log($"Right :{tears.transform.GetChild(0).gameObject.transform.position}");
+            // Debug.Log($"shadow :{tears.transform.position.y}");
+            // Debug.Log($"Tears : {tears.transform.position.y}");
+            // Debug.Log($"shadow rotation :{tears.tearSize.rotation.eulerAngles}");
+            // Debug.Log($"Tears rotation : {tears.tearImgSize.rotation.eulerAngles}");
         }
         if (isAttackKey[1])
         {
@@ -168,7 +200,7 @@ public class Player_Active : MonoBehaviour
             tears.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y - 0.3f, gameObject.transform.position.z);
             tears.transform.GetChild(0).gameObject.transform.position =
             new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 0.2f, gameObject.transform.position.z);
-            Debug.Log($"left :{tears.transform.GetChild(0).gameObject.transform.position}");
+            // Debug.Log($"left :{tears.transform.GetChild(0).gameObject.transform.position}");
         }
         if (isAttackKey[2])
         {
@@ -216,10 +248,10 @@ public class Player_Active : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
             isAttackKey[0] = true;
-            Debug.Log("Shot");
+            // Debug.Log("Shot");
             aniHead.SetBool("RightAttack", true);
             playerHead.SetRotation(0, 0, 270f);
-            Debug.Log($"1번 플로우 해드가 돌아간다.{playerHead.rotation.eulerAngles}");
+            // Debug.Log($"1번 플로우 해드가 돌아간다.{playerHead.rotation.eulerAngles}");
         }
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
@@ -269,8 +301,8 @@ public class Player_Active : MonoBehaviour
     {
         yield return null;
         Attack();
-        Debug.Log("Shoting");
-        yield return new WaitForSeconds(0.5f);
+        // Debug.Log("Shoting");
+        yield return new WaitForSeconds(0.5f - (GameManager.instance.player_Stat.RateSpeed / 10f));
         isAttack = false;
 
     }
@@ -284,7 +316,9 @@ public class Player_Active : MonoBehaviour
                 if (!roomChangeChk)
                 {
                     roomChangeChk = true;
+                    transform.position = new Vector2(-other.transform.position.x - 2, other.transform.position.y);
                     StartCoroutine(RoomChange(other, new Vector2(-220, -100), new Vector2(0, 0), inspector.LeftDoorX, inspector.LeftDoorY));
+                    GameManager.instance.roomChange = true;
                 }
 
                 break;
@@ -292,21 +326,27 @@ public class Player_Active : MonoBehaviour
                 if (!roomChangeChk)
                 {
                     roomChangeChk = true;
+                    transform.position = new Vector2(-other.transform.position.x + 2, other.transform.position.y);
                     StartCoroutine(RoomChange(other, new Vector2(-180, -100), new Vector2(0, 0), inspector.RightDoorX, inspector.RightDoorY));
+                    GameManager.instance.roomChange = true;
                 }
                 break;
             case "UpDoor":
                 if (!roomChangeChk)
                 {
                     roomChangeChk = true;
+                    transform.position = new Vector2(other.transform.position.x, 1.5f - other.transform.position.y);
                     StartCoroutine(RoomChange(other, new Vector2(-200, -90), new Vector2(0, 0), inspector.UpDoorX, inspector.UpDoorY));
+                    GameManager.instance.roomChange = true;
                 }
                 break;
             case "DownDoor":
                 if (!roomChangeChk)
                 {
                     roomChangeChk = true;
+                    transform.position = new Vector2(other.transform.position.x, -other.transform.position.y - 1.5f);
                     StartCoroutine(RoomChange(other, new Vector2(-200, -110), new Vector2(0, 0), inspector.DownDoorX, inspector.DownDoorY));
+                    GameManager.instance.roomChange = true;
                 }
                 break;
 
@@ -329,9 +369,18 @@ public class Player_Active : MonoBehaviour
             NextRoom.transform.localPosition = new Vector2(-200, -100);
             nowRoom.gameObject.SetActive(false);
         }
+
         yield return new WaitForSeconds(0.4f);
         roomChangeChk = false;
         playerBox.isTrigger = false;
+    }
+    IEnumerator DropBoomDelay()
+    {
+        GameObject boom = Pooling.instance.booms.Pop();
+        boom.SetActive(true);
+        boom.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z);
+        yield return new WaitForSeconds(2.5f);
+        isBoom = false;
     }
 
 }

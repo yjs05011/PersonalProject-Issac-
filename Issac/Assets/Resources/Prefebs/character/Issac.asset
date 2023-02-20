@@ -17,11 +17,13 @@ MonoBehaviour:
   maxHp: 3
   normalHeart: 3
   soulHeart: 0
-  str: 1
+  str: 3
   shotSpeed: 1
   rateSpeed: 0
   speed: 1
   luck: 0
   range: 6.5
   die: 0
-  item: 03000000
+  keyCount: 0
+  boomCount: 1
+  coinCount: 0

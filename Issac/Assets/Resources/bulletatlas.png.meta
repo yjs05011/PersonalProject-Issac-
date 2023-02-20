@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 0
@@ -70,7 +70,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -1694,7 +1694,6 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       bulletatlas_63: 184598644
-      bulletatlas_105: 1269286630
       bulletatlas_80: -1547217822
       bulletatlas_51: 1350077993
       bulletatlas_64: -661524929
@@ -1783,17 +1782,18 @@ TextureImporter:
       bulletatlas_23: 1019390239
       bulletatlas_96: -1164418814
       bulletatlas_24: 884671855
+      bulletatlas_105: 1269286630
       bulletatlas_25: -205131777
       bulletatlas_58: 1920164240
       bulletatlas_83: 1849892316
-      bulletatlas_49: 1512286176
       bulletatlas_53: -437569521
       bulletatlas_89: 228802496
-      bulletatlas_74: 1437727727
+      bulletatlas_49: 1512286176
       bulletatlas_11: 158141897
       bulletatlas_8: -1002720239
-      bulletatlas_94: -1078050502
+      bulletatlas_74: 1437727727
       bulletatlas_71: -1838249809
+      bulletatlas_94: -1078050502
       bulletatlas_41: 84198291
       bulletatlas_66: 596784240
       bulletatlas_86: 187356181

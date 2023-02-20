@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 0
@@ -70,7 +70,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -1127,12 +1127,13 @@ TextureImporter:
       issac_228: -1218775995
       issac_10: -1147308919
       issac_234: -1383442984
-      issac_164: 1293355278
-      issac_507: 1105190088
-      issac_89: -686625198
       issac_19: -1621207127
+      issac_164: 1293355278
+      issac_179: 1488002804
       issac_295: -1914329991
+      issac_89: -686625198
       issac_276: -2136526875
+      issac_507: 1105190088
       issac_190: 1685403431
       issac_417: -537398323
       issac_264: -2104316918
@@ -1146,13 +1147,12 @@ TextureImporter:
       issac_38: 98174347
       issac_318: -1032541914
       issac_241: 1819272361
-      issac_179: 1488002804
+      issac_420: -685000982
       issac_425: -544308127
       issac_401: 1594686423
-      issac_420: -685000982
+      issac_508: 1501314300
       issac_329: -59314461
       issac_443: 598885722
-      issac_508: 1501314300
       issac_518: -1747357111
       issac_385: -1605769598
       issac_57: 1998916564
@@ -1228,11 +1228,11 @@ TextureImporter:
       issac_136: 1634000056
       issac_23: -694225867
       issac_220: -168943389
-      issac_111: 2015099156
       issac_200: 224331819
       issac_37: 277292307
       issac_159: -907004675
       issac_309: 915491454
+      issac_111: 2015099156
       issac_439: 1487416927
       issac_119: 1075967032
       issac_300: 1495189950
@@ -1441,10 +1441,10 @@ TextureImporter:
       issac_72: -356858784
       issac_236: 1780094388
       issac_249: 1603403330
-      issac_244: 955743276
       issac_280: -1405577300
-      issac_436: -769400925
+      issac_244: 955743276
       issac_441: -1023209899
+      issac_436: -769400925
       issac_287: -1123878621
       issac_338: -1431381340
       issac_169: -1969396687

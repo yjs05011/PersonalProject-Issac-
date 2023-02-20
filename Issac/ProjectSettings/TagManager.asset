@@ -10,6 +10,9 @@ TagManager:
   - UpDoor
   - DownDoor
   - door
+  - Monster
+  - PlayerTears
+  - Boom
   layers:
   - Default
   - TransparentFX

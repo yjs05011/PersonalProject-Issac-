@@ -35,6 +35,7 @@ public class MapCreate : MonoBehaviour
         MapList = new List<GameObject>();
 
         CreateMap();
+        GameManager.instance.roomChange = true;
 
     }
 
@@ -99,28 +100,32 @@ public class MapCreate : MonoBehaviour
                             nowMapStatus[j, i] = newRoom;
                             MapList.Add(newRoom);
                             break;
-                            // case 5:
-                            //     newRoom = Instantiate(rooms[8]);
-                            //     newRoom.name = "MoonRoom";
-                            //     newRoom.GetComponent<DoorController>().roomType = 5;
-                            //     newRoom.GetComponent<DoorController>().roomNum = makeRoomNumber;
-                            //     MapList.Add(newRoom);
-                            //     break;
-                            // case 6:
-                            //     newRoom = Instantiate(rooms[9]);
-                            //     newRoom.name = "MoonRoom";
-                            //     newRoom.GetComponent<DoorController>().roomType = 6;
-                            //     newRoom.GetComponent<DoorController>().roomNum = makeRoomNumber;
-                            //     MapList.Add(newRoom);
-                            //     break;
+                        case 5:
+                            newRoom = Instantiate(rooms[7]);
+                            newRoom.name = "MoonRoom";
+                            newRoom.SetActive(false);
+                            newRoom.transform.SetParent(transform, false);
+                            newRoom.GetComponent<DoorController>().roomType = 5;
+                            newRoom.GetComponent<DoorController>().roomNum = makeRoomNumber;
+                            MapList.Add(newRoom);
+                            break;
+                        case 6:
+                            newRoom = Instantiate(rooms[8]);
+                            newRoom.name = "MoonRoom";
+                            newRoom.SetActive(false);
+                            newRoom.transform.SetParent(transform, false);
+                            newRoom.GetComponent<DoorController>().roomType = 6;
+                            newRoom.GetComponent<DoorController>().roomNum = makeRoomNumber;
+                            MapList.Add(newRoom);
+                            break;
 
 
                     }
                 }
-
             }
         }
 
         GameManager.instance.nowMapStat = nowMapStatus;
+
     }
 }

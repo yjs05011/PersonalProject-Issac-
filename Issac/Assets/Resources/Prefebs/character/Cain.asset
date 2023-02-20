@@ -24,4 +24,6 @@ MonoBehaviour:
   luck: 0
   range: 4.5
   die: 0
-  item: 03000000
+  keyCount: 1
+  boomCount: 0
+  coinCount: 0

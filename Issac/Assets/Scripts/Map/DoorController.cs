@@ -10,7 +10,7 @@ public class DoorController : MonoBehaviour
     public RectTransform roomRect;
     public Rigidbody2D roomRigi;
     private SpriteRenderer[] Doors;
-    public int monsterNumber;
+    private int monsterNumber;
     public BoxCollider2D[] DoorExit;
     public int LeftDoorX;
     public int RightDoorX;
@@ -20,11 +20,12 @@ public class DoorController : MonoBehaviour
     public int RightDoorY;
     public int UpDoorY;
     public int DownDoorY;
+    public GameObject[] Monster;
 
     public GameObject[,] map;
 
     // Start is called before the first frame update
-
+    // Door is Left, up, Right, bottom
     void Start()
     {
         map = GameManager.instance.nowMapStat;
@@ -39,17 +40,24 @@ public class DoorController : MonoBehaviour
         DoorChk(map, roomNum);
 
 
+
     }
 
     // Update is called once per frame
     void Update()
     {
+
         GameManager.instance.monsterClearChk = false;
-        if (monsterNumber == 0)
+        if (GameManager.instance.monsterCount == 0)
         {
             GameManager.instance.monsterClearChk = true;
             OpenDoor();
         }
+        else
+        {
+
+        }
+
         /*  if(GameManager.Instance.ClearChk){
 
           }*/
@@ -90,14 +98,14 @@ public class DoorController : MonoBehaviour
                         Debug.Log($"map [{j + 1} , {i}] =  {map[j + 1, i].GetComponent<DoorController>().roomNum}");
                         RightDoorX = j + 1;
                         RightDoorY = i;
-                        Doors[0].gameObject.SetActive(true);
+                        Doors[2].gameObject.SetActive(true);
                     }
                     if (j - 1 >= 0 && map[j - 1, i] != null)
                     {
                         Debug.Log($"map [{j - 1} , {i}] =  {map[j - 1, i].GetComponent<DoorController>().roomNum}");
                         LeftDoorX = j - 1;
                         LeftDoorY = i;
-                        Doors[2].gameObject.SetActive(true);
+                        Doors[0].gameObject.SetActive(true);
                     }
 
                 }
