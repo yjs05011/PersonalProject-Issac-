@@ -18,6 +18,16 @@ public class gameUI : MonoBehaviour
     private TMP_Text TextSize;
     private int miniMapSize;
     private GameObject[,] nowState;
+    public Image[] hpImage;
+    public Sprite[] hpSprite;
+    int checkHp;
+    float totalHp;
+    int MaxHp;
+    bool totalHpChange;
+    int checkNormalHeart;
+    int checkSoulHeart;
+    int nomal_Soul;
+    float remainder;
     // Start is called before the first frame update
     private void OnEnable()
     {
@@ -27,25 +37,42 @@ public class gameUI : MonoBehaviour
         minimap.gameObject.GetComponent<RectTransform>().anchoredPosition = new Vector2((-miniMapSize * (GameManager.instance.stageNum + 7)), (-(miniMapSize * (GameManager.instance.stageNum + 7))));
         itemImgRigid = ItemImg.GetComponent<Rigidbody2D>();
         itemImgRect = ItemImg.GetRect();
-        TextBoxSize = status[4].GetComponent<RectTransform>();
-        TextSize = status[4].GetComponent<TMP_Text>();
+        TextBoxSize = status[3].GetComponent<RectTransform>();
+        TextSize = status[3].GetComponent<TMP_Text>();
 
 
     }
     void Start()
     {
-
-
+        totalHp = GameManager.instance.player_Stat.NormalHeart + GameManager.instance.player_Stat.SoulHeart;
+        HpController();
     }
 
     // Update is called once per frame
     void Update()
     {
-        status[0].text = $"{GameManager.instance.player_Stat.MaxHp}";
-        status[1].text = $"{GameManager.instance.player_Stat.Str}";
-        status[2].text = $"{GameManager.instance.player_Stat.Speed}";
-        status[3].text = $"{GameManager.instance.player_Stat.RateSpeed}";
-        status[4].text = $"{GameManager.instance.itemName}";
+        if (GameManager.instance.player_Stat.NormalHeart == 0 && GameManager.instance.player_Stat.SoulHeart == 0)
+        { hpImage[0].sprite = hpSprite[2]; }
+        if (GameManager.instance.player_Stat.NormalHeart + GameManager.instance.player_Stat.SoulHeart < totalHp
+        || GameManager.instance.player_Stat.NormalHeart + GameManager.instance.player_Stat.SoulHeart > totalHp)
+        {
+            totalHp = GameManager.instance.player_Stat.NormalHeart + GameManager.instance.player_Stat.SoulHeart;
+            totalHpChange = true;
+        }
+        if (totalHpChange)
+        {
+            totalHpChange = false;
+            HpController();
+
+
+        }
+        status[0].text = $"{GameManager.instance.player_Stat.CoinCount}";
+        status[1].text = $"{GameManager.instance.player_Stat.BoomCount}";
+        status[2].text = $"{GameManager.instance.player_Stat.KeyCount}";
+        status[3].text = $"{GameManager.instance.itemName}";
+
+
+
         if (itemImgRect.anchoredPosition.x > 0 && move_Chk)
         {
             Debug.Log(itemImgRect.anchoredPosition);
@@ -155,4 +182,109 @@ public class gameUI : MonoBehaviour
             }
         }
     }
+    void HpController()
+    {
+
+        if (GameManager.instance.player_Stat.NormalHeart == 0 && GameManager.instance.player_Stat.SoulHeart == 0)
+        { }
+        else
+        {
+            for (int i = 0; i < hpImage.Length; i++)
+            {
+                hpImage[i].transform.gameObject.SetActive(false);
+            }
+            MaxHp = (int)GameManager.instance.player_Stat.MaxHp;
+            checkNormalHeart = (int)GameManager.instance.player_Stat.NormalHeart;
+            checkSoulHeart = (int)GameManager.instance.player_Stat.SoulHeart;
+
+            checkHp = 0;
+            nomal_Soul = 0;
+            while (MaxHp > 0)
+            {
+                MaxHp -= 2;
+                checkHp++;
+                nomal_Soul++;
+            }
+
+
+            for (int i = 0; i < checkHp; i++)
+            {
+                hpImage[i].transform.gameObject.SetActive(true);
+
+                if ((int)GameManager.instance.player_Stat.MaxHp == checkNormalHeart)
+                {
+                    hpImage[i].sprite = hpSprite[0];
+                }
+                else
+                {
+                    hpImage[i].sprite = hpSprite[2];
+                }
+
+            }
+            if ((int)GameManager.instance.player_Stat.MaxHp == checkNormalHeart)
+            {
+
+            }
+            else
+            {
+                checkHp = 0;
+                remainder = checkNormalHeart % 2;
+                while (checkNormalHeart > 0)
+                {
+
+                    checkNormalHeart -= 2;
+                    checkHp++;
+
+                }
+                if (checkHp == 0)
+                {
+                    hpImage[0].sprite = hpSprite[1];
+                }
+                for (int i = 0; i < checkHp; i++)
+                {
+                    hpImage[i].transform.gameObject.SetActive(true);
+                    hpImage[i].sprite = hpSprite[0];
+                    if (remainder == 1 && i == checkHp - 1)
+                    {
+                        hpImage[i].sprite = hpSprite[1];
+                    }
+
+                }
+            }
+
+            checkHp = 0;
+            remainder = checkSoulHeart % 2;
+            Debug.Log($"soul: {checkSoulHeart}");
+            while (checkSoulHeart > 0)
+            {
+
+                checkSoulHeart -= 2;
+
+                checkHp++;
+            }
+            for (int i = nomal_Soul; i < nomal_Soul + checkHp; i++)
+            {
+                if (i > hpImage.Length - 1)
+                {
+
+                }
+                else
+                {
+
+                    hpImage[i].transform.gameObject.SetActive(true);
+                    hpImage[i].sprite = hpSprite[3];
+
+                    Debug.Log($"soul Number: {i}");
+                    if (i == nomal_Soul + checkHp - 1 && remainder == 1f && i + 1 < hpImage.Length)
+                    {
+                        hpImage[i].sprite = hpSprite[4];
+                    }
+                }
+            }
+        }
+
+
+
+    }
+
 }

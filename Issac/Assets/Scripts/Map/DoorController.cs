@@ -7,9 +7,11 @@ public class DoorController : MonoBehaviour
 
     public int roomType;
     public int roomNum;
-    public RectTransform roomRect;
-    public Rigidbody2D roomRigi;
+    private RectTransform roomRect;
+    private Rigidbody2D roomRigi;
     private SpriteRenderer[] Doors;
+    //Sprite [monster, item, boss, moon, shop]
+    public Sprite[] doorShapes;
     private int monsterNumber;
     public BoxCollider2D[] DoorExit;
     public int LeftDoorX;
@@ -83,8 +85,24 @@ public class DoorController : MonoBehaviour
                         Debug.Log($"map [{j} , {i + 1}] =  {map[j, i + 1].GetComponent<DoorController>().roomNum}");
                         UpDoorX = j;
                         UpDoorY = i + 1;
-
                         Doors[1].gameObject.SetActive(true);
+                        switch (map[j, i + 1].GetComponent<DoorController>().roomType)
+                        {
+                            case 2:
+                                Doors[1].sprite = doorShapes[1];
+                                break;
+                            case 3:
+                                Doors[1].sprite = doorShapes[2];
+                                break;
+                            case 5:
+                                Doors[1].sprite = doorShapes[3];
+                                break;
+                            case 6:
+                                Doors[1].sprite = doorShapes[4];
+                                break;
+                            default:
+                                break;
+                        }
                     }
                     if (i - 1 >= 0 && map[j, i - 1] != null)
                     {
@@ -92,6 +110,23 @@ public class DoorController : MonoBehaviour
                         DownDoorX = j;
                         DownDoorY = i - 1;
                         Doors[3].gameObject.SetActive(true);
+                        switch (map[j, i - 1].GetComponent<DoorController>().roomType)
+                        {
+                            case 2:
+                                Doors[3].sprite = doorShapes[1];
+                                break;
+                            case 3:
+                                Doors[3].sprite = doorShapes[2];
+                                break;
+                            case 5:
+                                Doors[3].sprite = doorShapes[3];
+                                break;
+                            case 6:
+                                Doors[3].sprite = doorShapes[4];
+                                break;
+                            default:
+                                break;
+                        }
                     }
                     if (j + 1 < map.GetLength(1) && map[j + 1, i] != null)
                     {
@@ -99,6 +134,23 @@ public class DoorController : MonoBehaviour
                         RightDoorX = j + 1;
                         RightDoorY = i;
                         Doors[2].gameObject.SetActive(true);
+                        switch (map[j + 1, i].GetComponent<DoorController>().roomType)
+                        {
+                            case 2:
+                                Doors[2].sprite = doorShapes[1];
+                                break;
+                            case 3:
+                                Doors[2].sprite = doorShapes[2];
+                                break;
+                            case 5:
+                                Doors[2].sprite = doorShapes[3];
+                                break;
+                            case 6:
+                                Doors[2].sprite = doorShapes[4];
+                                break;
+                            default:
+                                break;
+                        }
                     }
                     if (j - 1 >= 0 && map[j - 1, i] != null)
                     {
@@ -106,6 +158,23 @@ public class DoorController : MonoBehaviour
                         LeftDoorX = j - 1;
                         LeftDoorY = i;
                         Doors[0].gameObject.SetActive(true);
+                        switch (map[j - 1, i].GetComponent<DoorController>().roomType)
+                        {
+                            case 2:
+                                Doors[0].sprite = doorShapes[1];
+                                break;
+                            case 3:
+                                Doors[0].sprite = doorShapes[2];
+                                break;
+                            case 5:
+                                Doors[0].sprite = doorShapes[3];
+                                break;
+                            case 6:
+                                Doors[0].sprite = doorShapes[4];
+                                break;
+                            default:
+                                break;
+                        }
                     }
 
                 }

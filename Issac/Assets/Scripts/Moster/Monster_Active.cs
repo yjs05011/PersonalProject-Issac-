@@ -6,6 +6,10 @@ public class Monster_Active : MonoBehaviour
 {
     [SerializeField]
     public Monster stat;
+
+    public float maxHp = default;
+
+    public int monsterType = default;
     // Start is called before the first frame update
     public virtual void Start()
     {

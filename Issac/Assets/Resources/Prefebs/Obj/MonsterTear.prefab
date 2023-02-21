@@ -80,7 +80,7 @@ SpriteRenderer:
   m_SortingLayerID: -509583815
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 740910001, guid: 236a1d33157993a419a7242969c4add2, type: 3}
+  m_Sprite: {fileID: 1750886887, guid: 236a1d33157993a419a7242969c4add2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -122,7 +122,7 @@ Animator:
   m_GameObject: {fileID: 1033014633526865811}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: f756f5f43dc1b484ba2694a40157569a, type: 2}
+  m_Controller: {fileID: 9100000, guid: 1dafd655581ce194f852eee213a90d56, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -142,13 +142,14 @@ GameObject:
   m_Component:
   - component: {fileID: 7689386757489105655}
   - component: {fileID: 7689386757489105649}
-  - component: {fileID: 1327957676842746232}
+  - component: {fileID: 7580865647425508496}
   - component: {fileID: 6881661766023436803}
   - component: {fileID: 1057514218706843547}
   - component: {fileID: 7982441105107282363}
   - component: {fileID: 3129118646278240511}
+  - component: {fileID: 670824768301184603}
   m_Layer: 5
-  m_Name: Tears
+  m_Name: MonsterTear
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -163,7 +164,7 @@ RectTransform:
   m_GameObject: {fileID: 7689386757489105654}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3506053065773998559}
@@ -183,7 +184,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7689386757489105654}
   m_CullTransparentMesh: 1
---- !u!114 &1327957676842746232
+--- !u!114 &7580865647425508496
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -192,7 +193,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7689386757489105654}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30a549793158c4b4f99855e3747d5413, type: 3}
+  m_Script: {fileID: 11500000, guid: 20c41c2b99bac5a42a164eb07f631803, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   tearHitBox: {fileID: 0}
@@ -207,7 +208,7 @@ MonoBehaviour:
   playerRigid: {fileID: 0}
   playerRect: {fileID: 0}
   startPosition: {x: 0, y: 0}
-  range: 20
+  range: 0
   tearsTrigger: 0
 --- !u!61 &6881661766023436803
 BoxCollider2D:
@@ -294,8 +295,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -509583815
-  m_SortingLayer: 3
+  m_SortingLayerID: 91175789
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 0.047169805, g: 0.037602343, b: 0.037602343, a: 0.28235295}
@@ -328,3 +329,29 @@ PointEffector2D:
   m_ForceMode: 0
   m_Drag: 0
   m_AngularDrag: 0
+--- !u!114 &670824768301184603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7689386757489105654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20c41c2b99bac5a42a164eb07f631803, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tearHitBox: {fileID: 0}
+  tearSize: {fileID: 0}
+  tearImgSize: {fileID: 0}
+  tearRigid: {fileID: 0}
+  tearImgRigid: {fileID: 0}
+  TearsstartPos: {x: 0, y: 0}
+  ShadowstartPos: {x: 0, y: 0}
+  player_Stat: {fileID: 0}
+  player_Active: {fileID: 0}
+  playerRigid: {fileID: 0}
+  playerRect: {fileID: 0}
+  startPosition: {x: 0, y: 0}
+  range: 0
+  tearsTrigger: 0

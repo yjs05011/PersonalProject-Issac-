@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 2
   name: Cain
-  maxHp: 2
-  normalHeart: 2
+  maxHp: 4
+  normalHeart: 4
   soulHeart: 0
   str: 3
   shotSpeed: 1

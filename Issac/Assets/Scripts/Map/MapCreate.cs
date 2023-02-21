@@ -111,7 +111,7 @@ public class MapCreate : MonoBehaviour
                             break;
                         case 6:
                             newRoom = Instantiate(rooms[8]);
-                            newRoom.name = "MoonRoom";
+                            newRoom.name = "Shop";
                             newRoom.SetActive(false);
                             newRoom.transform.SetParent(transform, false);
                             newRoom.GetComponent<DoorController>().roomType = 6;

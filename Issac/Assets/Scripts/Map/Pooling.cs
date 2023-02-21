@@ -8,6 +8,7 @@ public class Pooling : MonoBehaviour
     public Stack<GameObject> enemyTears;
     public Stack<GameObject> booms;
     public GameObject Tear;
+    public GameObject MonsterTear;
     public GameObject boom;
     public GameObject boomPooling;
     public GameObject playerTearPooling;
@@ -40,7 +41,7 @@ public class Pooling : MonoBehaviour
 
         for (int i = 0; i < 300; i++)
         {
-            GameObject poolingObjs = Instantiate(Tear);
+            GameObject poolingObjs = Instantiate(MonsterTear);
             poolingObjs.SetActive(false);
             poolingObjs.transform.SetParent(enemyTearPooling.transform, false);
             enemyTears.Push(poolingObjs);

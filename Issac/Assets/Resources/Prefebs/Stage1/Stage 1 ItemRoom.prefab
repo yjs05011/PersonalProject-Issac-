@@ -1453,7 +1453,7 @@ SpriteRenderer:
   m_SortingLayerID: -509583815
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: -616297748, guid: 0e749a25bbf9b2e40b01e9fd69941b01, type: 3}
+  m_Sprite: {fileID: 1894060888, guid: 0e749a25bbf9b2e40b01e9fd69941b01, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1554,7 +1554,7 @@ SpriteRenderer:
   m_SortingLayerID: -509583815
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: -616297748, guid: 0e749a25bbf9b2e40b01e9fd69941b01, type: 3}
+  m_Sprite: {fileID: 1894060888, guid: 0e749a25bbf9b2e40b01e9fd69941b01, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1623,9 +1623,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomType: 0
   roomNum: 0
-  roomRect: {fileID: 0}
-  roomRigi: {fileID: 0}
-  monsterNumber: 0
+  doorShapes:
+  - {fileID: -616297748, guid: 0e749a25bbf9b2e40b01e9fd69941b01, type: 3}
+  - {fileID: 1894060888, guid: 0e749a25bbf9b2e40b01e9fd69941b01, type: 3}
+  - {fileID: 1492581129, guid: 0e749a25bbf9b2e40b01e9fd69941b01, type: 3}
+  - {fileID: 1601958570, guid: 0e749a25bbf9b2e40b01e9fd69941b01, type: 3}
+  - {fileID: 1249207331, guid: 10df71ec25c4a444e9323c77d819c88a, type: 3}
   DoorExit:
   - {fileID: 2332465658986403950}
   - {fileID: 6825872852825089566}
@@ -1639,6 +1642,7 @@ MonoBehaviour:
   RightDoorY: 0
   UpDoorY: 0
   DownDoorY: 0
+  Monster: []
 --- !u!50 &5096075758404468439
 Rigidbody2D:
   serializedVersion: 4
@@ -1750,7 +1754,7 @@ SpriteRenderer:
   m_SortingLayerID: -509583815
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: -616297748, guid: 0e749a25bbf9b2e40b01e9fd69941b01, type: 3}
+  m_Sprite: {fileID: 1894060888, guid: 0e749a25bbf9b2e40b01e9fd69941b01, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1851,7 +1855,7 @@ SpriteRenderer:
   m_SortingLayerID: -509583815
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: -616297748, guid: 0e749a25bbf9b2e40b01e9fd69941b01, type: 3}
+  m_Sprite: {fileID: 1894060888, guid: 0e749a25bbf9b2e40b01e9fd69941b01, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

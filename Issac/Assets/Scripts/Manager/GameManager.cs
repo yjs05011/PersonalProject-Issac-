@@ -42,4 +42,9 @@ public class GameManager : MonoBehaviour
     {
 
     }
+
+    public Coroutine StartCoroutineDeligate(IEnumerator routine)
+    {
+        return StartCoroutine(routine);
+    }
 }

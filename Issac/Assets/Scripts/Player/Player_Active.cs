@@ -5,6 +5,7 @@ using UnityEngine;
 public class Player_Active : MonoBehaviour
 {
 
+    public Sprite[] PlayerActSprite;
     public Charator[] stat;
     // Start is called before the first frame update
     public Rigidbody2D playerRigid;
@@ -22,8 +23,12 @@ public class Player_Active : MonoBehaviour
     public int[,] miniMap = new int[7, 7];
     private bool roomChangeChk;
     private bool isBoom;
+    private bool isDie;
+    public bool isHit;
+    public SpriteRenderer playerAct;
     public void Awake()
     {
+        playerAct = transform.GetChild(1).GetComponent<SpriteRenderer>();
         playerBox = gameObject.GetBoxCollider();
         isAttackKey = new bool[4];
         playerRigid = gameObject.GetComponent<Rigidbody2D>();
@@ -49,17 +54,30 @@ public class Player_Active : MonoBehaviour
 
     void Update()
     {
-        move();
-        if (transform.GetChild(0).gameObject.activeSelf)
+        if (!isDie)
         {
+            move();
+            if (transform.GetChild(0).gameObject.activeSelf)
+            {
 
+            }
+            else
+            {
+                Shooting();
+            }
+            DropBoom();
+            if (isHit)
+            {
+                isHit = false;
+                StartCoroutine("HitDelay");
+            }
         }
-        else
+
+        if (GameManager.instance.player_Stat.NormalHeart < 0 && GameManager.instance.player_Stat.SoulHeart < 0)
         {
-            Shooting();
+            GameManager.instance.player_Stat.Die = true;
+            isDie = true;
         }
-        DropBoom();
-
     }
 
     public void DropBoom()
@@ -382,5 +400,13 @@ public class Player_Active : MonoBehaviour
         yield return new WaitForSeconds(2.5f);
         isBoom = false;
     }
+    IEnumerator HitDelay()
+    {
+        transform.tag = "Untagged";
+        yield return new WaitForSeconds(1f);
+        transform.tag = "Player";
+
+    }
+
 
 }

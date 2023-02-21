@@ -36,7 +36,10 @@ public class Boom : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (GameManager.instance.roomChange)
+        {
+            gameObject.SetActive(false);
+        }
     }
     private void OnTriggerStay2D(Collider2D other)
     {

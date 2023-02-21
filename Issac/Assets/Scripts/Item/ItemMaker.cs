@@ -82,11 +82,16 @@ public class ItemMaker : MonoBehaviour
     IEnumerator ItemAnima(Collider2D other)
     {
         PickItem.Play();
+        other.transform.GetComponent<Player_Active>().playerAct.sprite = other.transform.GetComponent<Player_Active>().PlayerActSprite[0];
         other.transform.GetChild(0).gameObject.SetActive(true);
         other.transform.GetChild(1).gameObject.SetActive(true);
+        other.transform.GetChild(4).gameObject.SetActive(false);
+        other.transform.GetChild(3).gameObject.SetActive(false);
         yield return new WaitForSeconds(2f);
         other.transform.GetChild(0).gameObject.SetActive(false);
         other.transform.GetChild(1).gameObject.SetActive(false);
+        other.transform.GetChild(4).gameObject.SetActive(true);
+        other.transform.GetChild(3).gameObject.SetActive(true);
 
     }
 }

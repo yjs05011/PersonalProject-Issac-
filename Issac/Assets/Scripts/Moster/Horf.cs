@@ -2,27 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Horf : MonoBehaviour
+public class Horf : Monster_Active
 {
 
-    public Monster stat;
     protected CircleCollider2D FindEnemy;
     protected Rigidbody2D EnemyRigd;
     protected SpriteRenderer Body;
     protected SpriteRenderer Head;
     protected RectTransform rotationBody;
     private bool slice;
-    public float maxHp;
     private bool die;
     private Animator bodyAni;
     // Start is called before the first frame update
-    void Start()
+    public override void Start()
     {
+        base.Start();
         FindEnemy = transform.GetChild(0).GetComponent<CircleCollider2D>();
         EnemyRigd = gameObject.GetComponent<Rigidbody2D>();
         rotationBody = transform.GetChild(3).GetComponent<RectTransform>();
         Head = transform.GetChild(1).GetComponent<SpriteRenderer>();
         Body = transform.GetChild(2).GetComponent<SpriteRenderer>();
+        Debug.Log($"statHp :{stat.maxHp}");
+        Debug.Log($"StageNum :{GameManager.instance.stageNum}");
         maxHp = stat.maxHp + GameManager.instance.stageNum * 0.8f;
         bodyAni = transform.GetChild(2).GetComponent<Animator>();
         Debug.Log(maxHp);
@@ -30,6 +31,7 @@ public class Horf : MonoBehaviour
         {
             GameManager.instance.monsterCount++;
         }
+        monsterType = 1;
     }
 
     // Update is called once per frame

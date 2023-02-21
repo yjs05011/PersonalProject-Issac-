@@ -54,8 +54,23 @@ public static partial class GFunc
         Quaternion rotation = Quaternion.Slerp(Player.rotation, angleAxis, 1);
         Player.rotation = rotation;
     }
-    // public static Component otherGetCommponent<T>(this GameObject other)
-    // {
-    //     return (other.gameObject.GetComponent<T>() as Component);
-    // }
+    public static IEnumerator PlayerHit(Collider2D other, int i)
+    {
+        other.transform.GetComponent<Player_Active>().playerAct.sprite = other.transform.GetComponent<Player_Active>().PlayerActSprite[i];
+
+        other.transform.GetChild(1).gameObject.SetActive(true);
+        other.transform.GetChild(4).gameObject.SetActive(false);
+        other.transform.GetChild(3).gameObject.SetActive(false);
+        for (int j = 0; j < 5; j++)
+        {
+            other.transform.GetComponent<Player_Active>().playerAct.color = new Color(1, 1, 1, 0);
+            yield return new WaitForSeconds(0.1f);
+            other.transform.GetComponent<Player_Active>().playerAct.color = new Color(1, 1, 1, 1f);
+            yield return new WaitForSeconds(0.1f);
+        }
+        other.transform.GetChild(1).gameObject.SetActive(false);
+        other.transform.GetChild(4).gameObject.SetActive(true);
+        other.transform.GetChild(3).gameObject.SetActive(true);
+    }
+
 }

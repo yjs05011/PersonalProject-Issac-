@@ -1741,7 +1741,12 @@ MonoBehaviour:
   roomNum: 0
   roomRect: {fileID: 0}
   roomRigi: {fileID: 0}
-  monsterNumber: 0
+  doorShapes:
+  - {fileID: -616297748, guid: 0e749a25bbf9b2e40b01e9fd69941b01, type: 3}
+  - {fileID: 1894060888, guid: 0e749a25bbf9b2e40b01e9fd69941b01, type: 3}
+  - {fileID: 1492581129, guid: 0e749a25bbf9b2e40b01e9fd69941b01, type: 3}
+  - {fileID: 1601958570, guid: 0e749a25bbf9b2e40b01e9fd69941b01, type: 3}
+  - {fileID: 1249207331, guid: 10df71ec25c4a444e9323c77d819c88a, type: 3}
   DoorExit:
   - {fileID: 8983998017527894411}
   - {fileID: 6943054060977286003}
@@ -1755,6 +1760,7 @@ MonoBehaviour:
   RightDoorY: 0
   UpDoorY: 0
   DownDoorY: 0
+  Monster: []
 --- !u!50 &5096075758404468439
 Rigidbody2D:
   serializedVersion: 4

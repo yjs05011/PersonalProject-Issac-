@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 1
   name: Horf
-  maxHp: 1
+  maxHp: 10.5
   shotSpeed: 1
   rateSpeed: 1
   speed: 0.7

@@ -143,11 +143,11 @@ public class Tears : MonoBehaviour
         }
         if (other.transform.tag == "Monster")
         {
-            other.transform.parent.GetComponent<Horf>().maxHp -= damage;
+            other.transform.parent.GetComponent<Monster_Active>().maxHp -= damage;
             StartCoroutine(TearsPop());
             Debug.Log($" Damage :{damage}");
 
-            Debug.Log($" horf Hp :{other.transform.parent.GetComponent<Horf>().stat.maxHp}");
+            Debug.Log($" horf Hp :{other.transform.parent.GetComponent<Monster_Active>().maxHp}");
         }
     }
 
