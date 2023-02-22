@@ -14,6 +14,7 @@ TagManager:
   - Boom
   - Item
   - Rock
+  - Boss
   layers:
   - Default
   - TransparentFX

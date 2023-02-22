@@ -9,9 +9,9 @@ public class ItemMaker : MonoBehaviour
     public Item[] Items;
 
     private SpriteRenderer itemSprite;
-    private int randomNum;
+    public int randomNum;
     private int itemFindCount = 0;
-    private bool player_Get_Item_Chk = false;
+    public bool player_Get_Item_Chk = false;
     public AudioSource PickItem;
     // Start is called before the first frame update
     void Start()
@@ -44,28 +44,8 @@ public class ItemMaker : MonoBehaviour
     {
 
     }
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.transform.tag == "Player")
-        {
-            if (transform.GetChild(0).gameObject.activeSelf)
-            {
-                GetItem();
-                transform.GetChild(0).gameObject.SetActive(false);
 
-                if (!player_Get_Item_Chk)
-                {
-                    player_Get_Item_Chk = true;
-                    GameManager.instance.itemgetChk = true;
-                    other.transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = itemImg[randomNum];
-                    StartCoroutine(ItemAnima(other));
-                }
-
-            }
-        }
-
-    }
-    void GetItem()
+    public void GetItem()
     {
         GameManager.instance.player_Stat.item.Push(randomNum);
         GameManager.instance.player_Stat.MaxHp += Items[randomNum].maxHp;
@@ -79,19 +59,20 @@ public class ItemMaker : MonoBehaviour
         GameManager.instance.player_Stat.Range += Items[randomNum].range;
         GameManager.instance.itemName = Items[randomNum].name;
     }
-    IEnumerator ItemAnima(Collider2D other)
+    public IEnumerator ItemAnima(GameObject objs)
     {
         PickItem.Play();
-        other.transform.GetComponent<Player_Active>().playerAct.sprite = other.transform.GetComponent<Player_Active>().PlayerActSprite[0];
-        other.transform.GetChild(0).gameObject.SetActive(true);
-        other.transform.GetChild(1).gameObject.SetActive(true);
-        other.transform.GetChild(4).gameObject.SetActive(false);
-        other.transform.GetChild(3).gameObject.SetActive(false);
+        Debug.Log(objs);
+        objs.transform.GetComponent<Player_Active>().playerAct.sprite = objs.transform.GetComponent<Player_Active>().PlayerActSprite[0];
+        objs.transform.GetChild(0).gameObject.SetActive(true);
+        objs.transform.GetChild(1).gameObject.SetActive(true);
+        objs.transform.GetChild(4).gameObject.SetActive(false);
+        objs.transform.GetChild(3).gameObject.SetActive(false);
         yield return new WaitForSeconds(2f);
-        other.transform.GetChild(0).gameObject.SetActive(false);
-        other.transform.GetChild(1).gameObject.SetActive(false);
-        other.transform.GetChild(4).gameObject.SetActive(true);
-        other.transform.GetChild(3).gameObject.SetActive(true);
+        objs.transform.GetChild(0).gameObject.SetActive(false);
+        objs.transform.GetChild(1).gameObject.SetActive(false);
+        objs.transform.GetChild(4).gameObject.SetActive(true);
+        objs.transform.GetChild(3).gameObject.SetActive(true);
 
     }
 }

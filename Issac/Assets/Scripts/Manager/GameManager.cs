@@ -14,8 +14,12 @@ public class GameManager : MonoBehaviour
     public int stageNum = 1;
     public int[,] map;
     public GameObject[,] nowMapStat;
+    public GameObject NowMap;
     public bool roomChange;
     public int monsterCount;
+    public float bossHp = 0;
+    public int bossType = 0;
+
 
     void Awake()
     {

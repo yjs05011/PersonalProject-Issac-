@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1914616917183672469}
   - component: {fileID: 4909695117723872388}
   - component: {fileID: -518037653758777154}
+  - component: {fileID: -5065131899103205961}
   m_Layer: 0
   m_Name: PickUpCoin 2
   m_TagString: Untagged
@@ -78,8 +79,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -509583815
-  m_SortingLayer: 3
+  m_SortingLayerID: 91175789
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: -797315019, guid: 28cce20c5579df4489bbfcbef1f50767, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -125,6 +126,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &-5065131899103205961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1217735824098503215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b7bcce19bcaa9041a8709c4f3c2212c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8866791361026060574
 GameObject:
   m_ObjectHideFlags: 0

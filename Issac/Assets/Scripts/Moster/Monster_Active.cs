@@ -29,4 +29,11 @@ public class Monster_Active : MonoBehaviour
         Quaternion rotation = Quaternion.Slerp(Player.transform.rotation, angleAxis, 1);
         Player.transform.rotation = rotation;
     }
+
+    public virtual void HitThisMonster(float damage)
+    {
+        /* Do nothing */
+
+
+    }
 }

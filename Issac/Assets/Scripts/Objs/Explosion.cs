@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class Explosion : MonoBehaviour
 {
+    CircleCollider2D boomCollider;
+
+    void OnEnable()
+    {
+        boomCollider = GetComponent<CircleCollider2D>();
+        boomCollider.isTrigger = true;
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -19,30 +26,29 @@ public class Explosion : MonoBehaviour
     {
         if (other.transform.tag == "Player")
         {
-            if (other.transform.GetComponent<Player_Active>().isHit == true)
+            if (other.transform.tag == "Player")
             {
-                //Do nothing
-
-            }
-            else
-            {
-                other.transform.GetComponent<Player_Active>().isHit = true;
-                if (GameManager.instance.player_Stat.SoulHeart == 1f)
+                if (other.transform.GetComponent<Player_Active>().isHit == true)
                 {
-                    GameManager.instance.player_Stat.SoulHeart -= 1f;
-                }
-                else if (GameManager.instance.player_Stat.SoulHeart >= 2f)
-                {
-                    GameManager.instance.player_Stat.SoulHeart -= 2f;
+                    Debug.Log("isTrue");
                 }
                 else
                 {
-                    GameManager.instance.player_Stat.NormalHeart -= 2f;
-                }
-                Debug.Log($"Hp : {GameManager.instance.player_Stat.NormalHeart}");
+                    Debug.Log($"Time");
+                    other.transform.GetComponent<Player_Active>().isHitChk = true;
+                    if (GameManager.instance.player_Stat.SoulHeart >= 1)
+                    {
+                        GameManager.instance.player_Stat.SoulHeart -= 1;
+                    }
+                    else
+                    {
+                        GameManager.instance.player_Stat.NormalHeart -= 1;
+                    }
+                    GameManager.instance.StartCoroutineDeligate(GFunc.PlayerHit(other, 1));
 
-                StartCoroutine(GFunc.PlayerHit(other, 1));
+                }
             }
+            boomCollider.isTrigger = false;
 
 
         }
@@ -50,6 +56,7 @@ public class Explosion : MonoBehaviour
         if (other.transform.tag == "Monster")
         {
             other.transform.parent.GetComponent<Monster_Active>().maxHp -= 40;
+
         }
         if (other.transform.tag == "Rock")
         {

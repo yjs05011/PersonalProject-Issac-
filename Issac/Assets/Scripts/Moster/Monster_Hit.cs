@@ -20,44 +20,6 @@ public class Monster_Hit : MonoBehaviour
     }
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (other.transform.tag == "Player")
-        {
-            if (other.transform.GetComponent<Player_Active>().isHit == true)
-            {
 
-            }
-            else
-            {
-                if (monster.monsterType == 1)
-                {
-                    other.transform.GetComponent<Player_Active>().isHit = true;
-                    if (GameManager.instance.player_Stat.SoulHeart >= 2)
-                    {
-                        GameManager.instance.player_Stat.SoulHeart -= 2;
-                    }
-                    else if (GameManager.instance.player_Stat.SoulHeart == 1)
-                    {
-                        GameManager.instance.player_Stat.SoulHeart -= 1;
-                    }
-                    else
-                    {
-                        GameManager.instance.player_Stat.NormalHeart -= 2;
-                    }
-                }
-                else
-                {
-                    other.transform.GetComponent<Player_Active>().isHit = true;
-                    if (GameManager.instance.player_Stat.SoulHeart >= 1)
-                    {
-                        GameManager.instance.player_Stat.SoulHeart -= 1;
-                    }
-                    else
-                    {
-                        GameManager.instance.player_Stat.NormalHeart -= 1;
-                    }
-                }
-                StartCoroutine(GFunc.PlayerHit(other, 1));
-            }
-        }
     }
 }

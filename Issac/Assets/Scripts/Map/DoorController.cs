@@ -197,6 +197,7 @@ public class DoorController : MonoBehaviour
                     Doors[i].transform.GetChild(1).gameObject.SetActive(false);
                     Doors[i].transform.GetChild(2).gameObject.SetActive(false);
                     DoorExit[i].isTrigger = true;
+                    DoorExit[i + 4].isTrigger = true;
                 }
 
             }

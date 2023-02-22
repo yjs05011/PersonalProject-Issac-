@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8602360967938244997}
   - component: {fileID: 1535300971737145684}
   - component: {fileID: 6884204793527757687}
+  - component: {fileID: 1014469952464920899}
   m_Layer: 0
   m_Name: PickUpNomalHeart
   m_TagString: Untagged
@@ -78,8 +79,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -509583815
-  m_SortingLayer: 3
+  m_SortingLayerID: 91175789
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 1302482693, guid: c068e497deaac2c4f8d8dfb264da00e2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -124,7 +125,19 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
+--- !u!114 &1014469952464920899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2421205391838578820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a1a08f6f4e0fb8489e9dcbfd337272b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8451522546745831945
 GameObject:
   m_ObjectHideFlags: 0

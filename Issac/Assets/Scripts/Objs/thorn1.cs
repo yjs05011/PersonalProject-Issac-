@@ -21,12 +21,12 @@ public class thorn1 : MonoBehaviour
         {
             if (other.transform.GetComponent<Player_Active>().isHit == true)
             {
-
+                Debug.Log("isTrue");
             }
             else
             {
                 Debug.Log($"Time");
-                other.transform.GetComponent<Player_Active>().isHit = true;
+                other.transform.GetComponent<Player_Active>().isHitChk = true;
                 if (GameManager.instance.player_Stat.SoulHeart >= 1)
                 {
                     GameManager.instance.player_Stat.SoulHeart -= 1;

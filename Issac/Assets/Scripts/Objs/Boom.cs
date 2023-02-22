@@ -5,7 +5,7 @@ using UnityEngine;
 public class Boom : MonoBehaviour
 {
     private BoxCollider2D boomSize;
-    private BoxCollider2D boomBlow;
+    private CircleCollider2D boomBlow;
     private bool isPlayer;
     private SpriteRenderer smallboom;
     private RectTransform boomRect;
@@ -17,11 +17,12 @@ public class Boom : MonoBehaviour
         smallboom = GetComponent<SpriteRenderer>();
         bigBoom = transform.GetChild(0).GetComponent<Animator>();
         boomSize = GetComponent<BoxCollider2D>();
-        boomBlow = transform.GetChild(0).GetComponent<BoxCollider2D>();
+        boomBlow = transform.GetChild(0).GetComponent<CircleCollider2D>();
         boomRect = GetComponent<RectTransform>();
         StartCoroutine(Explosion());
         StartCoroutine(BoomColorChage());
         bigBoom.transform.gameObject.SetActive(false);
+        boomSize.isTrigger = true;
 
 
 
@@ -62,7 +63,7 @@ public class Boom : MonoBehaviour
     IEnumerator Explosion()
     {
 
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSeconds(2.5f);
         boomBlow.transform.gameObject.SetActive(true);
         yield return new WaitForSeconds(0.1f);
         gameObject.SetActive(false);

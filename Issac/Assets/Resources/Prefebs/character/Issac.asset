@@ -14,15 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 1
   name: Issac
-  maxHp: 10
-  normalHeart: 10
-  soulHeart: 10
-  str: 3
+  maxHp: 4
+  normalHeart: 3
+  soulHeart: 0
+  str: 30
   shotSpeed: 1
   rateSpeed: 0
   speed: 1
   luck: 0
-  range: 6.5
+  range: 20
   die: 0
   keyCount: 0
   boomCount: 1

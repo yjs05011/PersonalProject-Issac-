@@ -75,6 +75,7 @@ GameObject:
   - component: {fileID: 7046256056732122016}
   - component: {fileID: -3879572526382224378}
   - component: {fileID: 7047061335272901680}
+  - component: {fileID: 2952922287117140093}
   m_Layer: 0
   m_Name: PickUpKey 2
   m_TagString: Untagged
@@ -141,8 +142,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -509583815
-  m_SortingLayer: 3
+  m_SortingLayerID: 91175789
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: -1554998004, guid: 58b3c11aef7e9504583e57ac3b58a0e0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -188,3 +189,15 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &2952922287117140093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5820314537691707752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67a24ef93f06a7c4089b0f574bde91f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

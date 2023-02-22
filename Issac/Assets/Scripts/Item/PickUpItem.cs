@@ -28,10 +28,10 @@ public class PickUpItem : MonoBehaviour
         itemRect.localScale = new Vector3(2.5f, 2.5f, 1);
         yield return new WaitForSeconds(0.1f);
         itemRigid.velocity = Vector2.zero;
-        itemRect.localScale = new Vector3(4f, 4f, 1);
+        itemRect.localScale = new Vector3(3.5f, 3.5f, 1);
         yield return new WaitForSeconds(0.1f);
         itemRigid.velocity = Vector2.down * 5;
-        itemRect.localScale = new Vector3(4f, 1.5f, 1);
+        itemRect.localScale = new Vector3(3.5f, 1.5f, 1);
         yield return new WaitForSeconds(0.1f);
         itemRigid.velocity = Vector2.zero;
         itemRect.localScale = new Vector3(3f, 3f, 1);

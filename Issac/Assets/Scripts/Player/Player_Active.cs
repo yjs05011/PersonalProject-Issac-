@@ -10,6 +10,7 @@ public class Player_Active : MonoBehaviour
     // Start is called before the first frame update
     public Rigidbody2D playerRigid;
     private BoxCollider2D playerBox;
+    public PointEffector2D playerPoint;
     public float maxVelocityX = 5;
     public float maxVelocityY = 5;
     private Tears tears;
@@ -25,6 +26,7 @@ public class Player_Active : MonoBehaviour
     private bool isBoom;
     private bool isDie;
     public bool isHit;
+    public bool isHitChk;
     public SpriteRenderer playerAct;
     public void Awake()
     {
@@ -35,6 +37,7 @@ public class Player_Active : MonoBehaviour
         playerHead = transform.GetChild(2).GetComponent<RectTransform>();
         aniHead = transform.GetChild(3).GetComponent<Animator>();
         aniBody = transform.GetChild(4).GetComponent<Animator>();
+        playerPoint = GetComponent<PointEffector2D>();
     }
     public void Start()
     {
@@ -50,10 +53,22 @@ public class Player_Active : MonoBehaviour
         GameManager.instance.player_Stat.Luck = stat[0].luck;
         GameManager.instance.player_Stat.Range = stat[0].range;
         GameManager.instance.player_Stat.Die = stat[0].die;
+        GameManager.instance.bossType = Random.Range(1, 3);
+        switch (GameManager.instance.bossType)
+        {
+            case 1:
+                GameManager.instance.bossHp = 120;
+                break;
+            case 2:
+                GameManager.instance.bossHp = 120;
+                break;
+        }
+
     }
 
     void Update()
     {
+
         if (!isDie)
         {
             move();
@@ -66,9 +81,9 @@ public class Player_Active : MonoBehaviour
                 Shooting();
             }
             DropBoom();
-            if (isHit)
+            if (isHitChk)
             {
-                isHit = false;
+                isHitChk = false;
                 StartCoroutine("HitDelay");
             }
         }
@@ -87,7 +102,6 @@ public class Player_Active : MonoBehaviour
             if (!isBoom)
             {
                 isBoom = true;
-                Debug.Log("isBoom");
                 StartCoroutine(DropBoomDelay());
 
             }
@@ -98,23 +112,18 @@ public class Player_Active : MonoBehaviour
     public void move()
     {
 
-        if (Input.anyKey)
-        {
-            keyDown = true;
-        }
+
         if (Input.GetKey(KeyCode.W))
         {
             aniBody.SetBool("FrontMove", true);
-            playerRigid.AddForce(new Vector2(0, 2f));
+            playerRigid.AddForce(new Vector2(0, 4f));
             LimitSpeed();
         }
         if (Input.GetKeyUp(KeyCode.W))
         {
 
-            if (keyDown)
-            {
-                StartCoroutine(Moving(new Vector2(0, 0.05f)));
-            }
+            playerRigid.velocity = new Vector2(playerRigid.velocity.x, 0);
+            playerRigid.AddForce(new Vector2(0, 5f));
             keyDown = false;
             aniBody.SetBool("FrontMove", false);
 
@@ -122,15 +131,14 @@ public class Player_Active : MonoBehaviour
         if (Input.GetKey(KeyCode.S))
         {
             aniBody.SetBool("FrontMove", true);
-            playerRigid.AddForce(new Vector2(0, -2f));
+            playerRigid.AddForce(new Vector2(0, -4f));
             LimitSpeed();
         }
         if (Input.GetKeyUp(KeyCode.S))
         {
-            if (keyDown)
-            {
-                StartCoroutine(Moving(new Vector2(0, -0.05f)));
-            }
+
+            playerRigid.velocity = new Vector2(playerRigid.velocity.x, 0);
+            playerRigid.AddForce(new Vector2(0, -5f));
             keyDown = false;
             aniBody.SetBool("FrontMove", false);
 
@@ -138,16 +146,14 @@ public class Player_Active : MonoBehaviour
         if (Input.GetKey(KeyCode.A))
         {
             aniBody.SetBool("SideMove", true);
-            playerRigid.AddForce(new Vector2(-2f, 0));
+            playerRigid.AddForce(new Vector2(-4f, 0));
             LimitSpeed();
         }
         if (Input.GetKeyUp(KeyCode.A))
         {
 
-            if (keyDown)
-            {
-                StartCoroutine(Moving(new Vector2(-0.05f, 0)));
-            }
+            playerRigid.velocity = new Vector2(0, playerRigid.velocity.y);
+            playerRigid.AddForce(new Vector2(-5f, 0));
             keyDown = false;
             aniBody.SetBool("SideMove", false);
 
@@ -156,21 +162,24 @@ public class Player_Active : MonoBehaviour
         if (Input.GetKey(KeyCode.D))
         {
             aniBody.SetBool("SideMove", true);
-            playerRigid.AddForce(new Vector2(2f, 0));
+            playerRigid.AddForce(new Vector2(4f, 0));
             LimitSpeed();
         }
         if (Input.GetKeyUp(KeyCode.D))
         {
-
-
-
-            if (keyDown)
-            {
-                StartCoroutine(Moving(new Vector2(0.05f, 0)));
-            }
+            playerRigid.velocity = new Vector2(0, playerRigid.velocity.y);
+            playerRigid.AddForce(new Vector2(5f, 0));
             keyDown = false;
             aniBody.SetBool("SideMove", false);
 
+        }
+        if (Input.anyKey)
+        {
+            keyDown = true;
+        }
+        if (!keyDown)
+        {
+            StartCoroutine(Moving(new Vector2(0, 0)));
         }
 
 
@@ -205,7 +214,7 @@ public class Player_Active : MonoBehaviour
 
             tears.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y - 0.3f, gameObject.transform.position.z);
             tears.tearImgSize.position =
-            new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 0.2f, gameObject.transform.position.z);
+            new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 0.2f + GameManager.instance.player_Stat.Range * 0.05f, gameObject.transform.position.z);
             // Debug.Log($"Right :{tears.transform.GetChild(0).gameObject.transform.position}");
             // Debug.Log($"shadow :{tears.transform.position.y}");
             // Debug.Log($"Tears : {tears.transform.position.y}");
@@ -217,20 +226,20 @@ public class Player_Active : MonoBehaviour
 
             tears.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y - 0.3f, gameObject.transform.position.z);
             tears.transform.GetChild(0).gameObject.transform.position =
-            new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 0.2f, gameObject.transform.position.z);
+            new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 0.2f + GameManager.instance.player_Stat.Range * 0.05f, gameObject.transform.position.z);
             // Debug.Log($"left :{tears.transform.GetChild(0).gameObject.transform.position}");
         }
         if (isAttackKey[2])
         {
 
             tears.transform.position = gameObject.transform.position;
-            tears.transform.GetChild(0).gameObject.transform.position = new Vector3(gameObject.transform.position.x + 0.1f, gameObject.transform.position.y, gameObject.transform.position.z);
+            tears.transform.GetChild(0).gameObject.transform.position = new Vector3(gameObject.transform.position.x + +GameManager.instance.player_Stat.Range * 0.05f, gameObject.transform.position.y, gameObject.transform.position.z);
         }
         if (isAttackKey[3])
         {
 
             tears.transform.position = gameObject.transform.position;
-            tears.transform.GetChild(0).gameObject.transform.position = new Vector3(gameObject.transform.position.x - 0.1f, gameObject.transform.position.y, gameObject.transform.position.z);
+            tears.transform.GetChild(0).gameObject.transform.position = new Vector3(gameObject.transform.position.x + GameManager.instance.player_Stat.Range * 0.05f, gameObject.transform.position.y, gameObject.transform.position.z);
         }
 
         tears.gameObject.SetActive(true);
@@ -324,6 +333,51 @@ public class Player_Active : MonoBehaviour
         isAttack = false;
 
     }
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.transform.tag == "Monster")
+        {
+            if (isHit == true)
+            {
+
+            }
+            else
+            {
+                if (other.transform.parent.GetComponent<Monster_Active>().monsterType == 1)
+                {
+                    isHitChk = true;
+                    isHit = true;
+                    if (GameManager.instance.player_Stat.SoulHeart >= 2)
+                    {
+                        GameManager.instance.player_Stat.SoulHeart -= 2;
+                    }
+                    else if (GameManager.instance.player_Stat.SoulHeart == 1)
+                    {
+                        GameManager.instance.player_Stat.SoulHeart -= 1;
+                    }
+                    else
+                    {
+                        GameManager.instance.player_Stat.NormalHeart -= 2;
+                    }
+                }
+                else
+                {
+                    isHit = true;
+                    if (GameManager.instance.player_Stat.SoulHeart >= 1)
+                    {
+                        GameManager.instance.player_Stat.SoulHeart -= 1;
+                    }
+                    else
+                    {
+                        GameManager.instance.player_Stat.NormalHeart -= 1;
+                    }
+                }
+                StartCoroutine(GFunc.PlayerHit(playerBox, 1));
+            }
+        }
+
+
+    }
     private void OnTriggerEnter2D(Collider2D other)
     {
         DoorController inspector = other.transform.parent.parent.parent.gameObject.GetComponent<DoorController>();
@@ -367,6 +421,26 @@ public class Player_Active : MonoBehaviour
                     GameManager.instance.roomChange = true;
                 }
                 break;
+            case "Item":
+
+                if (other.transform.GetChild(0).gameObject.activeSelf)
+                {
+                    ItemMaker item = other.transform.GetComponent<ItemMaker>();
+                    item.GetItem();
+                    item.transform.GetChild(0).gameObject.SetActive(false);
+
+                    if (!item.player_Get_Item_Chk)
+                    {
+                        item.player_Get_Item_Chk = true;
+                        GameManager.instance.itemgetChk = true;
+                        transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().sprite = item.itemImg[item.randomNum];
+                        StartCoroutine(item.ItemAnima(gameObject));
+                    }
+
+
+                }
+                break;
+
 
         }
     }
@@ -376,6 +450,7 @@ public class Player_Active : MonoBehaviour
         Rigidbody2D nowRoom = other.transform.parent.parent.parent.gameObject.GetComponent<Rigidbody2D>();
         GameObject NextRoom = GameManager.instance.nowMapStat[DoorX,
         DoorY];
+        GameManager.instance.NowMap = NextRoom;
         NextRoom.SetActive(true);
         NextRoom.transform.localPosition = RoomPosition;
         NextRoom.GetRigid().velocity = new Vector2(-30, 0);
@@ -395,6 +470,7 @@ public class Player_Active : MonoBehaviour
     IEnumerator DropBoomDelay()
     {
         GameObject boom = Pooling.instance.booms.Pop();
+        boom.transform.SetParent(GameManager.instance.NowMap.transform, false);
         boom.SetActive(true);
         boom.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z);
         yield return new WaitForSeconds(2.5f);
@@ -402,11 +478,13 @@ public class Player_Active : MonoBehaviour
     }
     IEnumerator HitDelay()
     {
+        isHit = true;
         transform.tag = "Untagged";
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1.5f);
         transform.tag = "Player";
-
+        isHit = false;
     }
+
 
 
 }

@@ -22,21 +22,22 @@ public class Tears : MonoBehaviour
     private bool isWall;
     private Animator tearsPop;
     private bool playerTouch;
+    private bool isTrigger;
     private float damage;
-
+    public PointEffector2D pointEffector;
     public void OnEnable()
     {
         playerTouch = false;
         tearImgRigid = transform.GetChild(0).gameObject.GetRigid();
         tearImgSize = transform.GetChild(0).gameObject.GetRect();
-
         tearHitBox = gameObject.GetBoxCollider();
         tearSize = gameObject.GetRect();
         tearRigid = gameObject.GetRigid();
         tearsPop = gameObject.transform.GetChild(0).GetComponent<Animator>();
         TearsstartPos = tearImgRigid.position;
         ShadowstartPos = tearSize.position;
-
+        tearImgSize.localScale = new Vector3(1f + GameManager.instance.player_Stat.Str * 0.1f, 1 + GameManager.instance.player_Stat.Str * 0.1f, 1f);
+        tearSize.localScale = new Vector3(1f + GameManager.instance.player_Stat.Str * 0.1f, 1 + GameManager.instance.player_Stat.Str * 0.1f, 1f);
 
 
 
@@ -44,7 +45,7 @@ public class Tears : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        pointEffector = GetComponent<PointEffector2D>();
         Debug.Log($" Damage :{damage}");
         damage = GameManager.instance.player_Stat.Str;
 
@@ -95,74 +96,101 @@ public class Tears : MonoBehaviour
 
     }
 
+
     public void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.transform.tag == "Player")
+        if (!isTrigger)
         {
-            if (!playerTouch)
+            if (other.transform.tag == "Player")
             {
-                playerTouch = true;
-
-                player_Active = other.gameObject.GetComponent<Player_Active>();
-                playerRigid = other.gameObject.GetRigid();
-                tearRigid.velocity = transform.up * 6f * GameManager.instance.player_Stat.ShotSpeed;
-                tearImgRigid.velocity = transform.up * 6f * GameManager.instance.player_Stat.ShotSpeed;
-                tearImgRigid.velocity = new Vector2(tearImgRigid.velocity.x, tearImgRigid.velocity.y - 0.2f);
-                if ((tearRigid.velocity.x - playerRigid.velocity.x + 2f) > 3f || (tearRigid.velocity.y - playerRigid.velocity.y + 2f) > 3f)
+                if (!playerTouch)
                 {
+                    playerTouch = true;
 
+                    player_Active = other.gameObject.GetComponent<Player_Active>();
+                    playerRigid = other.gameObject.GetRigid();
+                    tearRigid.velocity = transform.up * 6f * GameManager.instance.player_Stat.ShotSpeed;
+                    tearImgRigid.velocity = transform.up * 6f * GameManager.instance.player_Stat.ShotSpeed;
+                    tearImgRigid.velocity = new Vector2(tearImgRigid.velocity.x, tearImgRigid.velocity.y - 0.2f);
+                    if ((tearRigid.velocity.x - playerRigid.velocity.x + 2f) > 3f || (tearRigid.velocity.y - playerRigid.velocity.y + 2f) > 3f)
+                    {
+
+                    }
+                    else if ((tearRigid.velocity.x - playerRigid.velocity.x + 2f) < -3f || (tearRigid.velocity.y - playerRigid.velocity.y + 2f) < -3f)
+                    {
+
+                    }
+                    else
+                    {
+                        tearRigid.velocity += playerRigid.velocity;
+                        tearImgRigid.velocity += playerRigid.velocity;
+                    }
+
+                    playerRect = other.gameObject.GetComponent<RectTransform>();
+                    tearSize.transform.rotation = player_Active.playerHead.rotation;
+                    startPosition = playerRect.transform.position;
                 }
-                else if ((tearRigid.velocity.x - playerRigid.velocity.x + 2f) < -3f || (tearRigid.velocity.y - playerRigid.velocity.y + 2f) < -3f)
+
+
+            }
+            if (other.transform.tag == "wall" || other.transform.tag == "LeftDoor" || other.transform.tag == "RightDoor" || other.transform.tag == "DownDoor" || other.transform.tag == "UpDoor")
+            {
+                if (!isWall)
                 {
-
-                }
-                else
-                {
-                    tearRigid.velocity += playerRigid.velocity;
-                    tearImgRigid.velocity += playerRigid.velocity;
+                    isWall = true;
+                    tearImgRigid.velocity = Vector2.zero;
+                    tearRigid.velocity = Vector2.zero;
+                    StartCoroutine(TearsPop());
                 }
 
-                playerRect = other.gameObject.GetComponent<RectTransform>();
-                tearSize.transform.rotation = player_Active.playerHead.rotation;
-                startPosition = playerRect.transform.position;
+
             }
 
 
-        }
-        if (other.transform.tag == "wall" || other.transform.tag == "LeftDoor" || other.transform.tag == "RightDoor" || other.transform.tag == "DownDoor" || other.transform.tag == "UpDoor")
-        {
-            if (!isWall)
+            if (other.transform.tag == "Monster")
             {
-                isWall = true;
-                tearImgRigid.velocity = Vector2.zero;
-                tearRigid.velocity = Vector2.zero;
+
+                pointEffector.enabled = true;
+                other.transform.parent.GetComponent<Monster_Active>().maxHp -= damage;
+                StartCoroutine(TearsPop());
+                Debug.Log($" Damage :{damage}");
+
+                Debug.Log($" horf Hp :{other.transform.parent.GetComponent<Monster_Active>().maxHp}");
+            }
+            if (other.transform.tag == "Boom")
+            {
+                Debug.Log("Why");
+                pointEffector.enabled = true;
+
+                StartCoroutine(TearsPop());
+
+            }
+            if (other.transform.tag == "Boss")
+            {
+                pointEffector.enabled = true;
+                other.GetComponent<Monster_Active>().HitThisMonster(damage);
                 StartCoroutine(TearsPop());
             }
 
 
         }
-        if (other.transform.tag == "Monster")
-        {
-            other.transform.parent.GetComponent<Monster_Active>().maxHp -= damage;
-            StartCoroutine(TearsPop());
-            Debug.Log($" Damage :{damage}");
 
-            Debug.Log($" horf Hp :{other.transform.parent.GetComponent<Monster_Active>().maxHp}");
-        }
     }
 
     IEnumerator TearsPop()
     {
         tearsPop.SetBool("isTrigger", true);
-
+        isTrigger = true;
         tearImgRigid.velocity = Vector2.zero;
         tearRigid.velocity = Vector2.zero;
         yield return new WaitForSeconds(0.2f);
         tearImgRigid.velocity = Vector2.zero;
         tearRigid.velocity = Vector2.zero;
         gameObject.SetActive(false);
+        isTrigger = false;
         gameObject.transform.position = ShadowstartPos;
         tearImgSize.position = TearsstartPos;
+        pointEffector.enabled = false;
         Pooling.instance.playerTears.Push(gameObject);
         tearsTrigger = false;
         isWall = false;

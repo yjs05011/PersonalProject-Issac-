@@ -22,6 +22,7 @@ public class MonsterTears : MonoBehaviour
     private bool isWall;
     private Animator tearsPop;
     private bool playerTouch;
+    private bool isTrigger;
     private float damage;
 
     public void OnEnable()
@@ -96,30 +97,57 @@ public class MonsterTears : MonoBehaviour
 
     public void OnTriggerStay2D(Collider2D other)
     {
-        if (other.transform.tag == "Player")
+        if (!isTrigger)
         {
-
-            if (other.transform.GetComponent<Player_Active>().isHit == true)
+            if (other.transform.tag == "Player")
             {
 
-            }
-            else
-            {
-                Debug.Log($"Time");
-                other.transform.GetComponent<Player_Active>().isHit = true;
-                if (GameManager.instance.player_Stat.SoulHeart >= 1)
+                if (other.transform.GetComponent<Player_Active>().isHit == true)
                 {
-                    GameManager.instance.player_Stat.SoulHeart -= 1;
+                    Debug.Log("isTrue");
                 }
                 else
                 {
-                    GameManager.instance.player_Stat.NormalHeart -= 1;
-                }
-                GameManager.instance.StartCoroutineDeligate(GFunc.PlayerHit(other, 1));
+                    Debug.Log($"Time");
+                    other.transform.GetComponent<Player_Active>().isHitChk = true;
+                    if (GameManager.instance.player_Stat.SoulHeart >= 1)
+                    {
+                        GameManager.instance.player_Stat.SoulHeart -= 1;
+                    }
+                    else
+                    {
+                        GameManager.instance.player_Stat.NormalHeart -= 1;
+                    }
+                    StartCoroutine(GFunc.PlayerHit(other, 1));
 
+                }
+                StartCoroutine(TearsPop());
             }
 
-            StartCoroutine(TearsPop());
+            if (other.transform.tag == "Player")
+            {
+                if (other.transform.GetComponent<Player_Active>().isHit == true)
+                {
+                    Debug.Log("isTrue");
+                }
+                else
+                {
+                    Debug.Log($"Time");
+                    other.transform.GetComponent<Player_Active>().isHitChk = true;
+                    if (GameManager.instance.player_Stat.SoulHeart >= 1)
+                    {
+                        GameManager.instance.player_Stat.SoulHeart -= 1;
+                    }
+                    else
+                    {
+                        GameManager.instance.player_Stat.NormalHeart -= 1;
+                    }
+                    GameManager.instance.StartCoroutineDeligate(GFunc.PlayerHit(other, 1));
+
+                }
+            }
+
+
 
 
 
@@ -151,10 +179,12 @@ public class MonsterTears : MonoBehaviour
 
         tearImgRigid.velocity = Vector2.zero;
         tearRigid.velocity = Vector2.zero;
+        isTrigger = true;
         yield return new WaitForSeconds(0.2f);
         tearImgRigid.velocity = Vector2.zero;
         tearRigid.velocity = Vector2.zero;
         gameObject.SetActive(false);
+        isTrigger = false;
         gameObject.transform.position = ShadowstartPos;
         tearImgSize.position = TearsstartPos;
         Pooling.instance.enemyTears.Push(gameObject);

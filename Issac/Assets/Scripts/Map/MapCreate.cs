@@ -60,6 +60,7 @@ public class MapCreate : MonoBehaviour
                     switch (map[j, i])
                     {
                         case 1:
+
                             newRoom = Instantiate(rooms[0]);
                             newRoom.name = "StartRoom";
                             newRoom.SetActive(true);
@@ -68,6 +69,7 @@ public class MapCreate : MonoBehaviour
                             newRoom.GetComponent<DoorController>().roomType = 1;
                             newRoom.GetComponent<DoorController>().roomNum = makeRoomNumber;
                             nowMapStatus[j, i] = newRoom;
+                            GameManager.instance.NowMap = newRoom;
                             MapList.Add(newRoom);
                             break;
                         case 2:
@@ -91,7 +93,7 @@ public class MapCreate : MonoBehaviour
                             MapList.Add(newRoom);
                             break;
                         case 4:
-                            newRoom = Instantiate(rooms[3]);
+                            newRoom = Instantiate(rooms[Random.Range(3, 8)]);
                             newRoom.name = "MosterRoom";
                             newRoom.SetActive(false);
                             newRoom.transform.SetParent(transform, false);
@@ -101,7 +103,7 @@ public class MapCreate : MonoBehaviour
                             MapList.Add(newRoom);
                             break;
                         case 5:
-                            newRoom = Instantiate(rooms[7]);
+                            newRoom = Instantiate(rooms[8]);
                             newRoom.name = "MoonRoom";
                             newRoom.SetActive(false);
                             newRoom.transform.SetParent(transform, false);
@@ -110,7 +112,7 @@ public class MapCreate : MonoBehaviour
                             MapList.Add(newRoom);
                             break;
                         case 6:
-                            newRoom = Instantiate(rooms[8]);
+                            newRoom = Instantiate(rooms[9]);
                             newRoom.name = "Shop";
                             newRoom.SetActive(false);
                             newRoom.transform.SetParent(transform, false);
