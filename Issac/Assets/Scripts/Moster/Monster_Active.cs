@@ -10,9 +10,16 @@ public class Monster_Active : MonoBehaviour
     public float maxHp = default;
 
     public int monsterType = default;
+    public SpriteRenderer monsterRenderer;
     // Start is called before the first frame update
+    public virtual void OnEnable()
+    {
+        monsterRenderer = GetComponent<SpriteRenderer>();
+    }
+
     public virtual void Start()
     {
+
     }
 
     // Update is called once per frame

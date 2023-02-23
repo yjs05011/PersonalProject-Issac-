@@ -7091,6 +7091,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PickUpSoulHeart
       objectReference: {fileID: 0}
+    - target: {fileID: 3870337381277011642, guid: e94d56751de1a0f48891070532111cc2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e94d56751de1a0f48891070532111cc2, type: 3}
 --- !u!224 &2113288194613657575 stripped
@@ -7108,6 +7112,10 @@ PrefabInstance:
     - target: {fileID: 537047905998062756, guid: bbc109f54778940439c32f4de5fda3fc, type: 3}
       propertyPath: m_Name
       value: PickUpKey 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 537047905998062756, guid: bbc109f54778940439c32f4de5fda3fc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4316274601880845972, guid: bbc109f54778940439c32f4de5fda3fc, type: 3}
       propertyPath: m_Pivot.x
@@ -7211,6 +7219,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PickUpCoin 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1217735824098503215, guid: c1e8a68165cb8d849bdb9c5fd16252a8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3794324104977045707, guid: c1e8a68165cb8d849bdb9c5fd16252a8, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -7312,6 +7324,10 @@ PrefabInstance:
     - target: {fileID: 5141923402845242401, guid: 6ffa426044891a8479659067e377b8dc, type: 3}
       propertyPath: m_Name
       value: PickUpCoin 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5141923402845242401, guid: 6ffa426044891a8479659067e377b8dc, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8010080783320476547, guid: 6ffa426044891a8479659067e377b8dc, type: 3}
       propertyPath: m_Pivot.x
@@ -7532,6 +7548,10 @@ PrefabInstance:
     - target: {fileID: 5820314537691707752, guid: 0436f8b9b7b14444f995e2a60a38b830, type: 3}
       propertyPath: m_Name
       value: PickUpKey 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5820314537691707752, guid: 0436f8b9b7b14444f995e2a60a38b830, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8626248690290705899, guid: 0436f8b9b7b14444f995e2a60a38b830, type: 3}
       propertyPath: m_Pivot.x
@@ -7955,6 +7975,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PickUpBoom 2
       objectReference: {fileID: 0}
+    - target: {fileID: 6071347310601578644, guid: 35741487f825c0c4d911e511b4b0d9e3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35741487f825c0c4d911e511b4b0d9e3, type: 3}
 --- !u!224 &7270620645059353068 stripped
@@ -8091,6 +8115,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PickUpBoom 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1860739361505471875, guid: 83f2ce9f7c19c944dbe1447fa0b545ee, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7764030471734018228, guid: 83f2ce9f7c19c944dbe1447fa0b545ee, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -8192,6 +8220,10 @@ PrefabInstance:
     - target: {fileID: 2421205391838578820, guid: ec7150c1fbd3f894c8a76faf94176252, type: 3}
       propertyPath: m_Name
       value: PickUpNomalHeart
+      objectReference: {fileID: 0}
+    - target: {fileID: 2421205391838578820, guid: ec7150c1fbd3f894c8a76faf94176252, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5539363650801860357, guid: ec7150c1fbd3f894c8a76faf94176252, type: 3}
       propertyPath: m_Pivot.x

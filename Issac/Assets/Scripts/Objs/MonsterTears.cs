@@ -99,30 +99,7 @@ public class MonsterTears : MonoBehaviour
     {
         if (!isTrigger)
         {
-            if (other.transform.tag == "Player")
-            {
 
-                if (other.transform.GetComponent<Player_Active>().isHit == true)
-                {
-                    Debug.Log("isTrue");
-                }
-                else
-                {
-                    Debug.Log($"Time");
-                    other.transform.GetComponent<Player_Active>().isHitChk = true;
-                    if (GameManager.instance.player_Stat.SoulHeart >= 1)
-                    {
-                        GameManager.instance.player_Stat.SoulHeart -= 1;
-                    }
-                    else
-                    {
-                        GameManager.instance.player_Stat.NormalHeart -= 1;
-                    }
-                    StartCoroutine(GFunc.PlayerHit(other, 1));
-
-                }
-                StartCoroutine(TearsPop());
-            }
 
             if (other.transform.tag == "Player")
             {

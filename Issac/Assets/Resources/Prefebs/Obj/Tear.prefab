@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6262687545672513877}
   - component: {fileID: 7691850554612577169}
   - component: {fileID: 1875598735077219098}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: TearsImg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -147,7 +147,7 @@ GameObject:
   - component: {fileID: 7982441105107282363}
   - component: {fileID: 3129118646278240511}
   - component: {fileID: -4860361045448566915}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Tear
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -293,8 +293,8 @@ PointEffector2D:
   m_UseColliderMask: 1
   m_ColliderMask:
     serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceMagnitude: 10
+    m_Bits: 823
+  m_ForceMagnitude: 30
   m_ForceVariation: 5
   m_DistanceScale: 1
   m_ForceSource: 1

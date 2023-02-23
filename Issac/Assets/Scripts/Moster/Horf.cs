@@ -14,9 +14,13 @@ public class Horf : Monster_Active
     private bool die;
     private Animator bodyAni;
     // Start is called before the first frame update
+    public override void OnEnable()
+    {
+        base.OnEnable();
+        Debug.Log("?");
+    }
     public override void Start()
     {
-        base.Start();
         FindEnemy = transform.GetChild(0).GetComponent<CircleCollider2D>();
         EnemyRigd = gameObject.GetComponent<Rigidbody2D>();
         rotationBody = transform.GetChild(3).GetComponent<RectTransform>();

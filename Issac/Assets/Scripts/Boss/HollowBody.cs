@@ -10,11 +10,12 @@ public class HollowBody : Monster_Active
     public int number;
 
     // Start is called before the first frame update
-    void Start()
+    public override void Start()
     {
-
+        base.Start();
         maxHp = stat.maxHp;
         hp = maxHp;
+        GameManager.instance.bossHp += 20;
     }
 
     // Update is called once per frame
@@ -39,14 +40,25 @@ public class HollowBody : Monster_Active
         if (maxHp <= 0)
         {
             die = true;
-            transform.SetAsLastSibling();
-            gameObject.SetActive(false);
-        }
-    }
 
+            transform.SetAsLastSibling();
+            transform.parent.GetChild(0).GetComponent<HollowHead>().cutting = true;
+            transform.parent.GetChild(0).GetComponent<HollowHead>().cuttingBodyNum = number;
+            gameObject.SetActive(false);
+
+
+
+        }
+
+
+    }
     public override void HitThisMonster(float damage)
     {
         base.HitThisMonster(damage);
+
         maxHp -= damage;
     }
+
 }
+
+

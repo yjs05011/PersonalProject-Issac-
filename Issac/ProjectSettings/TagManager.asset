@@ -19,13 +19,13 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Hollow
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - UnMovedItem
+  - Enemy
+  - Boom
   - 
   - 
   - 

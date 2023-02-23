@@ -72,5 +72,11 @@ public static partial class GFunc
         other.transform.GetChild(4).gameObject.SetActive(true);
         other.transform.GetChild(3).gameObject.SetActive(true);
     }
+    public static IEnumerator MonsterHit(Collider2D other)
+    {
+        other.transform.GetComponent<Monster_Active>().monsterRenderer.color = new Color(1, 0, 0, 1f);
+        yield return new WaitForSeconds(0.1f);
+        other.transform.GetComponent<Monster_Active>().monsterRenderer.color = new Color(1, 1, 1, 1f);
+    }
 
 }

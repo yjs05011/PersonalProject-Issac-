@@ -121,7 +121,6 @@ public class MapMaker : MonoBehaviour
 
                 if (bestNode == null || (bestNode.PrevConut > node.PrevConut))
                 {
-                    Debug.Log("True");
                     bestNode = node;
 
 

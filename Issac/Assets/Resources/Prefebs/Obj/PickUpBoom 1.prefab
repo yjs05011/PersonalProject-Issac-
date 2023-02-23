@@ -10,7 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4166889962409132716}
   - component: {fileID: 61554225544136470}
-  m_Layer: 0
+  - component: {fileID: 347715060976484618}
+  m_Layer: 7
   m_Name: BoxCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63,6 +64,32 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.2, y: 0.2}
   m_EdgeRadius: 0
+--- !u!61 &347715060976484618
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 783076909702538963}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.1, y: 0.1}
+  m_EdgeRadius: 0
 --- !u!1 &1860739361505471875
 GameObject:
   m_ObjectHideFlags: 0
@@ -76,13 +103,13 @@ GameObject:
   - component: {fileID: 4433325174352797380}
   - component: {fileID: 7056870914258901470}
   - component: {fileID: 8577544089439675422}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PickUpBoom 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &7764030471734018228
 RectTransform:
   m_ObjectHideFlags: 0
@@ -90,7 +117,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1860739361505471875}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
@@ -142,8 +169,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 91175789
-  m_SortingLayer: 4
+  m_SortingLayerID: -509583815
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: -740653389, guid: 1c18caceb6502b14ebda6f646a6c84d2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -188,7 +215,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &8577544089439675422
 MonoBehaviour:
   m_ObjectHideFlags: 0

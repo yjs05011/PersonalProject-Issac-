@@ -1787,7 +1787,7 @@ GameObject:
   - component: {fileID: 1310543470}
   - component: {fileID: 1310543471}
   - component: {fileID: 1310543472}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2047,7 +2047,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1495338180}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2378,7 +2378,7 @@ GameObject:
   - component: {fileID: 1784089932}
   - component: {fileID: 1784089933}
   - component: {fileID: 1784089934}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -2692,7 +2692,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1879725740}
   - component: {fileID: 1879725741}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GetItemAnima
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2781,7 +2781,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1958193285}
   - component: {fileID: 1958193286}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GetItemObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3214,7 +3214,7 @@ GameObject:
   - component: {fileID: 2116321842}
   - component: {fileID: 2116321843}
   - component: {fileID: 2116321844}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}

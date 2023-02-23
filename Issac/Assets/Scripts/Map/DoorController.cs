@@ -28,6 +28,10 @@ public class DoorController : MonoBehaviour
 
     // Start is called before the first frame update
     // Door is Left, up, Right, bottom
+    void OnEnable()
+    {
+        GameManager.instance.monsterClearChk = false;
+    }
     void Start()
     {
         map = GameManager.instance.nowMapStat;
@@ -49,8 +53,8 @@ public class DoorController : MonoBehaviour
     void Update()
     {
 
-        GameManager.instance.monsterClearChk = false;
-        if (GameManager.instance.monsterCount == 0)
+
+        if (GameManager.instance.monsterCount == 0 && GameManager.instance.bossHp == 0)
         {
             GameManager.instance.monsterClearChk = true;
             OpenDoor();
@@ -82,7 +86,7 @@ public class DoorController : MonoBehaviour
 
                     if (i + 1 < map.GetLength(0) && map[j, i + 1] != null)
                     {
-                        Debug.Log($"map [{j} , {i + 1}] =  {map[j, i + 1].GetComponent<DoorController>().roomNum}");
+
                         UpDoorX = j;
                         UpDoorY = i + 1;
                         Doors[1].gameObject.SetActive(true);
@@ -106,7 +110,7 @@ public class DoorController : MonoBehaviour
                     }
                     if (i - 1 >= 0 && map[j, i - 1] != null)
                     {
-                        Debug.Log($"map [{j} , {i - 1}] =  {map[j, i - 1].GetComponent<DoorController>().roomNum}");
+
                         DownDoorX = j;
                         DownDoorY = i - 1;
                         Doors[3].gameObject.SetActive(true);
@@ -130,7 +134,7 @@ public class DoorController : MonoBehaviour
                     }
                     if (j + 1 < map.GetLength(1) && map[j + 1, i] != null)
                     {
-                        Debug.Log($"map [{j + 1} , {i}] =  {map[j + 1, i].GetComponent<DoorController>().roomNum}");
+
                         RightDoorX = j + 1;
                         RightDoorY = i;
                         Doors[2].gameObject.SetActive(true);
@@ -154,7 +158,7 @@ public class DoorController : MonoBehaviour
                     }
                     if (j - 1 >= 0 && map[j - 1, i] != null)
                     {
-                        Debug.Log($"map [{j - 1} , {i}] =  {map[j - 1, i].GetComponent<DoorController>().roomNum}");
+
                         LeftDoorX = j - 1;
                         LeftDoorY = i;
                         Doors[0].gameObject.SetActive(true);

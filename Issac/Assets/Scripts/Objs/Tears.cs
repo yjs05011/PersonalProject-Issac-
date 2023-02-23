@@ -151,6 +151,7 @@ public class Tears : MonoBehaviour
             {
 
                 pointEffector.enabled = true;
+                StartCoroutine(MonsterHit(other));
                 other.transform.parent.GetComponent<Monster_Active>().maxHp -= damage;
                 StartCoroutine(TearsPop());
                 Debug.Log($" Damage :{damage}");
@@ -167,7 +168,7 @@ public class Tears : MonoBehaviour
             }
             if (other.transform.tag == "Boss")
             {
-                pointEffector.enabled = true;
+                StartCoroutine(MonsterHit(other));
                 other.GetComponent<Monster_Active>().HitThisMonster(damage);
                 StartCoroutine(TearsPop());
             }
@@ -196,4 +197,11 @@ public class Tears : MonoBehaviour
         isWall = false;
     }
 
+    public IEnumerator MonsterHit(Collider2D other)
+    {
+        SpriteRenderer monsterSprite = other.GetComponent<SpriteRenderer>();
+        monsterSprite.color = new Color(1, 0, 0, 1f);
+        yield return new WaitForSeconds(0.1f);
+        monsterSprite.color = new Color(1, 1, 1, 1f);
+    }
 }

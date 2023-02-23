@@ -53,16 +53,6 @@ public class Player_Active : MonoBehaviour
         GameManager.instance.player_Stat.Luck = stat[0].luck;
         GameManager.instance.player_Stat.Range = stat[0].range;
         GameManager.instance.player_Stat.Die = stat[0].die;
-        GameManager.instance.bossType = Random.Range(1, 3);
-        switch (GameManager.instance.bossType)
-        {
-            case 1:
-                GameManager.instance.bossHp = 120;
-                break;
-            case 2:
-                GameManager.instance.bossHp = 120;
-                break;
-        }
 
     }
 
@@ -375,18 +365,47 @@ public class Player_Active : MonoBehaviour
                 StartCoroutine(GFunc.PlayerHit(playerBox, 1));
             }
         }
+        if (other.transform.tag == "Boss")
+        {
+            if (isHit == true)
+            {
+
+            }
+            else
+            {
+
+                isHitChk = true;
+                isHit = true;
+                if (GameManager.instance.player_Stat.SoulHeart >= 2)
+                {
+                    GameManager.instance.player_Stat.SoulHeart -= 2;
+                }
+                else if (GameManager.instance.player_Stat.SoulHeart == 1)
+                {
+                    GameManager.instance.player_Stat.SoulHeart -= 1;
+                }
+                else
+                {
+                    GameManager.instance.player_Stat.NormalHeart -= 2;
+                }
+
+
+                StartCoroutine(GFunc.PlayerHit(playerBox, 1));
+            }
+        }
 
 
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        DoorController inspector = other.transform.parent.parent.parent.gameObject.GetComponent<DoorController>();
+
         switch (other.tag)
         {
 
             case "LeftDoor":
                 if (!roomChangeChk)
                 {
+                    DoorController inspector = other.transform.parent.parent.parent.gameObject.GetComponent<DoorController>();
                     roomChangeChk = true;
                     transform.position = new Vector2(-other.transform.position.x - 2, other.transform.position.y);
                     StartCoroutine(RoomChange(other, new Vector2(-220, -100), new Vector2(0, 0), inspector.LeftDoorX, inspector.LeftDoorY));
@@ -397,6 +416,7 @@ public class Player_Active : MonoBehaviour
             case "RightDoor":
                 if (!roomChangeChk)
                 {
+                    DoorController inspector = other.transform.parent.parent.parent.gameObject.GetComponent<DoorController>();
                     roomChangeChk = true;
                     transform.position = new Vector2(-other.transform.position.x + 2, other.transform.position.y);
                     StartCoroutine(RoomChange(other, new Vector2(-180, -100), new Vector2(0, 0), inspector.RightDoorX, inspector.RightDoorY));
@@ -406,6 +426,7 @@ public class Player_Active : MonoBehaviour
             case "UpDoor":
                 if (!roomChangeChk)
                 {
+                    DoorController inspector = other.transform.parent.parent.parent.gameObject.GetComponent<DoorController>();
                     roomChangeChk = true;
                     transform.position = new Vector2(other.transform.position.x, 1.5f - other.transform.position.y);
                     StartCoroutine(RoomChange(other, new Vector2(-200, -90), new Vector2(0, 0), inspector.UpDoorX, inspector.UpDoorY));
@@ -415,6 +436,7 @@ public class Player_Active : MonoBehaviour
             case "DownDoor":
                 if (!roomChangeChk)
                 {
+                    DoorController inspector = other.transform.parent.parent.parent.gameObject.GetComponent<DoorController>();
                     roomChangeChk = true;
                     transform.position = new Vector2(other.transform.position.x, -other.transform.position.y - 1.5f);
                     StartCoroutine(RoomChange(other, new Vector2(-200, -110), new Vector2(0, 0), inspector.DownDoorX, inspector.DownDoorY));
@@ -440,8 +462,6 @@ public class Player_Active : MonoBehaviour
 
                 }
                 break;
-
-
         }
     }
     IEnumerator RoomChange(Collider2D other, Vector2 RoomPosition, Vector2 playerPosition, int DoorX, int DoorY)

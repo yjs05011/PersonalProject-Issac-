@@ -1801,7 +1801,6 @@ RectTransform:
   - {fileID: 4735822919305676568}
   - {fileID: 5445296891222848691}
   - {fileID: 38665434387902736}
-  - {fileID: 3125398505522511883}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7194,108 +7193,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 10}
   m_EdgeRadius: 0
---- !u!1001 &218354743740815459
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 2576057807123032721}
-    m_Modifications:
-    - target: {fileID: 2907184722625271912, guid: c5492850728a0164e949d9ee2ac87cce, type: 3}
-      propertyPath: m_Pivot.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2907184722625271912, guid: c5492850728a0164e949d9ee2ac87cce, type: 3}
-      propertyPath: m_Pivot.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2907184722625271912, guid: c5492850728a0164e949d9ee2ac87cce, type: 3}
-      propertyPath: m_RootOrder
-      value: 17
-      objectReference: {fileID: 0}
-    - target: {fileID: 2907184722625271912, guid: c5492850728a0164e949d9ee2ac87cce, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2907184722625271912, guid: c5492850728a0164e949d9ee2ac87cce, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2907184722625271912, guid: c5492850728a0164e949d9ee2ac87cce, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2907184722625271912, guid: c5492850728a0164e949d9ee2ac87cce, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2907184722625271912, guid: c5492850728a0164e949d9ee2ac87cce, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 1.33
-      objectReference: {fileID: 0}
-    - target: {fileID: 2907184722625271912, guid: c5492850728a0164e949d9ee2ac87cce, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 1.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2907184722625271912, guid: c5492850728a0164e949d9ee2ac87cce, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2907184722625271912, guid: c5492850728a0164e949d9ee2ac87cce, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2907184722625271912, guid: c5492850728a0164e949d9ee2ac87cce, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2907184722625271912, guid: c5492850728a0164e949d9ee2ac87cce, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2907184722625271912, guid: c5492850728a0164e949d9ee2ac87cce, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2907184722625271912, guid: c5492850728a0164e949d9ee2ac87cce, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2907184722625271912, guid: c5492850728a0164e949d9ee2ac87cce, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2907184722625271912, guid: c5492850728a0164e949d9ee2ac87cce, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 3.56
-      objectReference: {fileID: 0}
-    - target: {fileID: 2907184722625271912, guid: c5492850728a0164e949d9ee2ac87cce, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 2.95
-      objectReference: {fileID: 0}
-    - target: {fileID: 2907184722625271912, guid: c5492850728a0164e949d9ee2ac87cce, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2907184722625271912, guid: c5492850728a0164e949d9ee2ac87cce, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2907184722625271912, guid: c5492850728a0164e949d9ee2ac87cce, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4256790487729800757, guid: c5492850728a0164e949d9ee2ac87cce, type: 3}
-      propertyPath: m_Name
-      value: Hollow
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: c5492850728a0164e949d9ee2ac87cce, type: 3}
---- !u!224 &3125398505522511883 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 2907184722625271912, guid: c5492850728a0164e949d9ee2ac87cce, type: 3}
-  m_PrefabInstance: {fileID: 218354743740815459}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &965670545718720541
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7306,10 +7203,6 @@ PrefabInstance:
     - target: {fileID: 2421205391838578820, guid: ec7150c1fbd3f894c8a76faf94176252, type: 3}
       propertyPath: m_Name
       value: PickUpNomalHeart
-      objectReference: {fileID: 0}
-    - target: {fileID: 2421205391838578820, guid: ec7150c1fbd3f894c8a76faf94176252, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5539363650801860357, guid: ec7150c1fbd3f894c8a76faf94176252, type: 3}
       propertyPath: m_Pivot.x
@@ -7413,10 +7306,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PickUpCoin 2
       objectReference: {fileID: 0}
-    - target: {fileID: 1217735824098503215, guid: c1e8a68165cb8d849bdb9c5fd16252a8, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3794324104977045707, guid: c1e8a68165cb8d849bdb9c5fd16252a8, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -7518,10 +7407,6 @@ PrefabInstance:
     - target: {fileID: 1860739361505471875, guid: 83f2ce9f7c19c944dbe1447fa0b545ee, type: 3}
       propertyPath: m_Name
       value: PickUpBoom 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1860739361505471875, guid: 83f2ce9f7c19c944dbe1447fa0b545ee, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7764030471734018228, guid: 83f2ce9f7c19c944dbe1447fa0b545ee, type: 3}
       propertyPath: m_Pivot.x
@@ -7709,10 +7594,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PickUpSoulHeart
       objectReference: {fileID: 0}
-    - target: {fileID: 3870337381277011642, guid: e94d56751de1a0f48891070532111cc2, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e94d56751de1a0f48891070532111cc2, type: 3}
 --- !u!224 &5445296891222848691 stripped
@@ -7730,10 +7611,6 @@ PrefabInstance:
     - target: {fileID: 537047905998062756, guid: bbc109f54778940439c32f4de5fda3fc, type: 3}
       propertyPath: m_Name
       value: PickUpKey 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 537047905998062756, guid: bbc109f54778940439c32f4de5fda3fc, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4316274601880845972, guid: bbc109f54778940439c32f4de5fda3fc, type: 3}
       propertyPath: m_Pivot.x
@@ -7921,10 +7798,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PickUpBoom 2
       objectReference: {fileID: 0}
-    - target: {fileID: 6071347310601578644, guid: 35741487f825c0c4d911e511b4b0d9e3, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35741487f825c0c4d911e511b4b0d9e3, type: 3}
 --- !u!224 &6679922359111963874 stripped
@@ -7942,10 +7815,6 @@ PrefabInstance:
     - target: {fileID: 5820314537691707752, guid: 0436f8b9b7b14444f995e2a60a38b830, type: 3}
       propertyPath: m_Name
       value: PickUpKey 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5820314537691707752, guid: 0436f8b9b7b14444f995e2a60a38b830, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8626248690290705899, guid: 0436f8b9b7b14444f995e2a60a38b830, type: 3}
       propertyPath: m_Pivot.x
@@ -8048,10 +7917,6 @@ PrefabInstance:
     - target: {fileID: 5141923402845242401, guid: 6ffa426044891a8479659067e377b8dc, type: 3}
       propertyPath: m_Name
       value: PickUpCoin 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5141923402845242401, guid: 6ffa426044891a8479659067e377b8dc, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8010080783320476547, guid: 6ffa426044891a8479659067e377b8dc, type: 3}
       propertyPath: m_Pivot.x

@@ -13,7 +13,6 @@ public class Boom : MonoBehaviour
     // Start is called before the first frame update
     private void OnEnable()
     {
-        Debug.Log("isActive");
         smallboom = GetComponent<SpriteRenderer>();
         bigBoom = transform.GetChild(0).GetComponent<Animator>();
         boomSize = GetComponent<BoxCollider2D>();

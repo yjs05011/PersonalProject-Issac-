@@ -93,7 +93,7 @@ public class MapCreate : MonoBehaviour
                             MapList.Add(newRoom);
                             break;
                         case 4:
-                            newRoom = Instantiate(rooms[Random.Range(3, 8)]);
+                            newRoom = Instantiate(rooms[4]);
                             newRoom.name = "MosterRoom";
                             newRoom.SetActive(false);
                             newRoom.transform.SetParent(transform, false);

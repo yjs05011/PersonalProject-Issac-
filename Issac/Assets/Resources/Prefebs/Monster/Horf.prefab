@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2671741326200901135}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -50,7 +50,7 @@ GameObject:
   - component: {fileID: 5650149937192732376}
   - component: {fileID: 8544782287275385770}
   - component: {fileID: 5930794380104808033}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Head
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -116,7 +116,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 881418289
-  m_SortingLayer: 5
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_Sprite: {fileID: -238549529, guid: ae8a34d813b21b348a28fe55f888f5e7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -223,7 +223,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2710424354420252190}
   - component: {fileID: 2987590730587432311}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: FindEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -260,7 +260,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -280,7 +280,7 @@ GameObject:
   - component: {fileID: 4413116124555072743}
   - component: {fileID: 3805775402386371948}
   - component: {fileID: 8351801195838123554}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -346,7 +346,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -668744105
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 1856668959, guid: 2671f142ababa0d48be9b3e78501ded6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -455,7 +455,7 @@ GameObject:
   - component: {fileID: 1232135695890354392}
   - component: {fileID: 1361624918464028544}
   - component: {fileID: 6928863768572435986}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Horf
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -553,6 +553,7 @@ MonoBehaviour:
   stat: {fileID: 11400000, guid: 745ae9f7b63eab94a9eb0741f8dc279f, type: 2}
   maxHp: 0
   monsterType: 0
+  monsterRenderer: {fileID: 0}
 --- !u!50 &6928863768572435986
 Rigidbody2D:
   serializedVersion: 4

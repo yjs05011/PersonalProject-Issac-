@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6265270834383825015}
   - component: {fileID: 2865308202992019133}
   - component: {fileID: 2629714497623037683}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Clotty
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -138,7 +138,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7131508105990387360}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -179,7 +179,7 @@ GameObject:
   - component: {fileID: 685258719375539831}
   - component: {fileID: 3566552344413264645}
   - component: {fileID: 1559846715602243278}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Body
   m_TagString: Monster
   m_Icon: {fileID: 0}

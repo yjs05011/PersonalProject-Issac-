@@ -16,6 +16,7 @@ public class Clotty : Monster_Active
     // Start is called before the first frame update
     public override void Start()
     {
+
         base.Start();
         EnemyRigd = gameObject.GetComponent<Rigidbody2D>();
         Debug.Log($"statHp :{stat.maxHp}");
@@ -87,7 +88,6 @@ public class Clotty : Monster_Active
     {
         for (int i = 0; i < 4; i++)
         {
-            Debug.Log("isShot");
             rotationBody.SetRotation(0, 0, 90f * i);
 
             tears = Pooling.instance.enemyTears.Pop().GetComponent<MonsterTears>();

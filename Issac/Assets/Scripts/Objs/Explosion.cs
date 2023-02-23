@@ -9,7 +9,6 @@ public class Explosion : MonoBehaviour
     void OnEnable()
     {
         boomCollider = GetComponent<CircleCollider2D>();
-        boomCollider.isTrigger = true;
     }
     // Start is called before the first frame update
     void Start()
@@ -30,11 +29,11 @@ public class Explosion : MonoBehaviour
             {
                 if (other.transform.GetComponent<Player_Active>().isHit == true)
                 {
-                    Debug.Log("isTrue");
+                    // Debug.Log("isTrue");
                 }
                 else
                 {
-                    Debug.Log($"Time");
+                    // Debug.Log($"Time");
                     other.transform.GetComponent<Player_Active>().isHitChk = true;
                     if (GameManager.instance.player_Stat.SoulHeart >= 1)
                     {
@@ -48,7 +47,6 @@ public class Explosion : MonoBehaviour
 
                 }
             }
-            boomCollider.isTrigger = false;
 
 
         }
@@ -62,5 +60,10 @@ public class Explosion : MonoBehaviour
         {
             other.transform.gameObject.SetActive(false);
         }
+        // if (other.transform.tag == "Boss")
+        // {
+        //     other.GetComponent<Monster_Active>().HitThisMonster(40);
+        // }
+        Debug.Log($"the rock Test :{other.tag}");
     }
 }

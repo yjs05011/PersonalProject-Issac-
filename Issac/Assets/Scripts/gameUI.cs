@@ -132,15 +132,9 @@ public class gameUI : MonoBehaviour
 
                 switch (GameManager.instance.map[j, i])
                 {
-                    case 0:
-                        Image makeImg = Instantiate(rooms[0]);
-                        makeImg.transform.SetParent(minimap.transform, false);
-                        imgrect = makeImg.GetComponent<RectTransform>();
-                        imgrect.sizeDelta = new Vector2(miniMapSize, miniMapSize);
-                        imgrect.transform.SetLocalPositionAndRotation(new Vector2(j * miniMapSize, i * miniMapSize), new Quaternion(0, 0, 0, 0));
-                        break;
+
                     case 1:
-                        makeImg = Instantiate(rooms[1]);
+                        Image makeImg = Instantiate(rooms[1]);
                         makeImg.transform.SetParent(minimap.transform, false);
                         imgrect = makeImg.GetComponent<RectTransform>();
                         imgrect.transform.SetLocalPositionAndRotation(new Vector2(j * miniMapSize, i * miniMapSize), new Quaternion(0, 0, 0, 0));
@@ -174,6 +168,8 @@ public class gameUI : MonoBehaviour
                         makeImg.transform.SetParent(minimap.transform, false);
                         imgrect = makeImg.GetComponent<RectTransform>();
                         imgrect.transform.SetLocalPositionAndRotation(new Vector2(j * miniMapSize, i * miniMapSize), new Quaternion(0, 0, 0, 0));
+                        break;
+                    default:
                         break;
 
                 }
@@ -254,7 +250,7 @@ public class gameUI : MonoBehaviour
 
             checkHp = 0;
             remainder = checkSoulHeart % 2;
-            Debug.Log($"soul: {checkSoulHeart}");
+            // Debug.Log($"soul: {checkSoulHeart}");
             while (checkSoulHeart > 0)
             {
 
@@ -274,7 +270,7 @@ public class gameUI : MonoBehaviour
                     hpImage[i].transform.gameObject.SetActive(true);
                     hpImage[i].sprite = hpSprite[3];
 
-                    Debug.Log($"soul Number: {i}");
+                    // Debug.Log($"soul Number: {i}");s
                     if (i == nomal_Soul + checkHp - 1 && remainder == 1f && i + 1 < hpImage.Length)
                     {
                         hpImage[i].sprite = hpSprite[4];

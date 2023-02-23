@@ -9,7 +9,7 @@ public class BossCreater : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        CreateBoss();
     }
 
     // Update is called once per frame
@@ -19,8 +19,9 @@ public class BossCreater : MonoBehaviour
     }
     void CreateBoss()
     {
-        GameObject newBoss = Instantiate(bossList[Random.Range(0, 2)]);
+        GameObject newBoss = Instantiate(bossList[0]);
+        newBoss.transform.SetParent(transform.GetChild(0), false);
         newBoss.SetActive(true);
-        GameManager.instance.monsterCount++;
+
     }
 }
