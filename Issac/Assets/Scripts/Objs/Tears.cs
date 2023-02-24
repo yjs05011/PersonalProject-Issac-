@@ -169,6 +169,7 @@ public class Tears : MonoBehaviour
             if (other.transform.tag == "Boss")
             {
                 StartCoroutine(MonsterHit(other));
+                GameManager.instance.monsterHit = true;
                 other.GetComponent<Monster_Active>().HitThisMonster(damage);
                 StartCoroutine(TearsPop());
             }

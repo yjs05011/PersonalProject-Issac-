@@ -22,6 +22,8 @@ solve: 캐릭터 움직임이 issac과 다른이유는 addforce가 아닌 veloci
         onEnable, start, awake 문제로 제대로 맵이 생성 되지 않았던 문제, 각 스크립트의 발생 순서를 차례대로 정리하여 문제 해결.(2023-02-20)
         눈물오브젝트가 날라가고 맞은 상태에서 0.2초만에 사라지는 문제로 인해 중간에 코루틴이 중단됨을 확인 하였다. 그래서 이를 싱글톤이 된 GameManger에서 호출하여 도중 끝나게 되는 문제를 해결했다.(2023-02-21)
         캐릭터가 놓은 폭탄을 각 방에 오브젝트에 자식으로 만들어 방에 포지션에 고정하여 해결(2023-02-22)
+        보스몬스터 Hollow 를 생성하고 totalLength 가 제대로 저장 되지 않는 이슈 발생, 저장 방식 변경으로 해결(2023-02-24)
+        보스몬스터가 몸통을 상속하지 않고 그상태로 몬스터를 따라가도록 만들었다. (2023-02-24)
         
 
 
@@ -34,3 +36,4 @@ Finish MapLogic, Debug //0.0.5ver// 2023-02-17
 Make SampleMonster, make Obj(boom), Debug //0.0.6ver // 2023-02-20
 Make Monster, Stage, Refactoring Ui, Debug//0.0.7ver // 2023-02-21
 Make boss proto, Debug // 0.0.8ver// 2023-02-22
+Make ProtoType, Debug // 0.1.0ver// 2023-02-24

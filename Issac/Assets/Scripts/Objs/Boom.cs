@@ -68,6 +68,7 @@ public class Boom : MonoBehaviour
         gameObject.SetActive(false);
         boomSize.isTrigger = true;
         boomBlow.transform.gameObject.SetActive(false);
+        gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
         Pooling.instance.booms.Push(gameObject);
     }
     IEnumerator BoomColorChage()

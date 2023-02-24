@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player_Active : MonoBehaviour
 {
@@ -28,6 +29,7 @@ public class Player_Active : MonoBehaviour
     public bool isHit;
     public bool isHitChk;
     public SpriteRenderer playerAct;
+    public Canvas roomChanger;
     public void Awake()
     {
         playerAct = transform.GetChild(1).GetComponent<SpriteRenderer>();
@@ -408,8 +410,25 @@ public class Player_Active : MonoBehaviour
                     DoorController inspector = other.transform.parent.parent.parent.gameObject.GetComponent<DoorController>();
                     roomChangeChk = true;
                     transform.position = new Vector2(-other.transform.position.x - 2, other.transform.position.y);
-                    StartCoroutine(RoomChange(other, new Vector2(-220, -100), new Vector2(0, 0), inspector.LeftDoorX, inspector.LeftDoorY));
+                    if (GameManager.instance.nowMapStat[inspector.LeftDoorX, inspector.LeftDoorY].GetComponent<DoorController>().roomType == 3)
+                    {
+                        GameObject NextRoom = GameManager.instance.nowMapStat[inspector.LeftDoorX, inspector.LeftDoorY];
+                        GameManager.instance.NowMap = NextRoom;
+                        NextRoom.transform.position = new Vector2(0, 0);
+                        NextRoom.SetActive(true);
+
+                        inspector.gameObject.SetActive(false);
+                        roomChangeChk = false;
+                    }
+                    else
+                    {
+                        // roomChanger.gameObject.SetActive(true);
+                        // roomChanger.GetComponent<LoadingUi>().BlackFadeInAndOut();
+
+                        StartCoroutine(RoomChange(other, new Vector2(-216.5f, -100), Vector2.right, 80, inspector.LeftDoorX, inspector.LeftDoorY));
+                    }
                     GameManager.instance.roomChange = true;
+
                 }
 
                 break;
@@ -419,7 +438,23 @@ public class Player_Active : MonoBehaviour
                     DoorController inspector = other.transform.parent.parent.parent.gameObject.GetComponent<DoorController>();
                     roomChangeChk = true;
                     transform.position = new Vector2(-other.transform.position.x + 2, other.transform.position.y);
-                    StartCoroutine(RoomChange(other, new Vector2(-180, -100), new Vector2(0, 0), inspector.RightDoorX, inspector.RightDoorY));
+                    if (GameManager.instance.nowMapStat[inspector.RightDoorX, inspector.RightDoorY].GetComponent<DoorController>().roomType == 3)
+                    {
+                        GameObject NextRoom = GameManager.instance.nowMapStat[inspector.RightDoorX, inspector.RightDoorY];
+                        GameManager.instance.NowMap = NextRoom;
+                        NextRoom.transform.position = new Vector2(0, 0);
+                        NextRoom.SetActive(true);
+                        inspector.gameObject.SetActive(false);
+                        roomChangeChk = false;
+                    }
+                    else
+                    {
+                        // roomChanger.gameObject.SetActive(true);
+                        // roomChanger.GetComponent<LoadingUi>().BlackFadeInAndOut();
+
+                        StartCoroutine(RoomChange(other, new Vector2(-183.5f, -100), Vector2.left, 80, inspector.RightDoorX, inspector.RightDoorY));
+                    }
+
                     GameManager.instance.roomChange = true;
                 }
                 break;
@@ -429,7 +464,22 @@ public class Player_Active : MonoBehaviour
                     DoorController inspector = other.transform.parent.parent.parent.gameObject.GetComponent<DoorController>();
                     roomChangeChk = true;
                     transform.position = new Vector2(other.transform.position.x, 1.5f - other.transform.position.y);
-                    StartCoroutine(RoomChange(other, new Vector2(-200, -90), new Vector2(0, 0), inspector.UpDoorX, inspector.UpDoorY));
+                    if (GameManager.instance.nowMapStat[inspector.UpDoorX, inspector.UpDoorY].GetComponent<DoorController>().roomType == 3)
+                    {
+                        GameObject NextRoom = GameManager.instance.nowMapStat[inspector.UpDoorX, inspector.UpDoorY];
+                        GameManager.instance.NowMap = NextRoom;
+                        NextRoom.transform.position = new Vector2(0, 0);
+                        NextRoom.SetActive(true);
+                        inspector.gameObject.SetActive(false);
+                        roomChangeChk = false;
+
+                    }
+                    else
+                    {
+
+
+                        StartCoroutine(RoomChange(other, new Vector2(-200, -91), Vector2.down, 40, inspector.UpDoorX, inspector.UpDoorY));
+                    }
                     GameManager.instance.roomChange = true;
                 }
                 break;
@@ -439,7 +489,22 @@ public class Player_Active : MonoBehaviour
                     DoorController inspector = other.transform.parent.parent.parent.gameObject.GetComponent<DoorController>();
                     roomChangeChk = true;
                     transform.position = new Vector2(other.transform.position.x, -other.transform.position.y - 1.5f);
-                    StartCoroutine(RoomChange(other, new Vector2(-200, -110), new Vector2(0, 0), inspector.DownDoorX, inspector.DownDoorY));
+                    if (GameManager.instance.nowMapStat[inspector.DownDoorX, inspector.DownDoorY].GetComponent<DoorController>().roomType == 3)
+                    {
+                        GameObject NextRoom = GameManager.instance.nowMapStat[inspector.DownDoorX, inspector.DownDoorY];
+                        GameManager.instance.NowMap = NextRoom;
+                        NextRoom.transform.position = new Vector2(0, 0);
+                        NextRoom.SetActive(true);
+                        inspector.gameObject.SetActive(false);
+                        roomChangeChk = false;
+                    }
+                    else
+                    {
+                        // roomChanger.gameObject.SetActive(true);
+                        // roomChanger.GetComponent<LoadingUi>().BlackFadeInAndOut();
+                        StartCoroutine(RoomChange(other, new Vector2(-200, -109), Vector2.up, 40, inspector.DownDoorX, inspector.DownDoorY));
+                    }
+
                     GameManager.instance.roomChange = true;
                 }
                 break;
@@ -464,26 +529,28 @@ public class Player_Active : MonoBehaviour
                 break;
         }
     }
-    IEnumerator RoomChange(Collider2D other, Vector2 RoomPosition, Vector2 playerPosition, int DoorX, int DoorY)
+    IEnumerator RoomChange(Collider2D other, Vector2 RoomPosition, Vector2 Direction, float speed, int DoorX, int DoorY)
     {
         playerBox.isTrigger = false;
-        Rigidbody2D nowRoom = other.transform.parent.parent.parent.gameObject.GetComponent<Rigidbody2D>();
-        GameObject NextRoom = GameManager.instance.nowMapStat[DoorX,
-        DoorY];
+        GameObject NextRoom = GameManager.instance.nowMapStat[DoorX, DoorY];
         GameManager.instance.NowMap = NextRoom;
-        NextRoom.SetActive(true);
+        DoorController nowRoom = other.transform.parent.parent.parent.gameObject.GetComponent<DoorController>();
+        nowRoom.roomChangeCollider = other;
+        nowRoom.RoomPosition = RoomPosition;
+        nowRoom.direction = Direction;
+        nowRoom.speed = speed;
+        nowRoom.DoorX = DoorX;
+        nowRoom.DoorY = DoorY;
+        nowRoom.RoomChange = true;
         NextRoom.transform.localPosition = RoomPosition;
-        NextRoom.GetRigid().velocity = new Vector2(-30, 0);
-        nowRoom.velocity = new Vector2(-30, 0);
-        if (NextRoom.transform.localPosition.x < -100)
-        {
-            NextRoom.GetRigid().velocity = new Vector2(0, 0);
-            nowRoom.velocity = new Vector2(0, 0);
-            NextRoom.transform.localPosition = new Vector2(-200, -100);
-            nowRoom.gameObject.SetActive(false);
-        }
-
-        yield return new WaitForSeconds(0.4f);
+        NextRoom.SetActive(true);
+        roomChanger.gameObject.SetActive(true);
+        roomChanger.GetComponent<LoadingUi>().BlackFadeInAndOut();
+        yield return new WaitForSeconds(0.15f);
+        // roomChanger.gameObject.SetActive(false);
+        NextRoom.transform.localPosition = new Vector2(-200, -100);
+        nowRoom.gameObject.SetActive(false);
+        nowRoom.RoomChange = false;
         roomChangeChk = false;
         playerBox.isTrigger = false;
     }

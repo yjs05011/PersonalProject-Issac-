@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: efbb748546bffd843b6f5b8f34392f32
+guid: 6f109ce3edd06544796079899efff299
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 0
@@ -70,7 +70,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -129,43 +129,43 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Hp_0
+      name: ui_bosshealthbar_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 623
-        width: 25
-        height: 25
+        x: 20
+        y: 45
+        width: 110
+        height: 8
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 01c76973a07a71d44a67c50d12df2f90
-      internalID: -85401569
+      spriteID: 2cf3c7e0dc2bd7540ad019c2b8db2ed8
+      internalID: -191724668
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hp_2
+      name: ui_bosshealthbar_1
       rect:
         serializedVersion: 2
-        x: 13
-        y: 623
-        width: 12
-        height: 25
+        x: 3
+        y: 7
+        width: 131
+        height: 20
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 1, w: 0}
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6744f881148cda6478b021dc761ec8b5
-      internalID: -881013437
+      spriteID: b7d0899041f47c74daa72f23e6c391c0
+      internalID: 352453876
       vertices: []
       indices: 
       edges: []
@@ -173,7 +173,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: bac4b0f815b15d144a2b8ad02d1e21a9
+    spriteID: f9830013989468e418da672c1802fa11
     internalID: 0
     vertices: []
     indices: 
@@ -181,9 +181,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Hp_1: 534805849
-      Hp_2: -881013437
-      Hp_0: -85401569
+      ui_bosshealthbar_0: -191724668
+      ui_bosshealthbar_1: 352453876
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

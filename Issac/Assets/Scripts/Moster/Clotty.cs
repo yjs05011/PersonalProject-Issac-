@@ -7,8 +7,6 @@ public class Clotty : Monster_Active
 {
     protected Rigidbody2D EnemyRigd;
     protected MonsterTears tears;
-    protected SpriteRenderer Body;
-    protected SpriteRenderer Head;
     protected RectTransform rotationBody;
     private bool isMove;
     private bool die;

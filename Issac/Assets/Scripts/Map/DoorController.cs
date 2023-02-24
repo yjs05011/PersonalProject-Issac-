@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class DoorController : MonoBehaviour
 {
 
@@ -25,6 +24,14 @@ public class DoorController : MonoBehaviour
     public GameObject[] Monster;
 
     public GameObject[,] map;
+    public Collider2D roomChangeCollider;
+    public Vector2 RoomPosition;
+    public Vector2 direction;
+    public float speed;
+    public int DoorX;
+    public int DoorY;
+    public bool RoomChange;
+
 
     // Start is called before the first frame update
     // Door is Left, up, Right, bottom
@@ -54,16 +61,27 @@ public class DoorController : MonoBehaviour
     {
 
 
-        if (GameManager.instance.monsterCount == 0 && GameManager.instance.bossHp == 0)
+        if (GameManager.instance.monsterCount != 0 || GameManager.instance.bossHp != 0)
+        {
+            GameManager.instance.monsterClearChk = false;
+
+        }
+        else
         {
             GameManager.instance.monsterClearChk = true;
             OpenDoor();
         }
-        else
+        if (RoomChange)
         {
 
-        }
+            GameObject NextRoom = GameManager.instance.nowMapStat[DoorX, DoorY];
+            GameManager.instance.NowMap = NextRoom;
 
+
+            NextRoom.transform.Translate(direction * Time.deltaTime * speed);
+            transform.Translate(direction * Time.deltaTime * speed);
+
+        }
         /*  if(GameManager.Instance.ClearChk){
 
           }*/
@@ -208,5 +226,23 @@ public class DoorController : MonoBehaviour
         }
     }
 
+    // IEnumerator RoomChangeRoutine(Collider2D other, Vector2 RoomPosition, Vector2 Direction, float speed, int DoorX, int DoorY)
+    // {
+
+    //     DoorController nowRoom = other.transform.parent.parent.parent.gameObject.GetComponent<DoorController>();
+    //     GameObject NextRoom = GameManager.instance.nowMapStat[DoorX, DoorY];
+
+    //     Vector2 nowRoomPosition = nowRoom.transform.localPosition;
+    //     NextRoom.SetActive(true);
+    //     NextRoom.transform.localPosition = RoomPosition;
+    //     NextRoom.transform.Translate(Direction * Time.deltaTime * speed);
+    //     nowRoom.transform.Translate(Direction * Time.deltaTime * speed);
+
+    //     yield return new WaitForSeconds(0.5f);
+
+
+
+
+    // }
 
 }

@@ -5,6 +5,11 @@ using UnityEngine;
 public class BossCreater : MonoBehaviour
 {
     public GameObject[] bossList;
+    private void OnEnable()
+    {
+
+
+    }
 
     // Start is called before the first frame update
     void Start()

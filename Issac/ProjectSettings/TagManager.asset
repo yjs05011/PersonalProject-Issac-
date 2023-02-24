@@ -15,6 +15,7 @@ TagManager:
   - Item
   - Rock
   - Boss
+  - Clear
   layers:
   - Default
   - TransparentFX

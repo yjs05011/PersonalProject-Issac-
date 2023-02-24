@@ -22,12 +22,11 @@ public class gameUI : MonoBehaviour
     public Sprite[] hpSprite;
     int checkHp;
     float totalHp;
-    int MaxHp;
+    bool checkBossHp;
     bool totalHpChange;
-    int checkNormalHeart;
-    int checkSoulHeart;
-    int nomal_Soul;
     float remainder;
+    public Image BossHpBar;
+    public Image BossHpBarFill;
     // Start is called before the first frame update
     private void OnEnable()
     {
@@ -39,6 +38,7 @@ public class gameUI : MonoBehaviour
         itemImgRect = ItemImg.GetRect();
         TextBoxSize = status[3].GetComponent<RectTransform>();
         TextSize = status[3].GetComponent<TMP_Text>();
+        checkBossHp = false;
 
 
     }
@@ -51,6 +51,7 @@ public class gameUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        BossHpUI();
         if (GameManager.instance.player_Stat.NormalHeart == 0 && GameManager.instance.player_Stat.SoulHeart == 0)
         { hpImage[0].sprite = hpSprite[2]; }
         if (GameManager.instance.player_Stat.NormalHeart + GameManager.instance.player_Stat.SoulHeart < totalHp
@@ -124,6 +125,7 @@ public class gameUI : MonoBehaviour
     }
     void MiniMap()
     {
+
         nowState = GameManager.instance.nowMapStat;
         for (int i = 0; i < GameManager.instance.stageNum + 6; i++)
         {
@@ -180,7 +182,13 @@ public class gameUI : MonoBehaviour
     }
     void HpController()
     {
+        int checkHp;
 
+        int MaxHp;
+
+        int checkNormalHeart;
+        int checkSoulHeart;
+        int nomal_Soul;
         if (GameManager.instance.player_Stat.NormalHeart == 0 && GameManager.instance.player_Stat.SoulHeart == 0)
         { }
         else
@@ -282,5 +290,57 @@ public class gameUI : MonoBehaviour
 
 
     }
+    void BossHpUI()
+    {
+        int bossMaxHp;
 
+        if (GameManager.instance.bossType == 1)
+        {
+            bossMaxHp = 120;
+        }
+        else
+        {
+            bossMaxHp = 200;
+        }
+        if (GameManager.instance.bossCheck)
+        {
+            BossHpBar.gameObject.SetActive(true);
+            BossHpBarFill.fillAmount = GameManager.instance.bossHp / bossMaxHp;
+            if (GameManager.instance.monsterHit)
+            {
+
+                StartCoroutine(BossHpBlink());
+            }
+        }
+        else
+        {
+            BossHpBar.gameObject.SetActive(false);
+        }
+    }
+    IEnumerator BossHpBlink()
+    {
+        GameManager.instance.monsterHit = false;
+        BossHpBarFill.color = new Color(0.8f, 0, 0, 1);
+        yield return new WaitForSeconds(0.03f);
+        BossHpBarFill.color = new Color(0.4f, 0, 0, 1);
+        yield return new WaitForSeconds(0.03f);
+        BossHpBarFill.color = new Color(0f, 0, 0, 1);
+        yield return new WaitForSeconds(0.03f);
+        BossHpBarFill.color = new Color(0.4f, 0, 0, 1);
+        yield return new WaitForSeconds(0.03f);
+        BossHpBarFill.color = new Color(0.8f, 0, 0, 1);
+        yield return new WaitForSeconds(0.03f);
+        BossHpBarFill.color = new Color(0.8f, 0, 0, 1);
+        yield return new WaitForSeconds(0.03f);
+        BossHpBarFill.color = new Color(0.4f, 0, 0, 1);
+        yield return new WaitForSeconds(0.03f);
+        BossHpBarFill.color = new Color(0f, 0, 0, 1);
+        yield return new WaitForSeconds(0.03f);
+        BossHpBarFill.color = new Color(0.4f, 0, 0, 1);
+        yield return new WaitForSeconds(0.03f);
+        BossHpBarFill.color = new Color(0.8f, 0, 0, 1);
+        yield return new WaitForSeconds(0.03f);
+
+
+    }
 }

@@ -23,6 +23,8 @@ public class HollowHead : Monster_Active
     public Vector2 HeadPosition;
     private RectTransform bossRotation;
     private bool routinChk;
+    public bool isDownCheck = false;
+
     // Start is called before the first frame update
 
     void OnEnable()
@@ -39,8 +41,8 @@ public class HollowHead : Monster_Active
         base.Start();
         monsterRenderer = GetComponent<SpriteRenderer>();
         bossRigid = GetComponent<Rigidbody2D>();
-        saveVector = new Vector2(-3f, 3f);
 
+        GameManager.instance.bossCheck = true;
 
     }
 
@@ -48,9 +50,7 @@ public class HollowHead : Monster_Active
     // Update is called once per frame
     void Update()
     {
-        lastSpeed = bossRigid.velocity;
-        bossRigid.velocity = saveVector;
-
+        Direction(gameObject, saveVector);
 
 
         if (!newCreate && transform.parent.GetChild(0).GetSiblingIndex() == 0)
@@ -66,6 +66,7 @@ public class HollowHead : Monster_Active
                 bodyObj.GetComponent<HollowBody>().number = bodyObj.transform.GetSiblingIndex();
                 body.Add(bodyObj.GetComponent<HollowBody>());
             }
+            saveVector = new Vector2(-3f, 3f);
         }
         else if (newCreate && transform.parent.parent.GetChild(1).GetSiblingIndex() == 1)
         {
@@ -88,9 +89,11 @@ public class HollowHead : Monster_Active
                     bodyObj.GetComponent<HollowBody>().number = bodyObj.transform.GetSiblingIndex();
                     body.Add(bodyObj.GetComponent<HollowBody>());
                 }
-                bossRigid.velocity = -saveVector;
+
             }
         }
+        lastSpeed = bossRigid.velocity;
+        bossRigid.velocity = saveVector;
         if (!routinChk)
         {
             if (!copyCheck)
@@ -131,13 +134,14 @@ public class HollowHead : Monster_Active
                 if (dieBodyCount == transform.parent.parent.GetChild(0).childCount - 1)
                 {
                     gameObject.SetActive(false);
-                    if (transform.parent.childCount == 2)
+                    if (transform.parent.parent.GetChild(1).childCount != 0)
                     {
                         Debug.Log(transform.parent.childCount);
-                        if (!transform.parent.GetChild(0).GetChild(0).gameObject.activeSelf && !transform.parent.GetChild(1).GetChild(0).gameObject.activeSelf)
+                        if (!transform.parent.parent.GetChild(0).GetChild(0).gameObject.activeSelf && !transform.parent.parent.GetChild(1).GetChild(0).gameObject.activeSelf)
                         {
 
                             GameManager.instance.bossHp = 0;
+                            GameManager.instance.bossCheck = false;
                         }
                         else
                         {
@@ -150,6 +154,7 @@ public class HollowHead : Monster_Active
                     else
                     {
                         gameObject.SetActive(false);
+                        GameManager.instance.bossCheck = false;
                     }
 
                 }
@@ -167,13 +172,15 @@ public class HollowHead : Monster_Active
                 if (dieBodyCount == transform.parent.parent.GetChild(1).childCount - 1)
                 {
                     gameObject.SetActive(false);
-                    if (transform.parent.childCount == 2)
+                    if (transform.parent.parent.GetChild(1).childCount != 0)
                     {
-                        Debug.Log(transform.parent.childCount);
-                        if (!transform.parent.GetChild(0).GetChild(0).gameObject.activeSelf && !transform.parent.GetChild(1).GetChild(0).gameObject.activeSelf)
+                        Debug.Log(transform.parent.parent.GetChild(0).GetChild(0).gameObject.activeSelf);
+                        Debug.Log(transform.parent.parent.GetChild(1).GetChild(0).gameObject.activeSelf);
+                        if (!transform.parent.parent.GetChild(0).GetChild(0).gameObject.activeSelf && !transform.parent.parent.GetChild(1).GetChild(0).gameObject.activeSelf)
                         {
 
                             GameManager.instance.bossHp = 0;
+                            GameManager.instance.bossCheck = false;
                         }
                         else
                         {
@@ -182,10 +189,6 @@ public class HollowHead : Monster_Active
 
 
 
-                    }
-                    else
-                    {
-                        gameObject.SetActive(false);
                     }
 
                 }
@@ -202,7 +205,7 @@ public class HollowHead : Monster_Active
         bodyDieCount = 0;
         if (!copyCheck)
         {
-            for (int i = 1; i < transform.parent.GetChild(0).childCount; i++)
+            for (int i = 1; i < transform.parent.childCount; i++)
             {
                 if (!transform.parent.GetChild(i).GetComponent<HollowBody>().die)
                 {
@@ -216,7 +219,7 @@ public class HollowHead : Monster_Active
         }
         else
         {
-            for (int i = 1; i < transform.parent.GetChild(0).childCount; i++)
+            for (int i = 1; i < transform.parent.childCount; i++)
             {
                 if (!transform.parent.GetChild(i).GetComponent<HollowBody>().die)
                 {
@@ -235,7 +238,7 @@ public class HollowHead : Monster_Active
 
         if (!separate)
         {
-            Debug.Log($"cutting body{cuttingBodyNum}, total {totalLength}");
+
             for (int i = cuttingBodyNum; i < totalLength + 1; i++)
             {
                 transform.parent.parent.GetChild(0).GetChild(i).gameObject.SetActive(false);
@@ -249,11 +252,11 @@ public class HollowHead : Monster_Active
             NewBoss.GetComponent<HollowHead>().separate = separate;
             NewBoss.GetComponent<HollowHead>().bodyDieCountChk = true;
             NewBoss.GetComponent<HollowHead>().copyCheck = true;
+            NewBoss.GetComponent<HollowHead>().saveVector = -saveVector;
 
 
 
         }
-        Cutting();
 
     }
 
@@ -305,6 +308,7 @@ public class HollowHead : Monster_Active
         {
 
             case "Boom":
+                other.transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
                 break;
 
             default:
@@ -312,35 +316,53 @@ public class HollowHead : Monster_Active
                 var dir = Vector2.Reflect(lastSpeed.normalized, other.contacts[0].normal);
                 saveVector = dir * Mathf.Max(speed, 0f);
                 bossRigid.velocity = saveVector;
-                Direction(gameObject, saveVector);
+                if (Direction(gameObject, saveVector).eulerAngles.z >= 180f)
+                {
+                    isDownCheck = true;
+                    gameObject.GetComponent<Animator>().SetBool("isDown", true);
+                }
+                else
+                {
 
+                    isDownCheck = false;
+                    gameObject.GetComponent<Animator>().SetBool("isDown", false);
+                }
                 break;
+
 
 
         }
 
     }
-    public void Direction(GameObject Player, Vector2 vector)
+    public Quaternion Direction(GameObject Player, Vector2 vector)
     {
         Vector2 direction = new Vector2(Player.transform.position.x, Player.transform.position.y) - vector;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         Quaternion angleAxis = Quaternion.AngleAxis(angle - 180f, Vector3.forward);
         Quaternion rotation = Quaternion.Slerp(Player.transform.rotation, angleAxis, 1);
-        Player.transform.rotation = rotation;
+        return angleAxis;
     }
     IEnumerator Move(int index)
     {
         routinChk = true;
         HeadPosition = bossRotation.position;
         Debug.Log(transform.parent.name);
+
         for (int i = 1; i < totalLength + 1; i++)
         {
-            if (cutting)
+
+            if (transform.parent.parent.GetChild(index).GetChild(i).gameObject.activeSelf)
+            {
+                transform.parent.parent.GetChild(index).GetChild(i).GetComponent<RectTransform>().position = bossRotation.position;
+
+
+                yield return new WaitForSeconds(0.15f);
+            }
+            else
             {
                 yield return null;
             }
-            transform.parent.parent.GetChild(index).GetChild(i).GetComponent<RectTransform>().position = bossRotation.position;
-            yield return new WaitForSeconds(0.1f);
+
         }
         routinChk = false;
     }

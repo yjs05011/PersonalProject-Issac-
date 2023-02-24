@@ -16,11 +16,14 @@ public class HollowBody : Monster_Active
         maxHp = stat.maxHp;
         hp = maxHp;
         GameManager.instance.bossHp += 20;
+        die = false;
+
     }
 
     // Update is called once per frame
     void Update()
     {
+
         if (hp > maxHp)
         {
             if (maxHp <= 0)
@@ -48,6 +51,14 @@ public class HollowBody : Monster_Active
 
 
 
+        }
+        if (transform.parent.GetChild(0).GetComponent<HollowHead>().isDownCheck)
+        {
+            gameObject.GetComponent<Animator>().SetBool("isDown", true);
+        }
+        else
+        {
+            gameObject.GetComponent<Animator>().SetBool("isDown", false);
         }
 
 

@@ -18,8 +18,9 @@ public class GameManager : MonoBehaviour
     public bool roomChange;
     public int monsterCount;
     public float bossHp = 0;
-    public int bossType = 0;
-
+    public int bossType = 1;
+    public bool bossCheck = false;
+    public bool monsterHit = false;
 
     void Awake()
     {

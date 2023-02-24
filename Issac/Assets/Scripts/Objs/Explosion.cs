@@ -60,10 +60,10 @@ public class Explosion : MonoBehaviour
         {
             other.transform.gameObject.SetActive(false);
         }
-        // if (other.transform.tag == "Boss")
-        // {
-        //     other.GetComponent<Monster_Active>().HitThisMonster(40);
-        // }
+        if (other.transform.tag == "Boss")
+        {
+            other.GetComponent<Monster_Active>().HitThisMonster(40);
+        }
         Debug.Log($"the rock Test :{other.tag}");
     }
 }
