@@ -17,7 +17,7 @@ public class LoadingUi : MonoBehaviour
         fadinFinishCheck = false;
         backGroundImgDefaultColor = new Color(0f, 0f, 0f, 0f);
         backGroundImgFedeInColor = new Color(0f, 0f, 0f, 0.9f);
-        backGroundImg.color = new Color(0f, 0f, 0f, 0f);
+
 
     }
 
@@ -29,6 +29,8 @@ public class LoadingUi : MonoBehaviour
 
     public void BlackFadeInAndOut()
     {
+
+        backGroundImg.color = new Color(0f, 0f, 0f, 0f);
         if (fadinCoroutine != null)
         {
             StopCoroutine(fadinCoroutine);
@@ -77,5 +79,7 @@ public class LoadingUi : MonoBehaviour
             yield return new WaitForSeconds(delay);
             Debug.Log("routineCheck");
         }
+        gameObject.SetActive(false);
+        backGroundImg.color = new Color(0f, 0f, 0f, 0.9f);
     }
 }

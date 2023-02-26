@@ -30,6 +30,7 @@ public class Player_Active : MonoBehaviour
     public bool isHitChk;
     public SpriteRenderer playerAct;
     public Canvas roomChanger;
+    public bool isSceneChange;
     public void Awake()
     {
         playerAct = transform.GetChild(1).GetComponent<SpriteRenderer>();
@@ -60,31 +61,39 @@ public class Player_Active : MonoBehaviour
 
     void Update()
     {
-
-        if (!isDie)
+        if (!GameManager.instance.MainUiActive)
         {
-            move();
-            if (transform.GetChild(0).gameObject.activeSelf)
+            if (!isSceneChange)
             {
+                if (!isDie)
+                {
+                    move();
+                    if (transform.GetChild(0).gameObject.activeSelf)
+                    {
 
-            }
-            else
-            {
-                Shooting();
-            }
-            DropBoom();
-            if (isHitChk)
-            {
-                isHitChk = false;
-                StartCoroutine("HitDelay");
+                    }
+                    else
+                    {
+                        Shooting();
+                    }
+                    DropBoom();
+                    if (isHitChk)
+                    {
+                        isHitChk = false;
+                        StartCoroutine("HitDelay");
+                    }
+
+                }
+
+                if (GameManager.instance.player_Stat.NormalHeart < 0 && GameManager.instance.player_Stat.SoulHeart < 0)
+                {
+                    GameManager.instance.player_Stat.Die = true;
+                    isDie = true;
+                }
+
             }
         }
 
-        if (GameManager.instance.player_Stat.NormalHeart < 0 && GameManager.instance.player_Stat.SoulHeart < 0)
-        {
-            GameManager.instance.player_Stat.Die = true;
-            isDie = true;
-        }
     }
 
     public void DropBoom()
@@ -553,6 +562,7 @@ public class Player_Active : MonoBehaviour
         nowRoom.RoomChange = false;
         roomChangeChk = false;
         playerBox.isTrigger = false;
+        GameManager.instance.roomChange = false;
     }
     IEnumerator DropBoomDelay()
     {

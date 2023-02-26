@@ -27,6 +27,9 @@ public class gameUI : MonoBehaviour
     float remainder;
     public Image BossHpBar;
     public Image BossHpBarFill;
+    public GameObject nowMap;
+    private Image[,] miniMapImage;
+    public Image nullImage;
     // Start is called before the first frame update
     private void OnEnable()
     {
@@ -46,6 +49,9 @@ public class gameUI : MonoBehaviour
     {
         totalHp = GameManager.instance.player_Stat.NormalHeart + GameManager.instance.player_Stat.SoulHeart;
         HpController();
+        miniMapImage = new Image[GameManager.instance.stageNum + 6, GameManager.instance.stageNum + 6];
+        MiniMap();
+
     }
 
     // Update is called once per frame
@@ -93,8 +99,8 @@ public class gameUI : MonoBehaviour
         }
         if (GameManager.instance.roomChange)
         {
-            MiniMap();
-            GameManager.instance.roomChange = false;
+            MiniMapChager();
+
         }
 
 
@@ -126,52 +132,83 @@ public class gameUI : MonoBehaviour
     void MiniMap()
     {
 
-        nowState = GameManager.instance.nowMapStat;
+
+
         for (int i = 0; i < GameManager.instance.stageNum + 6; i++)
         {
             for (int j = 0; j < GameManager.instance.stageNum + 6; j++)
             {
+                // if (nowState[j, i] == nowMap)
+                // {
+                //     if(nowState[j,i+1].GetComponent<DoorController>().roomType == 3 ){
 
+                //     } 
+                // }
                 switch (GameManager.instance.map[j, i])
                 {
 
                     case 1:
                         Image makeImg = Instantiate(rooms[1]);
                         makeImg.transform.SetParent(minimap.transform, false);
+                        makeImg.gameObject.SetActive(true);
                         imgrect = makeImg.GetComponent<RectTransform>();
                         imgrect.transform.SetLocalPositionAndRotation(new Vector2(j * miniMapSize, i * miniMapSize), new Quaternion(0, 0, 0, 0));
+                        miniMapImage[j, i] = makeImg;
+                        Debug.Log($"{j},{i}");
+                        Debug.Log($"start");
                         break;
                     case 2:
                         makeImg = Instantiate(rooms[2]);
                         makeImg.transform.SetParent(minimap.transform, false);
                         imgrect = makeImg.GetComponent<RectTransform>();
+                        makeImg.gameObject.SetActive(false);
                         imgrect.transform.SetLocalPositionAndRotation(new Vector2(j * miniMapSize, i * miniMapSize), new Quaternion(0, 0, 0, 0));
+                        miniMapImage[j, i] = makeImg;
+                        Debug.Log($"{j},{i}");
+                        Debug.Log($"item");
                         break;
                     case 3:
                         makeImg = Instantiate(rooms[3]);
                         makeImg.transform.SetParent(minimap.transform, false);
                         imgrect = makeImg.GetComponent<RectTransform>();
+                        makeImg.gameObject.SetActive(false);
                         imgrect.transform.SetLocalPositionAndRotation(new Vector2(j * miniMapSize, i * miniMapSize), new Quaternion(0, 0, 0, 0));
+                        miniMapImage[j, i] = makeImg;
+                        Debug.Log($"{j},{i}");
+                        Debug.Log($"boss");
                         break;
                     case 4:
                         makeImg = Instantiate(rooms[4]);
                         makeImg.transform.SetParent(minimap.transform, false);
                         imgrect = makeImg.GetComponent<RectTransform>();
+                        makeImg.gameObject.SetActive(false);
+                        miniMapImage[j, i] = makeImg;
                         imgrect.transform.SetLocalPositionAndRotation(new Vector2(j * miniMapSize, i * miniMapSize), new Quaternion(0, 0, 0, 0));
+                        Debug.Log($"{j},{i}");
+                        Debug.Log($"monster");
                         break;
                     case 5:
                         makeImg = Instantiate(rooms[5]);
                         makeImg.transform.SetParent(minimap.transform, false);
                         imgrect = makeImg.GetComponent<RectTransform>();
+                        makeImg.gameObject.SetActive(false);
+                        miniMapImage[j, i] = makeImg;
                         imgrect.transform.SetLocalPositionAndRotation(new Vector2(j * miniMapSize, i * miniMapSize), new Quaternion(0, 0, 0, 0));
+                        Debug.Log($"{j},{i}");
+                        Debug.Log($"moon");
                         break;
                     case 6:
                         makeImg = Instantiate(rooms[6]);
                         makeImg.transform.SetParent(minimap.transform, false);
                         imgrect = makeImg.GetComponent<RectTransform>();
+                        makeImg.gameObject.SetActive(false);
+                        miniMapImage[j, i] = makeImg;
                         imgrect.transform.SetLocalPositionAndRotation(new Vector2(j * miniMapSize, i * miniMapSize), new Quaternion(0, 0, 0, 0));
+                        Debug.Log($"{j},{i}");
+                        Debug.Log($"shop");
                         break;
                     default:
+                        miniMapImage[j, i] = nullImage;
                         break;
 
                 }
@@ -315,6 +352,44 @@ public class gameUI : MonoBehaviour
         else
         {
             BossHpBar.gameObject.SetActive(false);
+        }
+    }
+
+    void MiniMapChager()
+    {
+        nowState = GameManager.instance.nowMapStat;
+
+        nowMap = GameManager.instance.NowMap;
+
+        for (int i = 0; i < GameManager.instance.stageNum + 6; i++)
+        {
+            for (int j = 0; j < GameManager.instance.stageNum + 6; j++)
+            {
+                if (nowState[j, i] == nowMap)
+                {
+
+                    if (i - 1 >= 0 && i + 1 < GameManager.instance.stageNum + 6 && j - 1 >= 0 && j + 1 < GameManager.instance.stageNum + 6)
+                    {
+                        Debug.Log("??");
+                        if (miniMapImage[j, i + 1] != nullImage)
+                        {
+                            miniMapImage[j, i + 1].gameObject.SetActive(true);
+                        }
+                        if (miniMapImage[j + 1, i] != nullImage)
+                        {
+                            miniMapImage[j + 1, i].gameObject.SetActive(true);
+                        }
+                        if (miniMapImage[j - 1, i] != nullImage)
+                        {
+                            miniMapImage[j - 1, i].gameObject.SetActive(true);
+                        }
+                        if (miniMapImage[j, i - 1] != nullImage)
+                        {
+                            miniMapImage[j, i - 1].gameObject.SetActive(true);
+                        }
+                    }
+                }
+            }
         }
     }
     IEnumerator BossHpBlink()
