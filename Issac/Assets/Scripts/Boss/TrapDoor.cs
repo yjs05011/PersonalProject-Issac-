@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 public class TrapDoor : MonoBehaviour
 {
     bool isEnter;
@@ -63,7 +62,7 @@ public class TrapDoor : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         GameManager.instance.stageNum++;
         isEnter = false;
-        SceneManager.LoadScene($"Stage{GameManager.instance.stageNum}");
+        GFunc.SceneChanger($"Stage{GameManager.instance.stageNum}");
 
     }
 }

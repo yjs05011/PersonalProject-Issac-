@@ -77,7 +77,6 @@ public class LoadingUi : MonoBehaviour
             backGroundImg.color =
              new Color(backGroundImgDefaultColor.r, backGroundImgDefaultColor.g, backGroundImgDefaultColor.b, alpha);
             yield return new WaitForSeconds(delay);
-            Debug.Log("routineCheck");
         }
         gameObject.SetActive(false);
         backGroundImg.color = new Color(0f, 0f, 0f, 0.9f);

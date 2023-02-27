@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class Player_Active : MonoBehaviour
 {
 
+    public RuntimeAnimatorController[] character;
     public Sprite[] PlayerActSprite;
     public Charator[] stat;
     // Start is called before the first frame update
@@ -31,6 +32,7 @@ public class Player_Active : MonoBehaviour
     public SpriteRenderer playerAct;
     public Canvas roomChanger;
     public bool isSceneChange;
+    public float startTime;
     public void Awake()
     {
         playerAct = transform.GetChild(1).GetComponent<SpriteRenderer>();
@@ -41,21 +43,10 @@ public class Player_Active : MonoBehaviour
         aniHead = transform.GetChild(3).GetComponent<Animator>();
         aniBody = transform.GetChild(4).GetComponent<Animator>();
         playerPoint = GetComponent<PointEffector2D>();
+        aniHead.runtimeAnimatorController = character[GameManager.instance.player_Stat.ID - 1];
     }
     public void Start()
     {
-        GameManager.instance.player_Stat.ID = stat[0].id;
-        GameManager.instance.player_Stat.Name = stat[0].name;
-        GameManager.instance.player_Stat.MaxHp = stat[0].maxHp;
-        GameManager.instance.player_Stat.NormalHeart = stat[0].normalHeart;
-        GameManager.instance.player_Stat.SoulHeart = stat[0].soulHeart;
-        GameManager.instance.player_Stat.Str = stat[0].str;
-        GameManager.instance.player_Stat.ShotSpeed = stat[0].shotSpeed;
-        GameManager.instance.player_Stat.RateSpeed = stat[0].rateSpeed;
-        GameManager.instance.player_Stat.Speed = stat[0].speed;
-        GameManager.instance.player_Stat.Luck = stat[0].luck;
-        GameManager.instance.player_Stat.Range = stat[0].range;
-        GameManager.instance.player_Stat.Die = stat[0].die;
 
     }
 
@@ -82,7 +73,7 @@ public class Player_Active : MonoBehaviour
                         isHitChk = false;
                         StartCoroutine("HitDelay");
                     }
-
+                    Restart();
                 }
 
                 if (GameManager.instance.player_Stat.NormalHeart < 0 && GameManager.instance.player_Stat.SoulHeart < 0)
@@ -100,16 +91,41 @@ public class Player_Active : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.E))
         {
-            if (!isBoom)
+            if (GameManager.instance.player_Stat.BoomCount > 0)
             {
-                isBoom = true;
-                StartCoroutine(DropBoomDelay());
+                if (!isBoom)
+                {
+                    isBoom = true;
+                    StartCoroutine(DropBoomDelay());
 
+                }
+                if (GameManager.instance.roomChange)
+                {
+                    isBoom = false;
+                }
             }
+
 
         }
     }
+    public void Restart()
+    {
+        if (Input.GetKey(KeyCode.R))
+        {
+            float restartTime = Time.time - startTime;
+            if (restartTime >= 3f)
+            {
 
+                ResetTime();
+                GFunc.PlayerStatReset(GameManager.instance.player_Stat.ID);
+                GFunc.SceneChanger("Stage1");
+            }
+        }
+    }
+    public void ResetTime()
+    {
+        startTime = Time.time;
+    }
     public void move()
     {
 
@@ -318,22 +334,6 @@ public class Player_Active : MonoBehaviour
 
 
     }
-    IEnumerator Moving(Vector2 vector)
-    {
-        playerRigid.velocity = vector;
-        yield return new WaitForSeconds(0.1f);
-        playerRigid.velocity = Vector2.zero;
-    }
-
-    IEnumerator Attacking(Tears tears)
-    {
-        yield return null;
-        Attack();
-        // Debug.Log("Shoting");
-        yield return new WaitForSeconds(0.5f - (GameManager.instance.player_Stat.RateSpeed / 10f));
-        isAttack = false;
-
-    }
     private void OnTriggerStay2D(Collider2D other)
     {
         if (other.transform.tag == "Monster")
@@ -538,6 +538,22 @@ public class Player_Active : MonoBehaviour
                 break;
         }
     }
+    IEnumerator Moving(Vector2 vector)
+    {
+        playerRigid.velocity = vector;
+        yield return new WaitForSeconds(0.1f);
+        playerRigid.velocity = Vector2.zero;
+    }
+
+    IEnumerator Attacking(Tears tears)
+    {
+        yield return null;
+        Attack();
+        // Debug.Log("Shoting");
+        yield return new WaitForSeconds(0.5f - (GameManager.instance.player_Stat.RateSpeed / 10f));
+        isAttack = false;
+
+    }
     IEnumerator RoomChange(Collider2D other, Vector2 RoomPosition, Vector2 Direction, float speed, int DoorX, int DoorY)
     {
         playerBox.isTrigger = false;
@@ -566,12 +582,14 @@ public class Player_Active : MonoBehaviour
     }
     IEnumerator DropBoomDelay()
     {
+        GameManager.instance.player_Stat.BoomCount--;
         GameObject boom = Pooling.instance.booms.Pop();
         boom.transform.SetParent(GameManager.instance.NowMap.transform, false);
         boom.SetActive(true);
         boom.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z);
         yield return new WaitForSeconds(2.5f);
         isBoom = false;
+
     }
     IEnumerator HitDelay()
     {

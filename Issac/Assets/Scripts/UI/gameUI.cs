@@ -154,8 +154,7 @@ public class gameUI : MonoBehaviour
                         imgrect = makeImg.GetComponent<RectTransform>();
                         imgrect.transform.SetLocalPositionAndRotation(new Vector2(j * miniMapSize, i * miniMapSize), new Quaternion(0, 0, 0, 0));
                         miniMapImage[j, i] = makeImg;
-                        Debug.Log($"{j},{i}");
-                        Debug.Log($"start");
+
                         break;
                     case 2:
                         makeImg = Instantiate(rooms[2]);
@@ -164,8 +163,7 @@ public class gameUI : MonoBehaviour
                         makeImg.gameObject.SetActive(false);
                         imgrect.transform.SetLocalPositionAndRotation(new Vector2(j * miniMapSize, i * miniMapSize), new Quaternion(0, 0, 0, 0));
                         miniMapImage[j, i] = makeImg;
-                        Debug.Log($"{j},{i}");
-                        Debug.Log($"item");
+
                         break;
                     case 3:
                         makeImg = Instantiate(rooms[3]);
@@ -174,8 +172,7 @@ public class gameUI : MonoBehaviour
                         makeImg.gameObject.SetActive(false);
                         imgrect.transform.SetLocalPositionAndRotation(new Vector2(j * miniMapSize, i * miniMapSize), new Quaternion(0, 0, 0, 0));
                         miniMapImage[j, i] = makeImg;
-                        Debug.Log($"{j},{i}");
-                        Debug.Log($"boss");
+
                         break;
                     case 4:
                         makeImg = Instantiate(rooms[4]);
@@ -184,8 +181,7 @@ public class gameUI : MonoBehaviour
                         makeImg.gameObject.SetActive(false);
                         miniMapImage[j, i] = makeImg;
                         imgrect.transform.SetLocalPositionAndRotation(new Vector2(j * miniMapSize, i * miniMapSize), new Quaternion(0, 0, 0, 0));
-                        Debug.Log($"{j},{i}");
-                        Debug.Log($"monster");
+
                         break;
                     case 5:
                         makeImg = Instantiate(rooms[5]);
@@ -194,8 +190,7 @@ public class gameUI : MonoBehaviour
                         makeImg.gameObject.SetActive(false);
                         miniMapImage[j, i] = makeImg;
                         imgrect.transform.SetLocalPositionAndRotation(new Vector2(j * miniMapSize, i * miniMapSize), new Quaternion(0, 0, 0, 0));
-                        Debug.Log($"{j},{i}");
-                        Debug.Log($"moon");
+
                         break;
                     case 6:
                         makeImg = Instantiate(rooms[6]);
@@ -204,8 +199,7 @@ public class gameUI : MonoBehaviour
                         makeImg.gameObject.SetActive(false);
                         miniMapImage[j, i] = makeImg;
                         imgrect.transform.SetLocalPositionAndRotation(new Vector2(j * miniMapSize, i * miniMapSize), new Quaternion(0, 0, 0, 0));
-                        Debug.Log($"{j},{i}");
-                        Debug.Log($"shop");
+
                         break;
                     default:
                         miniMapImage[j, i] = nullImage;
@@ -370,7 +364,6 @@ public class gameUI : MonoBehaviour
 
                     if (i - 1 >= 0 && i + 1 < GameManager.instance.stageNum + 6 && j - 1 >= 0 && j + 1 < GameManager.instance.stageNum + 6)
                     {
-                        Debug.Log("??");
                         if (miniMapImage[j, i + 1] != nullImage)
                         {
                             miniMapImage[j, i + 1].gameObject.SetActive(true);

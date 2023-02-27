@@ -36,6 +36,8 @@ public class MapCreate : MonoBehaviour
 
         CreateMap();
         GameManager.instance.roomChange = true;
+        StartCoroutine(DelayTime());
+
 
     }
 
@@ -128,6 +130,12 @@ public class MapCreate : MonoBehaviour
         }
 
         GameManager.instance.nowMapStat = nowMapStatus;
+
+    }
+    IEnumerator DelayTime()
+    {
+        yield return new WaitForSeconds(0.1f);
+        GameManager.instance.roomChange = false;
 
     }
 }

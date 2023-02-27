@@ -391,10 +391,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player_Stat: {fileID: 1878645571}
+  itemgetChk: 0
+  itemName: 
   totalItem: 
   player:
-  - {fileID: 11400000, guid: b59b6b50d92555344bd361bef41f6273, type: 2}
   - {fileID: 11400000, guid: 63735e7eefdc46a4aa9abb3b8b46a601, type: 2}
+  - {fileID: 11400000, guid: b59b6b50d92555344bd361bef41f6273, type: 2}
+  monsterClearChk: 0
+  stageNum: 1
+  NowMap: {fileID: 0}
+  roomChange: 0
+  monsterCount: 0
+  bossHp: 0
+  bossType: 1
+  bossCheck: 0
+  monsterHit: 0
+  MainUiActive: 0
+  choiceCharator: 1
+  sfx: 5
+  music: 5
 --- !u!114 &1878645571
 MonoBehaviour:
   m_ObjectHideFlags: 0

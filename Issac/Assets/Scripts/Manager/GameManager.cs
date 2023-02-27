@@ -22,6 +22,9 @@ public class GameManager : MonoBehaviour
     public bool bossCheck = false;
     public bool monsterHit = false;
     public bool MainUiActive = false;
+    public int choiceCharator = 1;
+    public int sfx = 5;
+    public int music = 5;
 
     void Awake()
     {
