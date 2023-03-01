@@ -9,6 +9,7 @@ public class Explosion : MonoBehaviour
     void OnEnable()
     {
         boomCollider = GetComponent<CircleCollider2D>();
+
     }
     // Start is called before the first frame update
     void Start()
@@ -43,7 +44,7 @@ public class Explosion : MonoBehaviour
                     {
                         GameManager.instance.player_Stat.NormalHeart -= 1;
                     }
-                    GameManager.instance.StartCoroutineDeligate(GFunc.PlayerHit(other, 1));
+                    GameManager.instance.StartCoroutineDeligate(GFunc.PlayerHit(other, 1, "", other.transform.GetComponent<Player_Active>().clip[0]));
 
                 }
             }

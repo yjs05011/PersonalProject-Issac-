@@ -272,7 +272,7 @@ public class MapMaker : MonoBehaviour
         SpecialRoom = new Stack<int>();
         SpecialRoom.Push(2);
         SpecialRoom.Push(5);
-        SpecialRoom.Push(6);
+        SpecialRoom.Push(4);
         EndRoomX = new List<int>();
         EndRoomY = new List<int>();
         dupleMap = new bool[MapY, MapX];

@@ -95,7 +95,7 @@ public class MapCreate : MonoBehaviour
                             MapList.Add(newRoom);
                             break;
                         case 4:
-                            newRoom = Instantiate(rooms[4]);
+                            newRoom = Instantiate(rooms[Random.Range(3, 8)]);
                             newRoom.name = "MosterRoom";
                             newRoom.SetActive(false);
                             newRoom.transform.SetParent(transform, false);
@@ -110,15 +110,6 @@ public class MapCreate : MonoBehaviour
                             newRoom.SetActive(false);
                             newRoom.transform.SetParent(transform, false);
                             newRoom.GetComponent<DoorController>().roomType = 5;
-                            newRoom.GetComponent<DoorController>().roomNum = makeRoomNumber;
-                            MapList.Add(newRoom);
-                            break;
-                        case 6:
-                            newRoom = Instantiate(rooms[9]);
-                            newRoom.name = "Shop";
-                            newRoom.SetActive(false);
-                            newRoom.transform.SetParent(transform, false);
-                            newRoom.GetComponent<DoorController>().roomType = 6;
                             newRoom.GetComponent<DoorController>().roomNum = makeRoomNumber;
                             MapList.Add(newRoom);
                             break;

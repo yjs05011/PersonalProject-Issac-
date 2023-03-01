@@ -37,6 +37,7 @@ public class UiController : MonoBehaviour
                 if (transform.GetChild(0).gameObject.activeSelf)
                 {
                     transform.GetChild(0).gameObject.SetActive(false);
+                    transform.GetChild(0).GetChild(0).gameObject.SetActive(false);
                     Time.timeScale = 1f;
                     GameManager.instance.MainUiActive = false;
                     ToggleCheck();
@@ -46,6 +47,7 @@ public class UiController : MonoBehaviour
                 else
                 {
                     transform.GetChild(0).gameObject.SetActive(true);
+                    transform.GetChild(0).GetChild(0).gameObject.SetActive(true);
                     Time.timeScale = 0f;
                     GameManager.instance.MainUiActive = true;
                     ToggleCheck();
@@ -148,7 +150,7 @@ public class UiController : MonoBehaviour
     public void Restart()
     {
         ToggleCounter = 0;
-        GFunc.PlayerStatReset(GameManager.instance.player_Stat.ID);
+        GFunc.PlayerStatReset(GameManager.instance.player_Stat.ID - 1);
         Time.timeScale = 1f;
         GameManager.instance.MainUiActive = false;
         GFunc.SceneChanger("Stage1");

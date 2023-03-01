@@ -30,6 +30,7 @@ public class gameUI : MonoBehaviour
     public GameObject nowMap;
     private Image[,] miniMapImage;
     public Image nullImage;
+    public GameObject editMode;
     // Start is called before the first frame update
     private void OnEnable()
     {
@@ -103,6 +104,54 @@ public class gameUI : MonoBehaviour
 
         }
 
+
+        if (editMode.gameObject.activeSelf)
+        {
+            if (editMode.GetComponent<TMP_InputField>().text == "1")
+            {
+                GameManager.instance.player_Stat.Str += 5;
+                editMode.GetComponent<TMP_InputField>().text = "";
+            }
+            else if (editMode.GetComponent<TMP_InputField>().text == "2")
+            {
+                GameManager.instance.player_Stat.RateSpeed += 3;
+                editMode.GetComponent<TMP_InputField>().text = "";
+            }
+            else if (editMode.GetComponent<TMP_InputField>().text == "Boom")
+            {
+                GameManager.instance.player_Stat.BoomCount += 5;
+                editMode.GetComponent<TMP_InputField>().text = "";
+            }
+            else if (editMode.GetComponent<TMP_InputField>().text == "Key")
+            {
+                GameManager.instance.player_Stat.KeyCount += 5;
+                editMode.GetComponent<TMP_InputField>().text = "";
+            }
+            else if (editMode.GetComponent<TMP_InputField>().text == "3")
+            {
+                GameManager.instance.player_Stat.MaxHp += 4;
+                GameManager.instance.player_Stat.NormalHeart += 4;
+                editMode.GetComponent<TMP_InputField>().text = "";
+            }
+            else if (editMode.GetComponent<TMP_InputField>().text == "4")
+            {
+                GameManager.instance.player_Stat.SoulHeart += 4;
+                editMode.GetComponent<TMP_InputField>().text = "";
+            }
+            if (Input.GetKeyDown(KeyCode.KeypadEnter))
+            {
+                editMode.SetActive(false);
+            }
+        }
+        else
+        {
+            if (Input.GetKeyDown(KeyCode.KeypadEnter))
+            {
+                Debug.Log("What");
+                editMode.SetActive(true);
+            }
+
+        }
 
 
     }
@@ -362,23 +411,28 @@ public class gameUI : MonoBehaviour
                 if (nowState[j, i] == nowMap)
                 {
 
-                    if (i - 1 >= 0 && i + 1 < GameManager.instance.stageNum + 6 && j - 1 >= 0 && j + 1 < GameManager.instance.stageNum + 6)
+                    if (i >= 0 && i + 1 < GameManager.instance.stageNum + 6 && j >= 0 && j + 1 < GameManager.instance.stageNum + 6)
                     {
-                        if (miniMapImage[j, i + 1] != nullImage)
+
+                        if (i + 1 <= GameManager.instance.stageNum + 6 && miniMapImage[j, i + 1] != nullImage)
                         {
                             miniMapImage[j, i + 1].gameObject.SetActive(true);
+                            Debug.Log(miniMapImage[j, i + 1].name);
                         }
-                        if (miniMapImage[j + 1, i] != nullImage)
+                        if (j + 1 <= GameManager.instance.stageNum + 6 && miniMapImage[j + 1, i] != nullImage)
                         {
                             miniMapImage[j + 1, i].gameObject.SetActive(true);
+                            Debug.Log(miniMapImage[j + 1, i].name);
                         }
-                        if (miniMapImage[j - 1, i] != nullImage)
+                        if (j - 1 >= 0 && miniMapImage[j - 1, i] != nullImage)
                         {
                             miniMapImage[j - 1, i].gameObject.SetActive(true);
+                            Debug.Log(miniMapImage[j - 1, i].name);
                         }
-                        if (miniMapImage[j, i - 1] != nullImage)
+                        if (i - 1 >= 0 && miniMapImage[j, i - 1] != nullImage)
                         {
                             miniMapImage[j, i - 1].gameObject.SetActive(true);
+                            Debug.Log(miniMapImage[j, i - 1].name);
                         }
                     }
                 }

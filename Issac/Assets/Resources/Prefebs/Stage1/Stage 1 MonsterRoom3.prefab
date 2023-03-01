@@ -5391,7 +5391,7 @@ RectTransform:
   m_GameObject: {fileID: 2576057806468538291}
   m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 1.5, z: 1}
+  m_LocalScale: {x: 5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 106884987}
@@ -5492,7 +5492,7 @@ RectTransform:
   m_GameObject: {fileID: 2576057806879088547}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 1.5, z: 1}
+  m_LocalScale: {x: 5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1453188291}
@@ -5649,6 +5649,13 @@ MonoBehaviour:
   UpDoorY: 0
   DownDoorY: 0
   Monster: []
+  roomChangeCollider: {fileID: 0}
+  RoomPosition: {x: 0, y: 0}
+  direction: {x: 0, y: 0}
+  speed: 0
+  DoorX: 0
+  DoorY: 0
+  RoomChange: 0
 --- !u!50 &5096075758404468439
 Rigidbody2D:
   serializedVersion: 4
@@ -5697,7 +5704,7 @@ RectTransform:
   m_GameObject: {fileID: 2576057807320988610}
   m_LocalRotation: {x: 0, y: -0, z: 0.7071068, w: -0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 1.5, z: 1}
+  m_LocalScale: {x: 5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2027771578}
@@ -5798,7 +5805,7 @@ RectTransform:
   m_GameObject: {fileID: 2576057807511254648}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 1.5, z: 1}
+  m_LocalScale: {x: 5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2089213895}
@@ -6880,7 +6887,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &39265317832905076
 RectTransform:
   m_ObjectHideFlags: 0

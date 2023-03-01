@@ -11,6 +11,7 @@ public class ChoiceMenu : MonoBehaviour
     public Vector2 direction;
     public bool isExport;
     bool keyDelay;
+    public AudioClip[] sound;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +23,7 @@ public class ChoiceMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if (isExport)
         {
             if (GetComponent<RectTransform>().localPosition.y < 0 || GetComponent<RectTransform>().localPosition.x > 0)
@@ -42,6 +44,7 @@ public class ChoiceMenu : MonoBehaviour
 
         InputKey();
         transform.Translate(direction * Time.deltaTime * speed);
+
     }
     void InputKey()
     {
@@ -61,6 +64,7 @@ public class ChoiceMenu : MonoBehaviour
                     PlayCheck[1].interactable = false;
                 }
                 StartCoroutine(Delaykey());
+                SoundManager.instance.SfxPlay("", sound[0], SoundManager.instance.sfx / 100f);
             }
 
         }

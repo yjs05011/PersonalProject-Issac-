@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 public class TrapDoor : MonoBehaviour
 {
     bool isEnter;
@@ -14,7 +15,7 @@ public class TrapDoor : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!GameManager.instance.bossCheck)
+        if (!GameManager.instance.bossCheck && GameManager.instance.monsterClearChk && !GameManager.instance.roomChange)
         {
             trapDoor.SetActive(true);
             gameObject.GetComponent<BoxCollider2D>().enabled = true;
@@ -62,7 +63,7 @@ public class TrapDoor : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         GameManager.instance.stageNum++;
         isEnter = false;
-        GFunc.SceneChanger($"Stage{GameManager.instance.stageNum}");
+        SceneManager.LoadScene($"Stage{GameManager.instance.stageNum}");
 
     }
 }

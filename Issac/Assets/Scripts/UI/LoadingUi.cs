@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class LoadingUi : MonoBehaviour
 {
     public Image backGroundImg;
+    public Image SceneChanger;
     public Color backGroundImgDefaultColor = default;
     public Color backGroundImgFedeInColor = default;
     const float FADE_ALPHA_DELTA = 0.3f;
@@ -17,7 +18,11 @@ public class LoadingUi : MonoBehaviour
         fadinFinishCheck = false;
         backGroundImgDefaultColor = new Color(0f, 0f, 0f, 0f);
         backGroundImgFedeInColor = new Color(0f, 0f, 0f, 0.9f);
-
+        if (GameManager.instance.SceneChanger)
+        {
+            GameManager.instance.SceneChanger = false;
+            StartCoroutine(FadeOut(3f, SceneChanger));
+        }
 
     }
 
@@ -78,7 +83,22 @@ public class LoadingUi : MonoBehaviour
              new Color(backGroundImgDefaultColor.r, backGroundImgDefaultColor.g, backGroundImgDefaultColor.b, alpha);
             yield return new WaitForSeconds(delay);
         }
-        gameObject.SetActive(false);
         backGroundImg.color = new Color(0f, 0f, 0f, 0.9f);
+    }
+    IEnumerator FadeOut(float totalTime, Image image)
+    {
+        float delay = totalTime / 30;
+
+        // alpha go 0 to 0.9
+        float alpha = image.color.a;
+        while (alpha >= 0f)
+        {
+            alpha -= 0.05f;
+            image.color =
+             new Color(image.color.r, image.color.g, image.color.b, alpha);
+            yield return new WaitForSeconds(delay);
+        }
+        backGroundImg.color = new Color(0f, 0f, 0f, 0.9f);
+        image.gameObject.SetActive(false);
     }
 }

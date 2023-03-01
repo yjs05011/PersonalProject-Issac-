@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class ChoiceCharator : MonoBehaviour
 {
     // Start is called before the first frame update
+    public AudioClip[] sound;
     public Charator[] character;
     public Sprite[] PlayerNameSprite;
     public float speed;
@@ -109,6 +110,7 @@ public class ChoiceCharator : MonoBehaviour
 
                 keyDelay = true;
                 RightArrow();
+                SoundManager.instance.SfxPlay("", sound[1], SoundManager.instance.sfx / 100f);
                 StartCoroutine(Delaykey());
             }
 
@@ -122,6 +124,7 @@ public class ChoiceCharator : MonoBehaviour
 
                 keyDelay = true;
                 LeftArrow();
+                SoundManager.instance.SfxPlay("", sound[0], SoundManager.instance.sfx / 100f);
                 StartCoroutine(Delaykey());
             }
 
@@ -147,7 +150,9 @@ public class ChoiceCharator : MonoBehaviour
                 keyDelay = true;
                 Debug.Log(characterNumber);
                 GFunc.PlayerStatReset(characterNumber);
-                StartCoroutine(FadeIn(1f));
+                transform.parent.GetComponent<AudioSource>().Stop();
+                SoundManager.instance.SfxPlay("", sound[2], SoundManager.instance.sfx / 100f);
+                StartCoroutine(FadeIn(5f));
                 StartCoroutine(Delaykey());
             }
 
@@ -274,7 +279,7 @@ public class ChoiceCharator : MonoBehaviour
 
         // alpha go 0 to 0.9
         float alpha = 0;
-        while (alpha <= 0.9)
+        while (alpha <= 1)
         {
             alpha += 0.1f;
             fadein.color =

@@ -16,6 +16,7 @@ TagManager:
   - Rock
   - Boss
   - Clear
+  - Thron
   layers:
   - Default
   - TransparentFX

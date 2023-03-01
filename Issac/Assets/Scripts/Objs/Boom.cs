@@ -10,6 +10,7 @@ public class Boom : MonoBehaviour
     private SpriteRenderer smallboom;
     private RectTransform boomRect;
     private Animator bigBoom;
+    public AudioClip sfx;
     // Start is called before the first frame update
     private void OnEnable()
     {
@@ -22,6 +23,7 @@ public class Boom : MonoBehaviour
         StartCoroutine(BoomColorChage());
         bigBoom.transform.gameObject.SetActive(false);
         boomSize.isTrigger = true;
+        SoundManager.instance.SfxPlay("", sfx, SoundManager.instance.sfx / 100f);
 
 
 

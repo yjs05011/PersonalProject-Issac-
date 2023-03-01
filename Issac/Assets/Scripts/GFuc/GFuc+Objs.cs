@@ -54,10 +54,10 @@ public static partial class GFunc
         Quaternion rotation = Quaternion.Slerp(Player.rotation, angleAxis, 1);
         Player.rotation = rotation;
     }
-    public static IEnumerator PlayerHit(Collider2D other, int i)
+    public static IEnumerator PlayerHit(Collider2D other, int i, string sfxName, AudioClip clip)
     {
         other.transform.GetComponent<Player_Active>().playerAct.sprite = other.transform.GetComponent<Player_Active>().PlayerActSprite[i];
-
+        SoundManager.instance.SfxPlay(sfxName, clip, SoundManager.instance.sfx / 100f);
         other.transform.GetChild(1).gameObject.SetActive(true);
         other.transform.GetChild(4).gameObject.SetActive(false);
         other.transform.GetChild(3).gameObject.SetActive(false);
@@ -71,6 +71,7 @@ public static partial class GFunc
         other.transform.GetChild(1).gameObject.SetActive(false);
         other.transform.GetChild(4).gameObject.SetActive(true);
         other.transform.GetChild(3).gameObject.SetActive(true);
+
     }
     public static IEnumerator MonsterHit(Collider2D other)
     {
@@ -96,6 +97,8 @@ public static partial class GFunc
         GameManager.instance.player_Stat.KeyCount = GameManager.instance.player[Id].keyCount;
         GameManager.instance.player_Stat.BoomCount = GameManager.instance.player[Id].boomCount;
         GameManager.instance.player_Stat.CoinCount = GameManager.instance.player[Id].coinCount;
+        GameManager.instance.SceneChanger = true;
+        GameManager.instance.monsterCount = 0;
     }
 
 }

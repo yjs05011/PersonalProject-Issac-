@@ -119,7 +119,7 @@ public class MonsterTears : MonoBehaviour
                     {
                         GameManager.instance.player_Stat.NormalHeart -= 1;
                     }
-                    GameManager.instance.StartCoroutineDeligate(GFunc.PlayerHit(other, 1));
+                    GameManager.instance.StartCoroutineDeligate(GFunc.PlayerHit(other, 1, "", other.transform.GetComponent<Player_Active>().clip[0]));
 
                 }
             }

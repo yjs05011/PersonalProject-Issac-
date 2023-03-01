@@ -9,12 +9,13 @@ public class Fly : Monster_Active
     protected Rigidbody2D EnemyRigd;
     private Animator bodyAni;
     private bool die;
+    private bool routinChk;
     public override void Start()
     {
 
         base.Start();
         EnemyRigd = gameObject.GetComponent<Rigidbody2D>();
-        bodyAni = transform.GetChild(0).GetComponent<Animator>();
+        bodyAni = GetComponent<Animator>();
         Debug.Log(maxHp);
         if (gameObject.activeSelf)
         {
@@ -33,9 +34,15 @@ public class Fly : Monster_Active
         if (maxHp < 0)
         {
             die = true;
-            transform.gameObject.SetActive(false);
-            GameManager.instance.monsterCount--;
             bodyAni.SetBool("isDie", true);
+            if (!routinChk)
+            {
+                routinChk = true;
+                StartCoroutine(DidDelay());
+            }
+
+
+
         }
 
 
@@ -56,5 +63,10 @@ public class Fly : Monster_Active
     }
 
 
-
+    IEnumerator DidDelay()
+    {
+        yield return new WaitForSeconds(0.2f);
+        transform.gameObject.SetActive(false);
+        GameManager.instance.monsterCount--;
+    }
 }

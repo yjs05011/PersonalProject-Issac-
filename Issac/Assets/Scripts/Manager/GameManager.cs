@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour
     public int choiceCharator = 1;
     public int sfx = 5;
     public int music = 5;
+    public bool SceneChanger;
 
     void Awake()
     {

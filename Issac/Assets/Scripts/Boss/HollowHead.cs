@@ -346,7 +346,6 @@ public class HollowHead : Monster_Active
     {
         routinChk = true;
         HeadPosition = bossRotation.position;
-        Debug.Log(transform.parent.name);
 
         for (int i = 1; i < totalLength + 1; i++)
         {

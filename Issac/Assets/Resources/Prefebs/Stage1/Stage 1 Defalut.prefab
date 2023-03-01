@@ -1764,6 +1764,13 @@ MonoBehaviour:
   UpDoorY: 0
   DownDoorY: 0
   Monster: []
+  roomChangeCollider: {fileID: 0}
+  RoomPosition: {x: 0, y: 0}
+  direction: {x: 0, y: 0}
+  speed: 0
+  DoorX: 0
+  DoorY: 0
+  RoomChange: 0
 --- !u!50 &5096075758404468439
 Rigidbody2D:
   serializedVersion: 4

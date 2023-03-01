@@ -11,17 +11,18 @@ public class MainMenuController : MonoBehaviour
     public bool isOptionChange;
     public bool changeChk;
     public bool resetMove;
+    public AudioClip[] sound;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        GetComponent<AudioSource>().volume = SoundManager.instance.music / 100f;
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        GetComponent<AudioSource>().volume = SoundManager.instance.music / 100f;
 
         if (!changeChk)
         {
@@ -70,6 +71,7 @@ public class MainMenuController : MonoBehaviour
             transform.GetChild(1).GetComponent<ChoiceMenu>().speed = 500f;
             isAniPress = true;
             StartCoroutine(ActiveReset(transform.GetChild(0)));
+            SoundManager.instance.SfxPlay("", sound[0], SoundManager.instance.sfx / 100f);
         }
 
 
@@ -89,6 +91,7 @@ public class MainMenuController : MonoBehaviour
             StartCoroutine(ActiveReset(transform.GetChild(1)));
             isNewRunChange = false;
             isNewRun = false;
+            SoundManager.instance.SfxPlay("", sound[0], SoundManager.instance.sfx / 100f);
         }
     }
     void NewRunClose()
@@ -106,6 +109,7 @@ public class MainMenuController : MonoBehaviour
             transform.GetChild(1).GetComponent<ChoiceMenu>().isExport = true;
 
             StartCoroutine(ActiveReset(transform.GetChild(3)));
+            SoundManager.instance.SfxPlay("", sound[0], SoundManager.instance.sfx / 100f);
 
             isNewRunChange = false;
             isNewRun = true;
@@ -125,6 +129,7 @@ public class MainMenuController : MonoBehaviour
             StartCoroutine(ActiveReset(transform.GetChild(1)));
             isOptionChange = false;
             isOption = false;
+            SoundManager.instance.SfxPlay("", sound[0], SoundManager.instance.sfx / 100f);
         }
 
     }
@@ -142,6 +147,7 @@ public class MainMenuController : MonoBehaviour
             transform.GetChild(1).GetComponent<ChoiceMenu>().speed = 800f;
             StartCoroutine(ActiveReset(transform.GetChild(2)));
             isOptionChange = false;
+            SoundManager.instance.SfxPlay("", sound[0], SoundManager.instance.sfx / 100f);
             isOption = true;
         }
 

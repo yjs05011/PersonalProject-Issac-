@@ -13,14 +13,15 @@ public class Option : MonoBehaviour
     public Sprite[] volume;
     public Image sfxImage;
     public Image MusicImage;
+    public AudioClip[] sound;
     // Start is called before the first frame update
     void Start()
     {
         keyDelay = false;
         MusicImage = PlayCheck[0].transform.GetChild(2).GetComponent<Image>();
-        MusicImage.sprite = volume[GameManager.instance.music - 1];
+        MusicImage.sprite = volume[SoundManager.instance.music - 1];
         sfxImage = PlayCheck[1].transform.GetChild(2).GetComponent<Image>();
-        sfxImage.sprite = volume[GameManager.instance.sfx - 1];
+        sfxImage.sprite = volume[SoundManager.instance.sfx - 1];
 
     }
 
@@ -52,6 +53,7 @@ public class Option : MonoBehaviour
                     PlayCheck[0].interactable = true;
                     PlayCheck[1].interactable = false;
                 }
+                SoundManager.instance.SfxPlay("", sound[0], SoundManager.instance.sfx / 100f);
                 StartCoroutine(Delaykey());
             }
 
@@ -63,16 +65,17 @@ public class Option : MonoBehaviour
                 if (!keyDelay)
                 {
                     keyDelay = true;
-                    if (GameManager.instance.music == 11)
+                    if (SoundManager.instance.music == 11)
                     {
 
                     }
                     else
                     {
-                        GameManager.instance.music++;
-                        MusicImage.sprite = volume[GameManager.instance.music - 1];
+                        SoundManager.instance.music++;
+                        MusicImage.sprite = volume[SoundManager.instance.music - 1];
 
                     }
+                    SoundManager.instance.SfxPlay("", sound[1], SoundManager.instance.sfx / 100f);
                     StartCoroutine(Delaykey());
 
 
@@ -83,15 +86,16 @@ public class Option : MonoBehaviour
                 if (!keyDelay)
                 {
                     keyDelay = true;
-                    if (GameManager.instance.sfx == 11)
+                    if (SoundManager.instance.sfx == 10)
                     {
 
                     }
                     else
                     {
-                        GameManager.instance.sfx++;
-                        sfxImage.sprite = volume[GameManager.instance.sfx - 1];
+                        SoundManager.instance.sfx++;
+                        sfxImage.sprite = volume[SoundManager.instance.sfx];
                     }
+                    SoundManager.instance.SfxPlay("", sound[1], SoundManager.instance.sfx / 100f);
                     StartCoroutine(Delaykey());
                 }
 
@@ -105,16 +109,17 @@ public class Option : MonoBehaviour
                 if (!keyDelay)
                 {
                     keyDelay = true;
-                    if (GameManager.instance.music == 1)
+                    if (SoundManager.instance.music == 0)
                     {
 
                     }
                     else
                     {
-                        GameManager.instance.music--;
-                        MusicImage.sprite = volume[GameManager.instance.music - 1];
+                        SoundManager.instance.music--;
+                        MusicImage.sprite = volume[SoundManager.instance.music];
 
                     }
+                    SoundManager.instance.SfxPlay("", sound[0], SoundManager.instance.sfx / 100f);
                     StartCoroutine(Delaykey());
 
 
@@ -125,20 +130,22 @@ public class Option : MonoBehaviour
                 if (!keyDelay)
                 {
                     keyDelay = true;
-                    if (GameManager.instance.sfx == 1)
+                    if (SoundManager.instance.sfx == 1)
                     {
 
                     }
                     else
                     {
-                        GameManager.instance.sfx--;
-                        sfxImage.sprite = volume[GameManager.instance.sfx - 1];
+                        SoundManager.instance.sfx--;
+                        sfxImage.sprite = volume[SoundManager.instance.sfx - 1];
                     }
+                    SoundManager.instance.SfxPlay("", sound[0], SoundManager.instance.sfx / 100f);
                     StartCoroutine(Delaykey());
                 }
 
 
             }
+
 
 
         }
