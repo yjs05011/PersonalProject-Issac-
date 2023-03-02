@@ -716,6 +716,7 @@ public class Player_Active : MonoBehaviour
     }
     IEnumerator DieAnime()
     {
+        playerRigid.velocity = Vector2.zero;
         transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = PlayerActSprite[4];
         transform.GetChild(1).gameObject.SetActive(true);
         transform.GetChild(2).gameObject.SetActive(false);
