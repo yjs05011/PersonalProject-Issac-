@@ -63,7 +63,8 @@ public class TrapDoor : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         GameManager.instance.stageNum++;
         isEnter = false;
-        SceneManager.LoadScene($"Stage{GameManager.instance.stageNum}");
+        GameManager.instance.enddingVideo.gameObject.SetActive(true);
+
 
     }
 }

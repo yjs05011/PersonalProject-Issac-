@@ -37,4 +37,5 @@ Make SampleMonster, make Obj(boom), Debug //0.0.6ver // 2023-02-20
 Make Monster, Stage, Refactoring Ui, Debug//0.0.7ver // 2023-02-21
 Make boss proto, Debug // 0.0.8ver// 2023-02-22
 Make ProtoType, Debug // 0.1.0ver// 2023-02-24
-Finish ProtoType, Debug// 0.3.0ver // 20223-02-27
+Finish ProtoType, Debug// 0.3.0ver // 2023-02-27
+Finish game // 1.0.0ver// 2023-03-02

@@ -12,6 +12,7 @@ public class UiController : MonoBehaviour
     Color defaultColor;
     Color changeColor;
     bool keyDelay;
+    bool isDie;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,13 +21,35 @@ public class UiController : MonoBehaviour
         pauseButton[0].transform.GetChild(0).GetComponent<TMP_Text>().color = defaultColor;
         pauseButton[1].transform.GetChild(0).GetComponent<TMP_Text>().color = changeColor;
         pauseButton[2].transform.GetChild(0).GetComponent<TMP_Text>().color = changeColor;
-
+        isDie = false;
+        GetComponent<AudioSource>().volume = SoundManager.instance.music / 100f;
     }
 
     // Update is called once per frame
     void Update()
     {
         Pause();
+        Die();
+    }
+    public void Die()
+    {
+        if (GameManager.instance.player_Stat.Die)
+        {
+            if (!isDie)
+            {
+                isDie = true;
+                StartCoroutine(DieLoading());
+
+            }
+            if (transform.GetChild(2).gameObject.activeSelf)
+            {
+                if (Input.anyKeyDown)
+                {
+                    Time.timeScale = 1f;
+                    GFunc.SceneChanger("MainMenu");
+                }
+            }
+        }
     }
     public void Pause()
     {
@@ -178,5 +201,14 @@ public class UiController : MonoBehaviour
         yield return new WaitForSecondsRealtime(0.1f);
         keyDelay = false;
         Debug.Log(keyDelay);
+    }
+    IEnumerator DieLoading()
+    {
+
+        yield return new WaitForSecondsRealtime(2f);
+        Time.timeScale = 0f;
+        transform.GetChild(0).GetChild(1).gameObject.SetActive(true);
+        transform.GetChild(0).GetComponent<LoadingUi>().SceneChanger.color = new Color(0f, 0f, 0f, 1f);
+        transform.GetChild(2).gameObject.SetActive(true);
     }
 }

@@ -365,6 +365,8 @@ public class gameUI : MonoBehaviour
                     }
                 }
             }
+            Debug.Log(GameManager.instance.player_Stat.NormalHeart);
+            Debug.Log(GameManager.instance.player_Stat.SoulHeart);
         }
 
 
@@ -417,22 +419,22 @@ public class gameUI : MonoBehaviour
                         if (i + 1 <= GameManager.instance.stageNum + 6 && miniMapImage[j, i + 1] != nullImage)
                         {
                             miniMapImage[j, i + 1].gameObject.SetActive(true);
-                            Debug.Log(miniMapImage[j, i + 1].name);
+                            // Debug.Log(miniMapImage[j, i + 1].name);
                         }
                         if (j + 1 <= GameManager.instance.stageNum + 6 && miniMapImage[j + 1, i] != nullImage)
                         {
                             miniMapImage[j + 1, i].gameObject.SetActive(true);
-                            Debug.Log(miniMapImage[j + 1, i].name);
+                            // Debug.Log(miniMapImage[j + 1, i].name);
                         }
                         if (j - 1 >= 0 && miniMapImage[j - 1, i] != nullImage)
                         {
                             miniMapImage[j - 1, i].gameObject.SetActive(true);
-                            Debug.Log(miniMapImage[j - 1, i].name);
+                            // Debug.Log(miniMapImage[j - 1, i].name);
                         }
                         if (i - 1 >= 0 && miniMapImage[j, i - 1] != nullImage)
                         {
                             miniMapImage[j, i - 1].gameObject.SetActive(true);
-                            Debug.Log(miniMapImage[j, i - 1].name);
+                            // Debug.Log(miniMapImage[j, i - 1].name);
                         }
                     }
                 }

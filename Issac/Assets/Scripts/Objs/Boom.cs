@@ -23,7 +23,7 @@ public class Boom : MonoBehaviour
         StartCoroutine(BoomColorChage());
         bigBoom.transform.gameObject.SetActive(false);
         boomSize.isTrigger = true;
-        SoundManager.instance.SfxPlay("", sfx, SoundManager.instance.sfx / 100f);
+        //SoundManager.instance.SfxPlay("", sfx, SoundManager.instance.sfx / 100f);
 
 
 

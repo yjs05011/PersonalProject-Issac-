@@ -12,7 +12,7 @@ public class SoulHeart : MonoBehaviour
     {
         Heart = transform.GetChild(0).GetComponent<BoxCollider2D>();
         rigid = GetComponent<Rigidbody2D>();
-        SoundManager.instance.SfxPlay("", sfx[0], SoundManager.instance.sfx / 100f);
+        //SoundManager.instance.SfxPlay("", sfx[0], SoundManager.instance.sfx / 100f);
     }
 
     // Update is called once per frame

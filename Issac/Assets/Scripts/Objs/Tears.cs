@@ -36,6 +36,7 @@ public class Tears : MonoBehaviour
         tearsPop = gameObject.transform.GetChild(0).GetComponent<Animator>();
         TearsstartPos = tearImgRigid.position;
         ShadowstartPos = tearSize.position;
+        damage = GameManager.instance.player_Stat.Str;
         tearImgSize.localScale = new Vector3(1f + GameManager.instance.player_Stat.Str * 0.1f, 1 + GameManager.instance.player_Stat.Str * 0.1f, 1f);
         tearSize.localScale = new Vector3(1f + GameManager.instance.player_Stat.Str * 0.1f, 1 + GameManager.instance.player_Stat.Str * 0.1f, 1f);
 
@@ -47,7 +48,7 @@ public class Tears : MonoBehaviour
     {
         pointEffector = GetComponent<PointEffector2D>();
         Debug.Log($" Damage :{damage}");
-        damage = GameManager.instance.player_Stat.Str;
+
 
     }
 

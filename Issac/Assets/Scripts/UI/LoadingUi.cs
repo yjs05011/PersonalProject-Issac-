@@ -84,6 +84,7 @@ public class LoadingUi : MonoBehaviour
             yield return new WaitForSeconds(delay);
         }
         backGroundImg.color = new Color(0f, 0f, 0f, 0.9f);
+        gameObject.SetActive(false);
     }
     IEnumerator FadeOut(float totalTime, Image image)
     {

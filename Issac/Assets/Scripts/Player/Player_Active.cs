@@ -34,6 +34,7 @@ public class Player_Active : MonoBehaviour
     public Canvas roomChanger;
     public bool isSceneChange;
     public float startTime;
+    public Canvas BossLoad;
     public void Awake()
     {
         playerAct = transform.GetChild(1).GetComponent<SpriteRenderer>();
@@ -45,6 +46,10 @@ public class Player_Active : MonoBehaviour
         aniBody = transform.GetChild(4).GetComponent<Animator>();
         playerPoint = GetComponent<PointEffector2D>();
         aniHead.runtimeAnimatorController = character[GameManager.instance.player_Stat.ID - 1];
+        transform.GetChild(1).gameObject.SetActive(false);
+        transform.GetChild(2).gameObject.SetActive(true);
+        transform.GetChild(3).gameObject.SetActive(true);
+        transform.GetChild(4).gameObject.SetActive(true);
     }
     public void Start()
     {
@@ -77,10 +82,16 @@ public class Player_Active : MonoBehaviour
                     Restart();
                 }
 
-                if (GameManager.instance.player_Stat.NormalHeart < 0 && GameManager.instance.player_Stat.SoulHeart < 0)
+                if (GameManager.instance.player_Stat.NormalHeart <= 0 && GameManager.instance.player_Stat.SoulHeart <= 0)
                 {
                     GameManager.instance.player_Stat.Die = true;
-                    isDie = true;
+
+                    if (!isDie)
+                    {
+                        isDie = true;
+                        StartCoroutine(DieAnime());
+                    }
+
                 }
 
             }
@@ -337,30 +348,54 @@ public class Player_Active : MonoBehaviour
     }
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (other.transform.tag == "Monster")
+        if (!GameManager.instance.player_Stat.Die)
         {
-            if (isHit == true)
+            if (other.transform.tag == "Monster")
             {
-
-            }
-            else
-            {
-                if (other.transform.parent.GetComponent<Monster_Active>().monsterType == 1)
+                if (isHit == true)
                 {
-                    isHitChk = true;
-                    isHit = true;
-                    if (GameManager.instance.player_Stat.SoulHeart >= 2)
+
+                }
+                else
+                {
+                    if (other.transform.parent.GetComponent<Monster_Active>().monsterType == 1)
                     {
-                        GameManager.instance.player_Stat.SoulHeart -= 2;
-                    }
-                    else if (GameManager.instance.player_Stat.SoulHeart == 1)
-                    {
-                        GameManager.instance.player_Stat.SoulHeart -= 1;
+                        isHitChk = true;
+                        isHit = true;
+                        if (GameManager.instance.player_Stat.SoulHeart >= 2)
+                        {
+                            GameManager.instance.player_Stat.SoulHeart -= 2;
+                        }
+                        else if (GameManager.instance.player_Stat.SoulHeart == 1)
+                        {
+                            GameManager.instance.player_Stat.SoulHeart -= 1;
+                        }
+                        else
+                        {
+                            GameManager.instance.player_Stat.NormalHeart -= 2;
+                        }
                     }
                     else
                     {
-                        GameManager.instance.player_Stat.NormalHeart -= 2;
+                        isHitChk = true;
+                        isHit = true;
+                        if (GameManager.instance.player_Stat.SoulHeart >= 1)
+                        {
+                            GameManager.instance.player_Stat.SoulHeart -= 1;
+                        }
+                        else
+                        {
+                            GameManager.instance.player_Stat.NormalHeart -= 1;
+                        }
                     }
+                    StartCoroutine(GFunc.PlayerHit(playerBox, 1, "", clip[0]));
+                }
+            }
+            if (other.transform.tag == "Thron")
+            {
+                if (isHit == true)
+                {
+
                 }
                 else
                 {
@@ -376,59 +411,39 @@ public class Player_Active : MonoBehaviour
                     }
                 }
                 StartCoroutine(GFunc.PlayerHit(playerBox, 1, "", clip[0]));
-            }
-        }
-        if (other.transform.tag == "Thron")
-        {
-            if (isHit == true)
-            {
 
             }
-            else
+            if (other.transform.tag == "Boss")
             {
-                isHitChk = true;
-                isHit = true;
-                if (GameManager.instance.player_Stat.SoulHeart >= 1)
+                if (isHit == true)
                 {
-                    GameManager.instance.player_Stat.SoulHeart -= 1;
+
                 }
                 else
                 {
-                    GameManager.instance.player_Stat.NormalHeart -= 1;
+
+                    isHitChk = true;
+                    isHit = true;
+                    if (GameManager.instance.player_Stat.SoulHeart >= 2)
+                    {
+                        GameManager.instance.player_Stat.SoulHeart -= 2;
+                    }
+                    else if (GameManager.instance.player_Stat.SoulHeart == 1)
+                    {
+                        GameManager.instance.player_Stat.SoulHeart -= 1;
+                    }
+                    else
+                    {
+                        GameManager.instance.player_Stat.NormalHeart -= 2;
+                    }
+
+
+                    StartCoroutine(GFunc.PlayerHit(playerBox, 1, "", clip[0]));
+
                 }
-            }
-            StartCoroutine(GFunc.PlayerHit(playerBox, 1, "", clip[0]));
-
-        }
-        if (other.transform.tag == "Boss")
-        {
-            if (isHit == true)
-            {
-
-            }
-            else
-            {
-
-                isHitChk = true;
-                isHit = true;
-                if (GameManager.instance.player_Stat.SoulHeart >= 2)
-                {
-                    GameManager.instance.player_Stat.SoulHeart -= 2;
-                }
-                else if (GameManager.instance.player_Stat.SoulHeart == 1)
-                {
-                    GameManager.instance.player_Stat.SoulHeart -= 1;
-                }
-                else
-                {
-                    GameManager.instance.player_Stat.NormalHeart -= 2;
-                }
-
-
-                StartCoroutine(GFunc.PlayerHit(playerBox, 1, "", clip[0]));
-
             }
         }
+
 
 
     }
@@ -456,6 +471,10 @@ public class Player_Active : MonoBehaviour
                         // roomChangeChk = false;
                         // playerBox.isTrigger = false;
                         // GameManager.instance.roomChange = false;
+                        if (GameManager.instance.bossEnter)
+                        {
+                            StartCoroutine(BossRoomChange(other, new Vector2(-216.5f, -100), Vector2.right, 80, inspector.LeftDoorX, inspector.LeftDoorY));
+                        }
                         StartCoroutine(BossRoomChange(other, new Vector2(-216.5f, -100), Vector2.right, 80, inspector.LeftDoorX, inspector.LeftDoorY));
                     }
                     else
@@ -491,6 +510,10 @@ public class Player_Active : MonoBehaviour
                         // roomChangeChk = false;
                         // playerBox.isTrigger = false;
                         // GameManager.instance.roomChange = false;
+                        if (GameManager.instance.bossEnter)
+                        {
+                            StartCoroutine(RoomChange(other, new Vector2(-183.5f, -100), Vector2.left, 80, inspector.RightDoorX, inspector.RightDoorY));
+                        }
                         StartCoroutine(BossRoomChange(other, new Vector2(-183.5f, -100), Vector2.left, 80, inspector.RightDoorX, inspector.RightDoorY));
                     }
                     else
@@ -524,6 +547,10 @@ public class Player_Active : MonoBehaviour
                         // roomChangeChk = false;
                         // playerBox.isTrigger = false;
                         // GameManager.instance.roomChange = false;
+                        if (GameManager.instance.bossEnter)
+                        {
+                            StartCoroutine(RoomChange(other, new Vector2(-200, -91), Vector2.down, 40, inspector.UpDoorX, inspector.UpDoorY));
+                        }
                         StartCoroutine(BossRoomChange(other, new Vector2(-200, -91), Vector2.down, 40, inspector.UpDoorX, inspector.UpDoorY));
                     }
                     else
@@ -556,10 +583,15 @@ public class Player_Active : MonoBehaviour
                         // roomChangeChk = false;
                         // playerBox.isTrigger = false;
                         // GameManager.instance.roomChange = false;
+                        if (GameManager.instance.bossEnter)
+                        {
+                            StartCoroutine(RoomChange(other, new Vector2(-200, -109), Vector2.up, 40, inspector.DownDoorX, inspector.DownDoorY));
+                        }
                         StartCoroutine(BossRoomChange(other, new Vector2(-200, -109), Vector2.up, 40, inspector.DownDoorX, inspector.DownDoorY));
                     }
                     else
                     {
+
                         // roomChanger.gameObject.SetActive(true);
                         // roomChanger.GetComponent<LoadingUi>().BlackFadeInAndOut();
                         StartCoroutine(RoomChange(other, new Vector2(-200, -109), Vector2.up, 40, inspector.DownDoorX, inspector.DownDoorY));
@@ -596,7 +628,7 @@ public class Player_Active : MonoBehaviour
     IEnumerator Moving(Vector2 vector)
     {
         playerRigid.velocity = vector;
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.05f);
         playerRigid.velocity = Vector2.zero;
     }
 
@@ -612,6 +644,7 @@ public class Player_Active : MonoBehaviour
     IEnumerator RoomChange(Collider2D other, Vector2 RoomPosition, Vector2 Direction, float speed, int DoorX, int DoorY)
     {
         playerBox.isTrigger = false;
+        transform.tag = "Untagged";
         GameObject NextRoom = GameManager.instance.nowMapStat[DoorX, DoorY];
         GameManager.instance.NowMap = NextRoom;
         DoorController nowRoom = other.transform.parent.parent.parent.gameObject.GetComponent<DoorController>();
@@ -630,6 +663,7 @@ public class Player_Active : MonoBehaviour
         // roomChanger.gameObject.SetActive(false);
         NextRoom.transform.localPosition = new Vector2(-200, -100);
         nowRoom.gameObject.SetActive(false);
+        transform.tag = "Player";
         nowRoom.RoomChange = false;
         roomChangeChk = false;
         playerBox.isTrigger = false;
@@ -638,14 +672,26 @@ public class Player_Active : MonoBehaviour
     IEnumerator BossRoomChange(Collider2D other, Vector2 RoomPosition, Vector2 Direction, float speed, int DoorX, int DoorY)
     {
         playerBox.isTrigger = false;
+        transform.tag = "Untagged";
         GameObject NextRoom = GameManager.instance.nowMapStat[DoorX, DoorY];
         GameManager.instance.NowMap = NextRoom;
         DoorController nowRoom = other.transform.parent.parent.parent.gameObject.GetComponent<DoorController>();
         NextRoom.SetActive(true);
-        yield return new WaitForSeconds(0.15f);
+        if (GameManager.instance.bossEnter)
+        {
+
+        }
+        else
+        {
+            BossLoad.gameObject.SetActive(true);
+            GameManager.instance.bossEnter = true;
+        }
+
+        yield return new WaitForSeconds(0.1f);
         // roomChanger.gameObject.SetActive(false);
         NextRoom.transform.localPosition = new Vector2(-200, -100);
         nowRoom.gameObject.SetActive(false);
+        transform.tag = "Player";
         nowRoom.RoomChange = false;
         roomChangeChk = false;
         playerBox.isTrigger = false;
@@ -667,6 +713,22 @@ public class Player_Active : MonoBehaviour
         isHit = true;
         yield return new WaitForSeconds(1.5f);
         isHit = false;
+    }
+    IEnumerator DieAnime()
+    {
+        transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = PlayerActSprite[4];
+        transform.GetChild(1).gameObject.SetActive(true);
+        transform.GetChild(2).gameObject.SetActive(false);
+        transform.GetChild(3).gameObject.SetActive(false);
+        transform.GetChild(4).gameObject.SetActive(false);
+        yield return new WaitForSecondsRealtime(0.2f);
+        transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = PlayerActSprite[5];
+        yield return new WaitForSecondsRealtime(0.2f);
+        transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = PlayerActSprite[6];
+        yield return new WaitForSecondsRealtime(1.6f);
+
+
+
     }
 
 

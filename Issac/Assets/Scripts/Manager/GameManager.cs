@@ -26,6 +26,9 @@ public class GameManager : MonoBehaviour
     public int sfx = 5;
     public int music = 5;
     public bool SceneChanger;
+    public bool introSkip;
+    public Canvas enddingVideo;
+    public bool bossEnter;
 
     void Awake()
     {

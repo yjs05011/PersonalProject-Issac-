@@ -17,6 +17,7 @@ public class MainMenuController : MonoBehaviour
     void Start()
     {
         GetComponent<AudioSource>().volume = SoundManager.instance.music / 100f;
+        GameManager.instance.introSkip = true;
     }
 
     // Update is called once per frame
